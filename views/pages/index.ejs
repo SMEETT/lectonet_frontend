@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+        <style>
+            @import url('../../static/css/layouts/index.css');
+        </style>
+        <meta name="keywords" content="<%= meta_keywords %>">
+        <meta name="description" content="<%= meta_description %>">
+        <%- include ("../partials/head.ejs") %>
+	</head>
+    <div class="disclaimer" id="wrapper-disclaimer">
+        <h1>Disclaimer</h1>
+        <p>Auch diese Webseite verwendet Cookies für die fehlerfreie Funktion. Anders geht es leider nicht. Cookies sind so kleine
+        Kekse, mit denen Sie Ihren Rechner vollkrümeln. Sie erklären sich mit der Nutzung von Cookies einverstanden, wenn Sie
+        meine Website nutzen. Um der Verwendung von Tracking Cookies zu widersprechen klicken Sie bitte hier.</p>
+        
+        <button id="btn-disclaimer"class="btn red">Verstanden!</button>
+    </div>
+	<div id="preisrechner-hook"></div>
+	<body>
+		<div class="wrapper">
+			<header><%- include ("../partials/header.ejs") %></header>
+			<section class="text">
+				<h1><%- headline %></h1>
+				<h2><%- subheadline %></h2>
+				<p class="main-text-area"><%- copytext %></p>
+				<button id="btn-leistungen" class="btn outline">LEISTUNGEN</button>
+				<button id="btn-open-calculator" class="btn red">PREISRECHNER</button>
+			</section>
+			<section class="picture index">
+				<!-- <img id="photo-wackwitz" src="../../static/images/ruediger.webp"" alt="Foto Ruediger Wackwitz" /> -->
+                <picture id="photo-wackwitz">
+                    <source srcset="../../static/images/rw.webp" type="image/webp">
+                    <source srcset="../../static/images/rw.png" type="image/png">
+                    <img id="photo-wackwitz" src="../../static/images/rw.png" alt="Foto Ruediger Wackwitz">
+                </picture>
+			</section>
+			<section id="cards" class="cards">
+                <h1 id="h1-leistungen">Leistungen</h1>
+                <h2>Lorem ipsum dolor sit amet.</h2>
+				<div class="cards-wrapper">
+                    <% cards.forEach(card => { %>
+                        <a class="card-a" href=<%= card.slug %>>
+                            <div class="card grow">
+                                <div class="card-header"><%= card.title %></div>
+                                <h1 class="cardheadline"><%= card.headline %></h1>
+                                <p class="cardcopy"><%= card.teasertext %></p>
+                                <button class="btn outline card">MEHR</button>
+                            </div>
+                        </a>
+                        
+                    <% }) %>	
+                </div>
+			</section>
+            <footer><%- include ("../partials/footer.ejs") %></footer>
+            <div class="gradient"></div>
+		</div>
+	</body>
+</html>

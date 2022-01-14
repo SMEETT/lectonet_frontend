@@ -1,0 +1,204 @@
+/* #################### */
+/* FOOTER */
+/* #################### */
+
+.mr-16 {
+	margin-right: 16px;
+}
+
+footer {
+	grid-area: footer;
+	background-color: var(--default-grey);
+	display: flex;
+	flex-direction: row;
+	color: white;
+	align-items: center;
+	padding: 0 64px;
+	padding-top: 16px;
+	font-size: 14px;
+	line-height: 20px;
+	height: 180px;
+	margin-top: 32px;
+}
+
+footer li {
+	width: auto;
+}
+
+.container-footer {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+/* .container-footer li {
+	width: auto;
+} */
+
+.logo-footer:hover {
+	filter: brightness(0) saturate(100%) invert(95%) sepia(93%) saturate(0%) hue-rotate(260deg) brightness(85%) contrast(93%);
+}
+
+.section {
+	font-weight: 700;
+	margin-bottom: 2px;
+	/* text-decoration: underline; */
+}
+
+footer ul li {
+	list-style: none;
+}
+
+.container-icons-social-media {
+	display: flex;
+	align-items: center;
+}
+
+footer .icon-social-media {
+	width: 48px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+a.footer {
+	text-decoration: none;
+	color: white;
+	font-weight: 400;
+	height: 28px;
+	width: auto;
+	display: inline-flex;
+	align-items: center;
+}
+
+a.footer:hover {
+	color: var(--hover-light-grey);
+	text-decoration: underline;
+}
+
+footer .icon-social-media:hover {
+	filter: brightness(0) saturate(100%) invert(95%) sepia(93%) saturate(0%) hue-rotate(260deg) brightness(85%) contrast(93%);
+}
+
+/* ----------- 1280-WIDTH */
+@media only screen and (min-width: 1280px) {
+	footer {
+		width: 1260px;
+	}
+}
+
+/* ----------- 960-WIDTH */
+@media (max-width: 1279px) {
+	footer {
+		width: 940px;
+		padding: 0 32px;
+	}
+}
+
+/* ----------- 600-WIDTH */
+@media only screen and (max-width: 959px) {
+	footer {
+		width: 580px;
+		padding: 16px;
+		height: auto;
+	}
+
+	.container-footer {
+		display: grid;
+		width: 100%;
+		height: 100%;
+		grid-template-areas:
+			"logo . ."
+			"leistungen ueber_uns others"
+			"social-media social-media social-media";
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto auto auto;
+	}
+
+	.logo-footer {
+		margin-top: 8px;
+		margin-bottom: 8px;
+		margin-left: 16px;
+	}
+
+	/* .container-footer a {
+		padding-left: 16px;
+	} */
+
+	footer .container-icons-social-media {
+		grid-area: social-media;
+		align-self: center;
+		justify-self: center;
+		margin-top: 16px;
+		margin-bottom: 16px;
+	}
+
+	.others {
+		grid-area: others;
+		margin: 16px 0;
+		margin-left: 32px;
+	}
+
+	.leistungen {
+		grid-area: leistungen;
+		margin: 16px 0;
+		margin-left: 16px;
+	}
+
+	.ueber-uns {
+		grid-area: ueber_uns;
+		margin: 16px 0;
+	}
+}
+/* ----------- 320-WIDTH */
+@media only screen and (max-width: 599px) {
+	footer {
+		width: 300px;
+		height: auto;
+	}
+
+	footer .container-icons-social-media {
+		margin: 0;
+	}
+
+	.logo-footer {
+		align-self: center;
+		margin-bottom: 16px;
+		margin-left: 0;
+		margin-top: 0;
+		padding: 0;
+	}
+
+	.container-footer {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		padding: 16px 0;
+		align-items: center;
+	}
+
+	footer .container-icons-social-media {
+		margin-top: 16px;
+	}
+
+	.others {
+		margin: 8px 0;
+		padding-left: 0;
+	}
+
+	.leistungen {
+		margin: 8px 0;
+	}
+
+	.ueber-uns {
+		margin: 8px 0;
+	}
+
+	footer ul {
+		margin-bottom: 16px;
+		text-align: center;
+	}
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+        <meta name="keywords" content="<%= meta_keywords %>">
+        <meta name="description" content="<%= meta_description %>">
+        <%- include ("../partials/head.ejs") %>
+        <style>
+            @import url('../../static/css/layouts/generic.css');
+            @import url('<%- css %>');
+        </style>
+	</head>
+	<body>
+        <div id="preisrechner-hook"></div>
+		<div class="wrapper">
+			<header><%- include ("../partials/header.ejs") %></header>
+			<section class="text">
+				<h1><%= headline %></h1>
+				<h2><%= subheadline %></h2>
+				<%- copytext %>
+				<!-- <button id="open-calculator-btn" class="btn red">PREISRECHNER</button> -->
+			</section>
+			<section class="picture">
+				<img src="<%= strapiURL %><%= image.url %>" alt="<%= image.alternativeText %>" />
+			</section>
+			<footer><%- include ("../partials/footer.ejs") %></footer>
+		</div>
+	</body>
+</html>

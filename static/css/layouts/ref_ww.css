@@ -1,0 +1,80 @@
+.wrapper {
+	grid-template-columns: 40% 15% 45%;
+	grid-template-rows: auto auto auto;
+	grid-template-areas:
+		"header header header"
+		"txt . wackwitz"
+		"footer footer footer";
+}
+
+h2 {
+	max-width: 100%;
+}
+
+section.wackwitz {
+	grid-area: wackwitz;
+	margin: 16px 0;
+	animation: fadein 1s;
+}
+
+section.wackwitz p {
+	width: 460px;
+}
+
+.photo-wackwitz-ref {
+	margin-top: 16px;
+}
+
+/* ----------- 1280-WIDTH */
+@media only screen and (min-width: 1280px) {
+}
+
+/* ----------- 960-WIDTH */
+@media (max-width: 1279px) {
+	.wrapper {
+		grid-template-columns: 45% 5% 50%;
+	}
+}
+
+/* ----------- 600-WIDTH */
+@media only screen and (max-width: 959px) {
+	.wrapper {
+		grid-template-columns: 100%;
+		grid-template-rows: 80px auto auto auto;
+		grid-template-areas:
+			"header"
+			"txt"
+			"wackwitz"
+			"footer";
+	}
+
+	section.wackwitz {
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		display: flex;
+	}
+
+	section.wackwitz img {
+		width: 460px;
+	}
+}
+/* ----------- 320-WIDTH */
+@media only screen and (max-width: 599px) {
+	.wrapper {
+		grid-template-rows: 60px auto auto auto;
+	}
+
+	section.wackwitz {
+		margin: 0;
+	}
+
+	section.wackwitz p {
+		width: 300px;
+	}
+
+	section.wackwitz img {
+		width: 290px;
+	}
+}

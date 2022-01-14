@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+        <%- include ("../partials/head.ejs") %>
+        <style>
+            @import url('../../static/css/layouts/datenschutz.css');
+        </style>
+	</head>
+	<body>
+        <div id="preisrechner-hook"></div>
+		<div class="wrapper">
+			<header><%- include ("../partials/header.ejs") %></header>
+			<section class="datenschutz">
+                <h1>Datenschutz</h1>
+                <%- copytext %>
+			</section>
+			<footer><%- include ("../partials/footer.ejs") %></footer>
+		</div>
+	</body>
+</html>

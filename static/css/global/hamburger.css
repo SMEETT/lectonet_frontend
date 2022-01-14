@@ -1,0 +1,165 @@
+/* #################### */
+/* HAMBURGER */
+/* #################### */
+
+.wrapper-hamburger {
+	position: relative;
+	display: none;
+	width: 100%;
+	margin: 0;
+	z-index: 10;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: 80px auto;
+	grid-template-areas:
+		"logo btn hamburger"
+		"links links links";
+	color: white;
+	font-size: 14px;
+	background: rgba(0, 0, 0, 0);
+}
+
+.container-logo-hamburger {
+	grid-area: logo;
+	display: flex;
+	width: 100%;
+	padding-left: 32px;
+	align-items: center;
+}
+
+.container-logo-hamburger > img {
+	width: 142px;
+}
+
+.container-icon-hamburger {
+	grid-area: hamburger;
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	padding-right: 32px;
+	align-items: center;
+}
+
+.container-icon-hamburger img {
+	width: 32px;
+	cursor: pointer;
+}
+
+.container-icon-hamburger img:hover {
+	filter: brightness(3);
+}
+
+.container-btn-open-calculator-hamburger {
+	grid-area: btn;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container-nav-items-hamburger {
+	width: 100%;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 16px;
+	text-align: center;
+	grid-area: links;
+}
+
+.container-nav-items-hamburger ul {
+	margin-bottom: 16px;
+	line-height: 32px;
+	width: 100%;
+}
+
+.container-nav-items-hamburger ul li {
+	width: 300px;
+}
+
+.wrapper-hamburger a {
+	color: white;
+}
+
+.wrapper-hamburger a:hover {
+	color: var(--hover-dark-white);
+}
+
+.hamburger-category {
+	text-decoration: underline;
+	text-transform: uppercase;
+	font-weight: 700;
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.hamburger-social-media {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 8px;
+	margin-bottom: 16px;
+	padding: 0 80px;
+}
+
+.hamburger-social-media a {
+	filter: brightness(10);
+}
+
+.hamburger-social-media a:hover {
+	filter: brightness(3);
+}
+
+.btn.hamburger-menu-open {
+	border: 2px solid white;
+	color: white;
+}
+
+.btn.hamburger-menu-open:hover {
+	border: 2px solid white;
+	color: var(--default-grey);
+	background-color: white;
+}
+
+/* ----------- 1280-WIDTH */
+@media only screen and (min-width: 1280px) {
+}
+
+/* ----------- 960-WIDTH */
+@media (max-width: 1279px) {
+}
+
+/* ----------- 600-WIDTH */
+@media only screen and (max-width: 959px) {
+	.wrapper-hamburger {
+		display: grid;
+	}
+}
+/* ----------- 320-WIDTH */
+@media only screen and (max-width: 599px) {
+	.wrapper-hamburger {
+		grid-template-columns: auto auto;
+		grid-template-rows: 60px auto auto;
+		grid-template-areas:
+			"logo hamburger"
+			"btn btn"
+			"links links";
+	}
+
+	.container-logo-hamburger {
+		padding-left: 16px;
+	}
+
+	.container-icon-hamburger {
+		padding-right: 16px;
+	}
+
+	.container-nav-items-hamburger {
+		display: none;
+	}
+
+	.container-btn-open-calculator-hamburger {
+		display: none;
+		margin-top: 8px;
+	}
+}

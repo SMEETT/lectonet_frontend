@@ -1,0 +1,23 @@
+/* ----------- 1280-WIDTH */
+@media only screen and (min-width: 1280px) {
+	section.picture img {
+		left: -180px;
+	}
+}
+
+/* ----------- 960-WIDTH */
+@media (max-width: 1279px) {
+	section.picture img {
+		left: -250px;
+	}
+}
+
+/* ----------- 600-WIDTH */
+@media only screen and (max-width: 959px) {
+	section.picture img {
+		left: 0;
+	}
+}
+/* ----------- 320-WIDTH */
+@media only screen and (max-width: 599px) {
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta name="keywords" content="<%= meta_keywords %>">
+    <meta name="description" content="<%= meta_description %>">
+    <%- include ("../partials/head.ejs") %>
+        <style>
+            @import url('../../static/css/layouts/ref_ww.css');
+        </style>
+</head>
+<body>
+    <div id="preisrechner-hook"></div>
+    <div class="wrapper">
+        <header>
+            <%- include ("../partials/header.ejs") %>
+        </header>
+        <section class="text">
+            <h1><%= headline_referenzen %></h1>
+            <h2><%= subheadline_referenzen %></h2>
+            <p><%- copytext_referenzen %></p>
+        </section>
+        <section class="wackwitz">
+            <h1><%= headline_wackwitz %></h1>
+            <h2><%= subheadline_wackwitz %></h2>
+            <img class="photo-wackwitz-ref" src="<%= strapiURL %><%= image.url %>" alt="<%= image.alternativeText %>" />
+            <p><%- image_text %></p>
+        </section>
+        <footer>
+            <%- include ("../partials/footer.ejs") %>
+        </footer>
+    </div>
+</body>
+</html>
