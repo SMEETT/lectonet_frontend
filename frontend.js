@@ -32,15 +32,15 @@ app.use(compression());
 app.use(
 	expressCspHeader({
 		directives: {
-			"default-src": [SELF, strapiURL],
+			"default-src": [SELF, strapiURL, strapiURL.slice(0, -4)],
 			"script-src": [SELF],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-			"img-src": [SELF, strapiURL, "https://www.lectonet.de"],
+			"img-src": [SELF, strapiURL, strapiURL.slice(0, -4), "https://www.lectonet.de"],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
 			"font-src": ["https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"frame-ancestors": [NONE],
-			"connect-src": [SELF, strapiURL, "https://www.lectonet.de"],
+			"connect-src": [SELF, strapiURL, strapiURL.slice(0, -4), "https://www.lectonet.de"],
 		},
 	})
 );
@@ -78,18 +78,19 @@ app.use(function (req, res, next) {
 	const requestPages = axios.get(pages);
 	requestPages
 		.then((pages) => {
+			console.log("PAAAAGES.DATA.DATA", pages.data.data);
 			// get all titles from all pages and add them (based on category) to navItems
 			// generate a slug based on the title for each page
-			pages.data.forEach((page) => {
-				if (page.category === "leistungen") {
+			pages.data.data.forEach((page) => {
+				if (page.attributes.category === "leistungen") {
 					navItems.leistungen.push({
-						title: page.title,
-						slug: slugify(page.title, { lower: true }),
+						title: page.attributes.title,
+						slug: slugify(page.attributes.title, { lower: true }),
 					});
-				} else if (page.category === "ueber_uns") {
+				} else if (page.attributes.category === "ueber_uns") {
 					navItems.ueber_uns.push({
-						title: page.title,
-						slug: slugify(page.title, { lower: true }),
+						title: page.attributes.title,
+						slug: slugify(page.attributes.title, { lower: true }),
 					});
 				}
 			});
@@ -104,7 +105,7 @@ app.use(function (req, res, next) {
 			// attach navItems to res.locals so it can be accessed down the line
 			res.locals.navItems = navItems;
 
-			console.log(navItems);
+			console.log("navItems:-----------", navItems);
 
 			// call next middleware
 			next();
@@ -118,9 +119,10 @@ app.use(function (req, res, next) {
 // index route
 //////////////////////////////////
 app.get("/", (req, res) => {
-	axios.get(`${strapiURL}/index`).then((response) => {
+	axios.get(`${strapiURL}/index?populate=*`).then((response) => {
 		// add slugs for cards / generate markdown
-		response.data.card.forEach((entry) => {
+		console.log("response data index-------------", response.data.data.attributes);
+		response.data.data.attributes.card.forEach((entry) => {
 			const slug = slugify(entry.title, { lower: true });
 			entry.slug = slug;
 			entry.teasertext = md.renderInline(entry.teasertext);
@@ -129,12 +131,12 @@ app.get("/", (req, res) => {
 		res.render("pages/index", {
 			navItems: res.locals.navItems,
 			title: "Home",
-			meta_keywords: response.data.meta_keywords,
-			meta_description: response.data.meta_description,
-			headline: md.renderInline(response.data.headline),
-			subheadline: md.renderInline(response.data.subheadline),
-			copytext: md.renderInline(response.data.copytext),
-			cards: response.data.card.sort((a, b) => a.title.localeCompare(b.title)),
+			meta_keywords: response.data.data.attributes.meta_keywords,
+			meta_description: response.data.data.attributes.meta_description,
+			headline: md.renderInline(response.data.data.attributes.headline),
+			subheadline: md.renderInline(response.data.data.attributes.subheadline),
+			copytext: md.renderInline(response.data.data.attributes.copytext),
+			cards: response.data.data.attributes.card.sort((a, b) => a.position - b.position),
 		});
 	});
 });
@@ -144,20 +146,21 @@ app.get("/", (req, res) => {
 //////////////////////////////////
 
 app.get(["/wackwitz", "/referenzen"], (req, res) => {
-	axios.get(`${strapiURL}/referenzen-und-wackwitz`).then((response) => {
+	axios.get(`${strapiURL}/referenzen-und-wackwitz?populate=*`).then((response) => {
+		console.log("IMAGE URL", strapiURL.slice(0, -4) + response.data.data.attributes.foto_wackwitz.data.attributes.url);
 		res.render("pages/ref_ww", {
 			navItems: res.locals.navItems,
 			title: "Referenzen / Wackwitz",
-			meta_keywords: response.data.meta_keywords,
-			meta_description: response.data.meta_description,
-			headline_referenzen: md.renderInline(response.data.headline_referenzen),
-			subheadline_referenzen: md.renderInline(response.data.subheadline_referenzen),
-			copytext_referenzen: md.renderInline(response.data.copytext_referenzen),
-			headline_wackwitz: md.renderInline(response.data.headline_wackwitz),
-			subheadline_wackwitz: md.renderInline(response.data.subheadline_wackwitz),
-			image: response.data.foto_wackwitz,
-			image_text: md.renderInline(response.data.bildunterschrift_wackwitz),
-			strapiURL: strapiURL,
+			meta_keywords: response.data.data.attributes.meta_keywords,
+			meta_description: response.data.data.attributes.vmeta_description,
+			headline_referenzen: md.renderInline(response.data.data.attributes.headline_referenzen),
+			subheadline_referenzen: md.renderInline(response.data.data.attributes.subheadline_referenzen),
+			copytext_referenzen: md.renderInline(response.data.data.attributes.copytext_referenzen),
+			headline_wackwitz: md.renderInline(response.data.data.attributes.headline_wackwitz),
+			subheadline_wackwitz: md.renderInline(response.data.data.attributes.subheadline_wackwitz),
+			image: response.data.data.attributes.foto_wackwitz.data.attributes,
+			image_text: md.renderInline(response.data.data.attributes.bildunterschrift_wackwitz),
+			strapiURL: strapiURL.slice(0, -4),
 		});
 	});
 });
@@ -199,7 +202,7 @@ app.get("/datenschutz", (req, res) => {
 		res.render("pages/datenschutz", {
 			navItems: res.locals.navItems,
 			title: "Datenschutz",
-			copytext: md.render(response.data.copytext),
+			copytext: md.render(response.data.data.attributes.copytext),
 		});
 	});
 });
@@ -208,10 +211,10 @@ app.get("/datenschutz", (req, res) => {
 // dynamic routing
 //////////////////////////////////
 app.get("/:path", (req, res) => {
-	axios.get(`${strapiURL}/pages`).then((response) => {
+	axios.get(`${strapiURL}/pages?populate=*`).then((response) => {
 		// look for page with a title that matches the requested route
-		const match = response.data.find((page) => {
-			return slugify(page.title, { lower: true }) === req.params.path;
+		const match = response.data.data.find((page) => {
+			return slugify(page.attributes.title, { lower: true }) === req.params.path;
 		});
 
 		// if no match is returned, redirect to index-route ("/")
@@ -220,33 +223,33 @@ app.get("/:path", (req, res) => {
 		}
 
 		// render template based on provided category
-		if (match.category === "leistungen") {
+		if (match.attributes.category === "leistungen") {
 			res.render("pages/leistungen", {
 				navItems: res.locals.navItems,
-				title: match.title,
-				meta_keywords: response.data.meta_keywords,
-				meta_description: response.data.meta_description,
-				superheadline: md.renderInline(match.superheadline),
-				headline: md.renderInline(match.headline),
-				subheadline: md.renderInline(match.subheadline),
-				copytext: md.renderInline(match.copytext),
-				image: match.image,
-				strapiURL: strapiURL,
-				css: findSpecificCSS(slugify(match.title, { lower: true })),
+				title: match.attributes.title,
+				meta_keywords: match.attributes.meta_keywords,
+				meta_description: match.attributes.meta_description,
+				superheadline: md.renderInline(match.attributes.superheadline),
+				headline: md.renderInline(match.attributes.headline),
+				subheadline: md.renderInline(match.attributes.subheadline),
+				copytext: md.renderInline(match.attributes.copytext),
+				image: match.attributes.image.data.attributes,
+				strapiURL: strapiURL.slice(0, -4),
+				css: findSpecificCSS(slugify(match.attributes.title, { lower: true })),
 			});
 		}
 
 		if (match.category === "ueber_uns") {
 			res.render("pages/ueber_uns", {
 				navItems: res.locals.navItems,
-				title: match.title,
-				meta_keywords: response.data.meta_keywords,
-				meta_description: response.data.meta_description,
-				headline: md.renderInline(match.headline),
-				subheadline: md.renderInline(match.subheadline),
-				copytext: md.render(match.copytext),
-				image: match.image,
-				strapiURL: strapiURL,
+				title: match.attributes.title,
+				meta_keywords: match.attributes.meta_keywords,
+				meta_description: match.attributes.meta_description,
+				headline: md.renderInline(match.attributes.headline),
+				subheadline: md.renderInline(match.attributes.subheadline),
+				copytext: md.render(match.attributes.copytext),
+				image: match.attributes.image,
+				strapiURL: strapiURL.slice(0, -4),
 				css: findSpecificCSS(slugify(match.title, { lower: true })),
 			});
 		}

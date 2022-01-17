@@ -5,9 +5,9 @@ import axios from "axios";
 
 let strapiURL;
 if (isProduction) {
-    strapiURL = "https://www.lectonet.de/api";
+    strapiURL = "https://cms.lectonet.de/api";
 } else {
-    strapiURL = "http://localhost:1337";
+    strapiURL = "http://localhost:1337/api";
 }
 
 export const groups = writable([]);
@@ -32,7 +32,7 @@ export const bewerbungenSelectedTypes = writable();
 export const prices = writable();
 
 // initial fetch of all paths to CSV's
-const fetchedCSVData = axios.get(`${strapiURL}/preise`);
+const fetchedCSVData = axios.get(`${strapiURL}/preis?populate=*`);
 
 fetchedCSVData
     .then((fetchedData) => {
@@ -40,7 +40,8 @@ fetchedCSVData
         // initial API-Response, 'extractedData' contains
         // an array of objects {leistung, CSV}
         // CSV.url contains path to CSV-Data for 'leistung'
-        const extractedData = fetchedData.data.Preis;
+        const extractedData = fetchedData.data.data.attributes;
+        console.log("extracted data", extractedData);
         // get all "Leistungen"(Services) and add them to
         // TEMP array (later used to set() corresponding writable())
         extractedData.forEach((entry) => {

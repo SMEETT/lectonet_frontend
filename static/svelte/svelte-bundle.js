@@ -1979,7 +1979,7 @@ var app = (function () {
 
     let strapiURL;
     {
-        strapiURL = "http://localhost:1337";
+        strapiURL = "http://localhost:1337/api";
     }
 
     const groups = writable([]);
@@ -2004,7 +2004,7 @@ var app = (function () {
     const prices = writable();
 
     // initial fetch of all paths to CSV's
-    const fetchedCSVData = axios$1.get(`${strapiURL}/preise`);
+    const fetchedCSVData = axios$1.get(`${strapiURL}/preis?populate=*`);
 
     fetchedCSVData
         .then((fetchedData) => {
@@ -2012,7 +2012,8 @@ var app = (function () {
             // initial API-Response, 'extractedData' contains
             // an array of objects {leistung, CSV}
             // CSV.url contains path to CSV-Data for 'leistung'
-            const extractedData = fetchedData.data.Preis;
+            const extractedData = fetchedData.data.data.attributes;
+            console.log("extracted data", extractedData);
             // get all "Leistungen"(Services) and add them to
             // TEMP array (later used to set() corresponding writable())
             extractedData.forEach((entry) => {
