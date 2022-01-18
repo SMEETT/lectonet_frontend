@@ -26,11 +26,11 @@ module.exports = {
 			autorestart: true,
 			env: {
 				NODE_ENV: "production",
-        strapiURL: "https://cms.lectonet.de",
-        frontendURL: "https://frontend.lectonet.de",
-        frontendPORT: 1339,
-        priceCalcMailPW: "somePW",
-        priceCalcSMTP = "stmp.ionos.de"
+				strapiURL: "https://cms.lectonet.de",
+				frontendURL: "https://frontend.lectonet.de",
+				frontendPORT: 1339,
+				priceCalcMailPW: "somePW",
+				priceCalcSMTP: "stmp.ionos.de",
 			},
 		},
 	],
