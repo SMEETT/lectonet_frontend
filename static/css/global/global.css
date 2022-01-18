@@ -144,8 +144,8 @@ body {
 	margin-bottom: 50px;
 	/* background-image: url(../../images/pattern.png); */
 	background-repeat: repeat;
-	background: linear-gradient(270.31deg, #badbff 0.25%, rgba(105, 46, 46, 0) 99.71%), #bafff3;
-	/* background: rgb(255, 255, 255); */
+	/* background: linear-gradient(270.31deg, #badbff 0.25%, rgba(105, 46, 46, 0) 99.71%), #bafff3; */
+	background: rgb(255, 255, 255);
 	/* background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(217, 217, 217, 1) 100%); */
 }
 
