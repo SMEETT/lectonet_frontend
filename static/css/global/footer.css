@@ -8,7 +8,8 @@
 
 footer {
 	grid-area: footer;
-	background-color: var(--default-grey);
+	/* background-color: var(--default-grey); */
+	background-color: #565656;
 	display: flex;
 	flex-direction: row;
 	color: white;
@@ -19,6 +20,7 @@ footer {
 	line-height: 20px;
 	height: 180px;
 	margin-top: 32px;
+	width: 1280px;
 }
 
 footer li {
@@ -86,7 +88,7 @@ footer .icon-social-media:hover {
 /* ----------- 1280-WIDTH */
 @media only screen and (min-width: 1280px) {
 	footer {
-		width: 1260px;
+		/* width: 1260px; */
 	}
 }
 

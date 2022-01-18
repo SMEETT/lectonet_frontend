@@ -2,7 +2,7 @@
 	--default-grey: #333333;
 	--hover-light-grey: #9c9c9c;
 	--hover-dark-white: rgb(224, 224, 224);
-	--default-red: #c2494b;
+	--default-red: #ee2a2d;
 	--default-red-hover: #ff7b7d;
 	--card-header-grey: #e5e5e5;
 }
@@ -48,10 +48,11 @@
 
 .wrapper {
 	width: 1280px;
-	border-style: inset;
-	border: 10px solid white;
+	/* border-style: inset; */
+	/* border: 10px solid white; */
 	background-color: white;
-	/* margin-top: 10px; */
+	border-radius: 20px;
+	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
 	display: grid;
@@ -140,8 +141,12 @@ html {
 body {
 	/* background-color: rgb(230, 230, 230); */
 	min-height: 100%;
-	background: rgb(255, 255, 255);
-	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(217, 217, 217, 1) 100%);
+	margin-bottom: 50px;
+	/* background-image: url(../../images/pattern.png); */
+	background-repeat: repeat;
+	background: linear-gradient(270.31deg, #badbff 0.25%, rgba(105, 46, 46, 0) 99.71%), #bafff3;
+	/* background: rgb(255, 255, 255); */
+	/* background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(217, 217, 217, 1) 100%); */
 }
 
 body.overflow {
@@ -230,10 +235,10 @@ h5 {
 h1 {
 	/* MAIN/Headline */
 	font-weight: bold;
-	font-size: 32px;
+	font-size: 36px;
 	line-height: 100%;
 	letter-spacing: -1px;
-	text-decoration-line: underline;
+	/* text-decoration-line: underline; */
 	color: var(--default-grey);
 	margin-top: 8px;
 	white-space: pre-wrap;
