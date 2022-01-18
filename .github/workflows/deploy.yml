@@ -1,0 +1,31 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+    build:
+        if: "contains(github.event.head_commit.message, '[deploy]')"
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Copy repository contents via scp
+              uses: appleboy/scp-action@master
+              env:
+                  HOST: ${{ secrets.HOST }}
+                  PORT: ${{ secrets.PORT }}
+                  USERNAME: ${{ secrets.USERNAME }}
+                  KEY: ${{ secrets.SSHKEY }}
+              with:
+                  source: "."
+                  target: "/var/lib/pm2node/lectonet_frontend"
+
+            - name: Run Deploy-Script
+              uses: appleboy/ssh-action@master
+              with:
+                  HOST: ${{ secrets.HOST }}
+                  PORT: ${{ secrets.PORT }}
+                  USERNAME: ${{ secrets.USERNAME }}
+                  KEY: ${{ secrets.SSHKEY }}
+                  script: sh /var/lib/pm2node/lectonet_frontend/deploy_script.sh
