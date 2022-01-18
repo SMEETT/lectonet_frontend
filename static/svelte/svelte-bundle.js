@@ -1979,7 +1979,12 @@ var app = (function () {
 
     let strapiURL;
     {
-        strapiURL = "http://localhost:1337/api";
+        strapiURL = "http://localhost:1337";
+    }
+
+    let strapiAPI;
+    {
+        strapiAPI = "http://localhost:1337/api";
     }
 
     const groups = writable([]);
@@ -2004,15 +2009,18 @@ var app = (function () {
     const prices = writable();
 
     // initial fetch of all paths to CSV's
-    const fetchedCSVData = axios$1.get(`${strapiURL}/preis?populate=*`);
+    const fetchedCSVData = axios$1.get(
+        `${strapiAPI}/preis?populate[Preis][populate][0]=CSV`
+    );
 
     fetchedCSVData
         .then((fetchedData) => {
+            console.log("fetched CSV data", fetchedData);
             const servicesTEMP = [];
             // initial API-Response, 'extractedData' contains
             // an array of objects {leistung, CSV}
             // CSV.url contains path to CSV-Data for 'leistung'
-            const extractedData = fetchedData.data.data.attributes;
+            const extractedData = fetchedData.data.data.attributes.Preis;
             console.log("extracted data", extractedData);
             // get all "Leistungen"(Services) and add them to
             // TEMP array (later used to set() corresponding writable())
@@ -2027,10 +2035,13 @@ var app = (function () {
             const CSVData_Promises = [];
             // fetch CSV-Data of all "services"
             extractedData.forEach((entry) => {
+                console.log("entry", entry);
                 // fetch CSV-Data from URL's and push each returned promise
                 // (from axios) into an array of promises;
                 // prepend strapiURL to each URL
-                const CSVDataPromise = axios$1.get(`${strapiURL}${entry.CSV.url}`);
+                const CSVDataPromise = axios$1.get(
+                    `${strapiURL}${entry.CSV.data.attributes.url}`
+                );
                 CSVData_Promises.push(CSVDataPromise);
             });
             // build a new object with the name of the "service" and

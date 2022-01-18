@@ -18,6 +18,8 @@ const compression = require("compression");
 
 // environment variables
 const strapiURL = process.env.strapiURL;
+const strapiAPI = `${strapiURL}/api`;
+const frontendURL = process.env.frontendURL;
 const priceCalcMailPW = process.env.priceCalcMailPW;
 const priceCalcSMTP = process.env.priceCalcSMTP;
 const frontendPORT = process.env.frontendPORT;
@@ -32,15 +34,15 @@ app.use(compression());
 app.use(
 	expressCspHeader({
 		directives: {
-			"default-src": [SELF, strapiURL, strapiURL.slice(0, -4)],
+			"default-src": [SELF, strapiURL],
 			"script-src": [SELF],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-			"img-src": [SELF, strapiURL, strapiURL.slice(0, -4), "https://www.lectonet.de"],
+			"img-src": [SELF, strapiURL, frontendURL],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
 			"font-src": ["https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"frame-ancestors": [NONE],
-			"connect-src": [SELF, strapiURL, strapiURL.slice(0, -4), "https://www.lectonet.de"],
+			"connect-src": [SELF, strapiURL, frontendURL],
 		},
 	})
 );
@@ -73,15 +75,14 @@ app.use(function (req, res, next) {
 	const footerItems = ["FAQs", "Impressum", "Datenschutz", "Referenzen"].sort();
 
 	// let strapi take care of the sorting
-	const pages = `${strapiURL}/pages?_sort=title:ASC`;
+	const pages = `${strapiAPI}/pages?_sort=title:ASC`;
 	// fetch data
 	const requestPages = axios.get(pages);
 	requestPages
-		.then((pages) => {
-			console.log("PAAAAGES.DATA.DATA", pages.data.data);
-			// get all titles from all pages and add them (based on category) to navItems
-			// generate a slug based on the title for each page
-			pages.data.data.forEach((page) => {
+		.then((response) => {
+			const pages = response.data.data;
+			// console.log("PAAAAGES", pages);
+			pages.forEach((page) => {
 				if (page.attributes.category === "leistungen") {
 					navItems.leistungen.push({
 						title: page.attributes.title,
@@ -105,7 +106,7 @@ app.use(function (req, res, next) {
 			// attach navItems to res.locals so it can be accessed down the line
 			res.locals.navItems = navItems;
 
-			console.log("navItems:-----------", navItems);
+			// console.log("navItems:-----------", navItems);
 
 			// call next middleware
 			next();
@@ -119,24 +120,24 @@ app.use(function (req, res, next) {
 // index route
 //////////////////////////////////
 app.get("/", (req, res) => {
-	axios.get(`${strapiURL}/index?populate=*`).then((response) => {
+	axios.get(`${strapiAPI}/index?populate=*`).then((response) => {
 		// add slugs for cards / generate markdown
-		console.log("response data index-------------", response.data.data.attributes);
-		response.data.data.attributes.card.forEach((entry) => {
-			const slug = slugify(entry.title, { lower: true });
-			entry.slug = slug;
-			entry.teasertext = md.renderInline(entry.teasertext);
+		const data = response.data.data;
+
+		data.attributes.card.forEach((card) => {
+			const slug = slugify(card.title, { lower: true });
+			card.slug = slug;
+			card.teasertext = md.renderInline(card.teasertext);
 		});
-		console.log(response.data.card);
 		res.render("pages/index", {
 			navItems: res.locals.navItems,
 			title: "Home",
-			meta_keywords: response.data.data.attributes.meta_keywords,
-			meta_description: response.data.data.attributes.meta_description,
-			headline: md.renderInline(response.data.data.attributes.headline),
-			subheadline: md.renderInline(response.data.data.attributes.subheadline),
-			copytext: md.renderInline(response.data.data.attributes.copytext),
-			cards: response.data.data.attributes.card.sort((a, b) => a.position - b.position),
+			meta_keywords: data.attributes.meta_keywords,
+			meta_description: data.attributes.meta_description,
+			headline: md.renderInline(data.attributes.headline),
+			subheadline: md.renderInline(data.attributes.subheadline),
+			copytext: md.renderInline(data.attributes.copytext),
+			cards: data.attributes.card.sort((a, b) => a.position - b.position),
 		});
 	});
 });
@@ -146,21 +147,21 @@ app.get("/", (req, res) => {
 //////////////////////////////////
 
 app.get(["/wackwitz", "/referenzen"], (req, res) => {
-	axios.get(`${strapiURL}/referenzen-und-wackwitz?populate=*`).then((response) => {
-		console.log("IMAGE URL", strapiURL.slice(0, -4) + response.data.data.attributes.foto_wackwitz.data.attributes.url);
+	axios.get(`${strapiAPI}/referenzen-und-wackwitz?populate=*`).then((response) => {
+		const data = response.data.data;
 		res.render("pages/ref_ww", {
 			navItems: res.locals.navItems,
 			title: "Referenzen / Wackwitz",
-			meta_keywords: response.data.data.attributes.meta_keywords,
-			meta_description: response.data.data.attributes.vmeta_description,
-			headline_referenzen: md.renderInline(response.data.data.attributes.headline_referenzen),
-			subheadline_referenzen: md.renderInline(response.data.data.attributes.subheadline_referenzen),
-			copytext_referenzen: md.renderInline(response.data.data.attributes.copytext_referenzen),
-			headline_wackwitz: md.renderInline(response.data.data.attributes.headline_wackwitz),
-			subheadline_wackwitz: md.renderInline(response.data.data.attributes.subheadline_wackwitz),
-			image: response.data.data.attributes.foto_wackwitz.data.attributes,
-			image_text: md.renderInline(response.data.data.attributes.bildunterschrift_wackwitz),
-			strapiURL: strapiURL.slice(0, -4),
+			meta_keywords: data.attributes.meta_keywords,
+			meta_description: data.attributes.meta_description,
+			headline_referenzen: md.renderInline(data.attributes.headline_referenzen),
+			subheadline_referenzen: md.renderInline(data.attributes.subheadline_referenzen),
+			copytext_referenzen: md.renderInline(data.attributes.copytext_referenzen),
+			headline_wackwitz: md.renderInline(data.attributes.headline_wackwitz),
+			subheadline_wackwitz: md.renderInline(data.attributes.subheadline_wackwitz),
+			image: data.attributes.foto_wackwitz.data.attributes,
+			image_text: md.renderInline(data.attributes.bildunterschrift_wackwitz),
+			strapiURL: strapiURL,
 		});
 	});
 });
@@ -170,11 +171,13 @@ app.get(["/wackwitz", "/referenzen"], (req, res) => {
 //////////////////////////////////
 
 app.get("/faqs", (req, res) => {
-	axios.get(`${strapiURL}/fa-qs`).then((response) => {
+	axios.get(`${strapiAPI}/faq?populate=*`).then((response) => {
+		const data = response.data.data.attributes.FAQ;
+		console.log("faq data", data);
 		res.render("pages/faqs", {
 			navItems: res.locals.navItems,
 			title: "FAQs",
-			data: response.data.FAQ,
+			data: data,
 		});
 	});
 });
@@ -184,11 +187,12 @@ app.get("/faqs", (req, res) => {
 //////////////////////////////////
 
 app.get("/impressum", (req, res) => {
-	axios.get(`${strapiURL}/impressum`).then((response) => {
+	axios.get(`${strapiAPI}/impressum`).then((response) => {
+		const data = response.data.data;
 		res.render("pages/impressum", {
 			navItems: res.locals.navItems,
 			title: "Impressum",
-			copytext: md.render(response.data.copytext),
+			copytext: md.render(data.attributes.copytext),
 		});
 	});
 });
@@ -198,7 +202,7 @@ app.get("/impressum", (req, res) => {
 //////////////////////////////////
 
 app.get("/datenschutz", (req, res) => {
-	axios.get(`${strapiURL}/datenschutz`).then((response) => {
+	axios.get(`${strapiAPI}/datenschutz`).then((response) => {
 		res.render("pages/datenschutz", {
 			navItems: res.locals.navItems,
 			title: "Datenschutz",
@@ -211,7 +215,7 @@ app.get("/datenschutz", (req, res) => {
 // dynamic routing
 //////////////////////////////////
 app.get("/:path", (req, res) => {
-	axios.get(`${strapiURL}/pages?populate=*`).then((response) => {
+	axios.get(`${strapiAPI}/pages?populate=*`).then((response) => {
 		// look for page with a title that matches the requested route
 		const match = response.data.data.find((page) => {
 			return slugify(page.attributes.title, { lower: true }) === req.params.path;
@@ -219,39 +223,42 @@ app.get("/:path", (req, res) => {
 
 		// if no match is returned, redirect to index-route ("/")
 		if (!match) {
+			console.log("no match");
 			res.redirect("/");
-		}
+		} else {
+			console.log("MATCH!", match);
+			// render template based on provided category
+			if (match.attributes.category === "leistungen") {
+				res.render("pages/leistungen", {
+					navItems: res.locals.navItems,
+					title: match.attributes.title,
+					meta_keywords: match.attributes.meta_keywords,
+					meta_description: match.attributes.meta_description,
+					superheadline: md.renderInline(match.attributes.superheadline),
+					headline: md.renderInline(match.attributes.headline),
+					subheadline: md.renderInline(match.attributes.subheadline),
+					copytext: md.renderInline(match.attributes.copytext),
+					image: match.attributes.image.data.attributes,
+					strapiURL: strapiURL,
+					css: findSpecificCSS(slugify(match.attributes.title, { lower: true })),
+				});
+			}
 
-		// render template based on provided category
-		if (match.attributes.category === "leistungen") {
-			res.render("pages/leistungen", {
-				navItems: res.locals.navItems,
-				title: match.attributes.title,
-				meta_keywords: match.attributes.meta_keywords,
-				meta_description: match.attributes.meta_description,
-				superheadline: md.renderInline(match.attributes.superheadline),
-				headline: md.renderInline(match.attributes.headline),
-				subheadline: md.renderInline(match.attributes.subheadline),
-				copytext: md.renderInline(match.attributes.copytext),
-				image: match.attributes.image.data.attributes,
-				strapiURL: strapiURL.slice(0, -4),
-				css: findSpecificCSS(slugify(match.attributes.title, { lower: true })),
-			});
-		}
-
-		if (match.category === "ueber_uns") {
-			res.render("pages/ueber_uns", {
-				navItems: res.locals.navItems,
-				title: match.attributes.title,
-				meta_keywords: match.attributes.meta_keywords,
-				meta_description: match.attributes.meta_description,
-				headline: md.renderInline(match.attributes.headline),
-				subheadline: md.renderInline(match.attributes.subheadline),
-				copytext: md.render(match.attributes.copytext),
-				image: match.attributes.image,
-				strapiURL: strapiURL.slice(0, -4),
-				css: findSpecificCSS(slugify(match.title, { lower: true })),
-			});
+			if (match.attributes.category === "ueber_uns") {
+				console.log("Ueber Uns");
+				res.render("pages/ueber_uns", {
+					navItems: res.locals.navItems,
+					title: match.attributes.title,
+					meta_keywords: match.attributes.meta_keywords,
+					meta_description: match.attributes.meta_description,
+					headline: md.renderInline(match.attributes.headline),
+					subheadline: md.renderInline(match.attributes.subheadline),
+					copytext: md.render(match.attributes.copytext),
+					image: match.attributes.image.data.attributes,
+					strapiURL: strapiURL,
+					css: findSpecificCSS(slugify(match.attributes.title, { lower: true })),
+				});
+			}
 		}
 	});
 });
