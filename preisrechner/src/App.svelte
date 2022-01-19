@@ -173,12 +173,13 @@
         grid-template-columns: 1fr repeat(8, 1fr) 1fr;
         justify-items: center;
         align-items: center;
-        background-color: #f5f5f5;
+        background-color: #cfcfcf;
     }
 
     .preisrechner-title {
         grid-column: 3 / 9;
-        font-weight: 500;
+        font-weight: 600;
+        /* color: white; */
         font-size: 16px;
         display: inline;
     }
