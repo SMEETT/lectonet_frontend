@@ -52,7 +52,7 @@
 
     let frontendURL;
     if (isProduction) {
-        frontendURL = "https://www.frontend.lectonet.de";
+        frontendURL = "https://frontend.lectonet.de";
     } else {
         frontendURL = "http://localhost:1339";
     }
