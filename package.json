@@ -11,16 +11,16 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"axios": "^0.21.1",
+		"axios": "^0.25.0",
 		"compression": "^1.7.4",
 		"cors": "^2.8.5",
 		"ejs": "^3.1.5",
 		"express": "^4.17.1",
 		"express-csp-header": "^4.0.0",
-		"markdown-it": "^12.0.2",
-		"nodemailer": "^6.4.17",
+		"markdown-it": "^12.3.2",
+		"nodemailer": "^6.7.2",
 		"slugify": "^1.4.6",
-		"sqlite3": "^5.0.0"
+		"sqlite3": "^4.2.0"
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",
