@@ -2,9 +2,9 @@
 	"name": "spa",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server.js",
+	"main": "frontend.js",
 	"scripts": {
-		"dev": "nodemon -r dotenv/config frontend.js",
+		"dev": "nodemon -r dotenv/config",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],

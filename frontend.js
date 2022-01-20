@@ -35,14 +35,14 @@ app.use(
 	expressCspHeader({
 		directives: {
 			"default-src": [SELF, strapiURL],
-			"script-src": [SELF],
+			"script-src": [SELF, "http://localhost:35729", "http://localhost:35730"],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"img-src": [SELF, strapiURL, frontendURL],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
 			"font-src": ["https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"frame-ancestors": [NONE],
-			"connect-src": [SELF, strapiURL, frontendURL],
+			"connect-src": [SELF, strapiURL, frontendURL, "ws://localhost:35729", "ws://localhost:35730"],
 		},
 	})
 );
@@ -121,9 +121,8 @@ app.use(function (req, res, next) {
 //////////////////////////////////
 app.get("/", (req, res) => {
 	axios.get(`${strapiAPI}/index?populate=*`).then((response) => {
-		// add slugs for cards / generate markdown
 		const data = response.data.data;
-
+		// add slugs for cards / generate markdown
 		data.attributes.card.forEach((card) => {
 			const slug = slugify(card.title, { lower: true });
 			card.slug = slug;
@@ -141,6 +140,8 @@ app.get("/", (req, res) => {
 		});
 	});
 });
+
+//
 
 //////////////////////////////////
 // Referenzen und Wackwitz
@@ -332,12 +333,13 @@ app.post("/send/price", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
+		bcc: "info@texte-wackwitz.de",
 		subject: subject,
 		html: html,
 		attachments: [
 			{
 				filename: "logo_grey.svg",
-				path: "../frontend/static/images/logo_grey_optimized.svg",
+				path: "./static/images/logo_grey_optimized.svg",
 				cid: "unique@kreata.ee", //same cid value as in the html img src
 			},
 		],
