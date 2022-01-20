@@ -4,9 +4,10 @@
 
 header {
 	grid-area: header;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+	border-bottom: 0.5px solid rgb(228, 228, 228);
 	display: flex;
 	align-items: flex-start;
+	flex-direction: column;
 	position: relative;
 }
 
@@ -178,10 +179,10 @@ nav .links-sub-ueber-uns {
 /* ----------- 1280-WIDTH */
 @media only screen and (min-width: 1280px) {
 	header {
-		/* width: 1260px; */
+		width: 1280px;
 	}
 	nav {
-		/* width: 1260px; */
+		width: 1280px;
 	}
 }
 
