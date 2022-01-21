@@ -42,13 +42,15 @@ section.faqs {
 	font-size: 15px;
 	transition: 0.4s;
 	font-family: Merriweather;
-	border: 1px solid var(--default-grey);
+	border: 1px solid rgb(235, 235, 235);
+	border-radius: 8px;
 }
 
 .active,
 .accordion:hover {
-	background-color: var(--default-grey);
-	color: white;
+	background-color: rgb(245, 245, 245);
+	color: var(--default-grey);
+	border: 1px solid rgb(219, 219, 219);
 }
 
 .accordion:after {

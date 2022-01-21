@@ -72,7 +72,7 @@ const findSpecificCSS = (pageTitle) => {
 // build navigation and footer content
 app.use(function (req, res, next) {
 	const navItems = { leistungen: [], ueber_uns: [], footer: [] };
-	const footerItems = ["FAQs", "Impressum", "Datenschutz", "Referenzen"].sort();
+	const footerItems = ["Links", "Impressum", "Datenschutz", "Referenzen"].sort();
 
 	// let strapi take care of the sorting
 	const pages = `${strapiAPI}/pages?_sort=title:ASC`;
@@ -95,8 +95,15 @@ app.use(function (req, res, next) {
 					});
 				}
 			});
-			// manually add "Wackwitz"
+
+			// manually add "FAQs" to "Leistungen"
+			navItems.leistungen.push({ title: "FAQs", slug: "faqs" });
+
+			// manually add "Wackwitz" to "Ueber Uns"
 			navItems.ueber_uns.push({ title: "Wackwitz", slug: "wackwitz" });
+
+			// manually add "Kontakt" to "Ueber Uns"
+			navItems.ueber_uns.push({ title: "Kontakt", slug: "kontakt" });
 
 			// add all (additional) footer-links to navItems (including slugs)
 			footerItems.forEach((item) => {
