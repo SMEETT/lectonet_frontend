@@ -163,9 +163,9 @@ body.overflow {
 	filter: brightness(10);
 }
 
-.bright:hover {
+/* .bright:hover {
 	filter: brightness(3);
-}
+} */
 
 a {
 	text-decoration: none;
@@ -391,7 +391,7 @@ p a {
 	}
 
 	h1 {
-		font-size: 22px;
+		font-size: 28px;
 	}
 
 	h2 {

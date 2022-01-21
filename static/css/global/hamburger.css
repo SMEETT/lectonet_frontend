@@ -2,14 +2,14 @@
 /* HAMBURGER */
 /* #################### */
 
-@keyframes fadein {
+/* @keyframes fadein {
 	from {
-		opacity: 0;
+		background: linear-gradient(110deg, rgba(108, 108, 108, 0) 20%, rgba(40, 40, 40, 0) 70%);
 	}
 	to {
-		opacity: 1;
+		background: linear-gradient(110deg, rgba(108, 108, 108, 0.9) 20%, rgba(40, 40, 40, 0.9) 70%);
 	}
-}
+} */
 
 .wrapper-hamburger {
 	position: relative;
@@ -27,7 +27,6 @@
 	background: rgba(0, 0, 0, 0);
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
-	animation: fadein 1s;
 }
 
 .container-logo-hamburger {
@@ -56,9 +55,9 @@
 	cursor: pointer;
 }
 
-.container-icon-hamburger img:hover {
+/* .container-icon-hamburger img:hover {
 	filter: brightness(3);
-}
+} */
 
 .container-btn-open-calculator-hamburger {
 	grid-area: btn;
@@ -79,6 +78,7 @@
 	padding-right: 32px;
 	text-align: right;
 	grid-area: links;
+	animation: fadein 1s;
 }
 
 .container-nav-items-hamburger ul {
