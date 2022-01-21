@@ -21,7 +21,7 @@
 		"markdown-it-link-attributes": "^4.0.0",
 		"nodemailer": "^6.7.2",
 		"slugify": "^1.4.6",
-		"sqlite3": "^4.2.0"
+		"sqlite3": "^5.0.0"
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",
