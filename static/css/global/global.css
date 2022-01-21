@@ -173,6 +173,13 @@ a {
 	line-height: 0;
 }
 
+.default-link {
+	text-decoration: underline;
+	color: var(--default-grey);
+	line-height: 0;
+	font-family: Merriweather;
+}
+
 a:hover {
 	color: var(--hover-light-grey);
 	text-decoration: underline;

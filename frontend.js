@@ -14,6 +14,15 @@ const md = require("markdown-it")({
 	typographer: true,
 	quotes: "„“‚‘",
 });
+const mila = require("markdown-it-link-attributes");
+md.use(mila, {
+	attrs: {
+		target: "_blank",
+		rel: "noopener",
+		class: "default-link",
+	},
+});
+
 const compression = require("compression");
 
 // environment variables
@@ -181,6 +190,9 @@ app.get(["/wackwitz", "/referenzen"], (req, res) => {
 app.get("/faqs", (req, res) => {
 	axios.get(`${strapiAPI}/faq?populate=*`).then((response) => {
 		const data = response.data.data.attributes.FAQ;
+		data.forEach((faq, i) => {
+			data[i].answer = md.renderInline(data[i].answer);
+		});
 		console.log("faq data", data);
 		res.render("pages/faqs", {
 			navItems: res.locals.navItems,

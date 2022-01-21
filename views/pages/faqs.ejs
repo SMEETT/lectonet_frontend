@@ -15,7 +15,7 @@
                 <h1>FAQs</h1>
                 <% data.forEach(item => { %>
                     <button class="accordion"><%= item.title %></button>
-                    <div class="panel"><p><%= item.answer %></p></div>
+                    <div class="panel"><p><%- item.answer %></p></div>
                     <% }) %>
 			</section>
 			<footer><%- include ("../partials/footer.ejs") %></footer>
