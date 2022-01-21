@@ -132,7 +132,7 @@ nav .wrapper-dropdown {
 }
 
 nav .heity {
-	max-height: 320px;
+	max-height: 430px;
 	border-bottom: 1px solid var(--default-grey);
 	transition: 0.75s;
 }
