@@ -136,7 +136,7 @@ let hamburgerMenuIsOpen = false;
 
 const closeMenuHamburger = () => {
 	containerNavItemsHamburger.style.display = "none";
-	wrapperHamburger.style.background = "rgba(0, 0, 0, 0)";
+	wrapperHamburger.style.background = "rgba(0,0,0,0)";
 	iconHamburger.classList.remove("bright");
 	logoHamburger.classList.remove("bright");
 	btnOpenCalculatorHamburger.classList.remove("hamburger-menu-open");
@@ -148,7 +148,7 @@ const closeMenuHamburger = () => {
 
 const openMenuHamburger = () => {
 	containerNavItemsHamburger.style.display = "grid";
-	wrapperHamburger.style.background = "rgba(0, 0, 0, 0.75)";
+	wrapperHamburger.style.background = "linear-gradient(110deg, rgba(108,108,108,0.9) 20%, rgba(40, 40, 40, 0.9) 70%)";
 	iconHamburger.classList.add("bright");
 	logoHamburger.classList.add("bright");
 	btnOpenCalculatorHamburger.classList.add("hamburger-menu-open");

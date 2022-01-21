@@ -80,8 +80,8 @@ section.faqs {
 /* ----------- 960-WIDTH */
 @media (max-width: 1279px) {
 	section.faqs {
-		padding-left: 16px;
-		padding-right: 16px;
+		padding-left: 32px;
+		padding-right: 32px;
 	}
 }
 

@@ -123,7 +123,7 @@ nav #btn-open-calculator-navi {
 
 nav .wrapper-dropdown {
 	position: absolute;
-	width: 1260px;
+	width: 1280px;
 	top: 0;
 	max-height: 0px;
 	background-color: rgba(255, 255, 255, 0.95);
@@ -193,11 +193,11 @@ nav .links-sub-ueber-uns {
 	}
 
 	nav .wrapper-dropdown {
-		width: 940px;
+		width: 960px;
 	}
 
 	nav .logo-container {
-		margin-left: 16px;
+		margin-left: 32px;
 		margin-right: 32px;
 	}
 
@@ -210,11 +210,11 @@ nav .links-sub-ueber-uns {
 	}
 
 	nav .links-sub-leistungen {
-		margin-left: 191px;
+		margin-left: 207px;
 	}
 
 	nav .links-sub-ueber-uns {
-		margin-left: 352px;
+		margin-left: 368px;
 	}
 
 	nav .container-icons-social-media-navi {

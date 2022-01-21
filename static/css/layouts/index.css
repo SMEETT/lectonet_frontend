@@ -162,7 +162,7 @@ p.cardcopy {
 	}
 
 	section.cards {
-		padding: 0 0px 16px 16px;
+		padding: 0 0px 16px 32px;
 	}
 
 	.cards-wrapper {
@@ -195,6 +195,7 @@ p.cardcopy {
 
 	section.picture.index {
 		padding-top: 16px;
+		justify-content: center;
 	}
 
 	.cards-wrapper {
@@ -234,6 +235,6 @@ p.cardcopy {
 	}
 
 	section.cards {
-		width: 300px;
+		width: 100%;
 	}
 }

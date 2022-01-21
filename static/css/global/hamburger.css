@@ -2,6 +2,15 @@
 /* HAMBURGER */
 /* #################### */
 
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 .wrapper-hamburger {
 	position: relative;
 	display: none;
@@ -18,6 +27,7 @@
 	background: rgba(0, 0, 0, 0);
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
+	animation: fadein 1s;
 }
 
 .container-logo-hamburger {
@@ -54,19 +64,20 @@
 	grid-area: btn;
 	width: 100%;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-end;
+	justify-content: flex-end;
+	padding-right: 20px;
 }
 
 .container-nav-items-hamburger {
 	width: 100%;
 	display: none;
 	flex-direction: column;
-	/* justify-content: center; */
+	justify-content: flex-end;
 	align-items: center;
 	padding-top: 16px;
-	padding-left: 32px;
-	/* text-align: center; */
+	padding-right: 32px;
+	text-align: right;
 	grid-area: links;
 }
 
@@ -98,8 +109,8 @@
 
 .hamburger-social-media {
 	display: flex;
-	/* justify-content: space-between; */
-	align-items: center;
+	justify-content: flex-end;
+	align-items: flex-end;
 	margin-top: 8px;
 	margin-bottom: 32px;
 	/* padding: 0 80px; */
@@ -107,6 +118,10 @@
 
 .hamburger-social-media a {
 	filter: brightness(10);
+}
+
+.hamburger-social-media a img {
+	margin-left: 15px;
 }
 
 .hamburger-social-media a:hover {
@@ -150,11 +165,11 @@
 	}
 
 	.container-logo-hamburger {
-		padding-left: 16px;
+		padding-left: 32px;
 	}
 
 	.container-icon-hamburger {
-		padding-right: 16px;
+		/* padding-right: 16px; */
 	}
 
 	.container-nav-items-hamburger {
@@ -164,5 +179,11 @@
 	.container-btn-open-calculator-hamburger {
 		display: none;
 		margin-top: 8px;
+		/* justify-content: start; */
+		padding-left: 16px;
+	}
+
+	.container-nav-items-hamburger {
+		padding-left: 16px;
 	}
 }

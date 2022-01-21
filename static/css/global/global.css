@@ -314,7 +314,7 @@ p a {
 	}
 
 	section.text {
-		padding-left: 16px;
+		padding-left: 32px;
 	}
 }
 
@@ -381,7 +381,7 @@ p a {
 @media only screen and (max-width: 599px) {
 	.wrapper {
 		width: 320px;
-		border: 10px solid white;
+		width: 90%;
 		margin-top: 10px;
 	}
 
