@@ -20,8 +20,7 @@
 		"markdown-it": "^12.3.2",
 		"markdown-it-link-attributes": "^4.0.0",
 		"nodemailer": "^6.7.2",
-		"slugify": "^1.4.6",
-		"sqlite3": "^5.0.0"
+		"slugify": "^1.4.6"
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",
