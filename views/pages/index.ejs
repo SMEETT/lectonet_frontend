@@ -39,7 +39,7 @@
                 <h1 id="h1-leistungen">Leistungen</h1>
                 <h2>Sie brauchen's, wir können's.</h2>
                 <div class="wrapper-slider">
-                                    <div class="your-class">
+                    <div class="your-class">
                     <% cards.forEach(card=> { %>
                       <a class="card-a" href=<%=card.slug %>>
                         <div class="card grow">
@@ -57,10 +57,10 @@
                       </a>
                     
                       <% }) %>
+                    </div>
+                    <button class="my-prev"></button>
+                    <button class="my-next"></button>
                                     </div>
-                                    </div>
-
-
 			</section>
             <footer><%- include ("../partials/footer.ejs") %></footer>
             <div class="gradient"></div>

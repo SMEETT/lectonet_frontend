@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	// disclaimer
 	try {
 		const btnDisclaimer = document.getElementById("btn-disclaimer");
+
 		const wrapperDisclaimer = document.getElementById("wrapper-disclaimer");
 		if (localStorage.getItem("disclaimerAccepted") === null) {
 			wrapperDisclaimer.style.display = "flex";
@@ -19,12 +20,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	$(document).ready(function () {
 		$(".your-class").slick({
 			infinite: false,
-			slidesToShow: 4,
-			slidesToScroll: 4,
+			slidesToShow: 3,
+			slidesToScroll: 3,
 			dots: true,
 			arrows: true,
-			prevArrow: '<button type="button" class="my-prev"><</button>',
-			nextArrow: '<button type="button" class="my-next">></button>',
+			prevArrow: $(".my-prev"),
+			nextArrow: $(".my-next"),
 			responsive: [
 				{
 					breakpoint: 1279,
@@ -44,6 +45,9 @@ window.addEventListener("DOMContentLoaded", () => {
 				},
 			],
 		});
+		const sliderThing = document.getElementsByClassName("slick-list").item(0);
+		console.log(sliderThing);
+		sliderThing.classList.add("mask");
 	});
 
 	// open and close calculator overlay
