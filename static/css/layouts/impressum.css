@@ -38,7 +38,7 @@ br {
 /* ----------- 960-WIDTH */
 @media (max-width: 1279px) {
 	section.imprint {
-		padding-left: 16px;
+		padding-left: 32px;
 		padding-right: 128px;
 	}
 }

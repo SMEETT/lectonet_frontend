@@ -7,7 +7,7 @@
 		"footer";
 }
 
-section.datenschutz {
+section.imprint {
 	width: 100%;
 	grid-area: imprint;
 	position: relative;
@@ -22,34 +22,51 @@ section.datenschutz {
 	z-index: 2;
 }
 
-section.datenschutz ul {
-	margin-left: 32px;
+h2 {
+	max-width: 500px;
 }
 
-section.datenschutz ul li {
-	font-family: Merriweather;
-	font-weight: 300;
-	font-size: 15px;
-	margin: 16px 0 0 0;
-	color: var(--default-grey);
-	white-space: pre-wrap;
-	list-style: square;
+.links-wrapper {
+	margin-top: 32px;
 }
 
-section.datenschutz a {
-	font-family: Merriweather;
-	font-weight: 300;
-	font-size: 15px;
+.link-container {
+	margin-bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.link-headline {
+	display: flex;
+	align-items: center;
+	margin-bottom: 4px;
+}
+
+.link-description {
+	padding-left: 22px;
+}
+
+.link-external {
+	font-size: 16px;
+	text-decoration: underline;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.icon-external-link {
+	margin-right: 8px;
 }
 
 /* p {
 	line-height: 20px;
 } */
-
+/* 
 br {
 	display: block;
 	margin: 10px 0;
-}
+} */
 
 /* ----------- 1280-WIDTH */
 @media only screen and (min-width: 1280px) {
@@ -57,7 +74,7 @@ br {
 
 /* ----------- 960-WIDTH */
 @media (max-width: 1279px) {
-	section.datenschutz {
+	section.imprint {
 		padding-left: 32px;
 		padding-right: 128px;
 	}
@@ -65,49 +82,27 @@ br {
 
 /* ----------- 600-WIDTH */
 @media only screen and (max-width: 959px) {
-	section.datenschutz {
+	section.imprint {
 		padding: 0 32px;
 		justify-content: center;
 		text-align: center;
 		hyphens: auto;
 	}
-
-	section.datenschutz ul {
-		margin-left: 64px;
-		margin-bottom: 16px;
-		text-align: left;
-	}
-
-	section.datenschutz h1 {
-		margin-top: 16px;
-	}
-
 	p {
 		margin-top: 8px;
 	}
-
-	section.datenschutz a {
-		overflow-wrap: break-word;
+	section.imprint h1 {
+		margin-top: 16px;
+	}
+	.link-container {
+		text-align: center;
+		align-items: center;
+	}
+	.link-description {
+		/* padding: 0; */
 	}
 }
 
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
-	section.datenschutz ul {
-		font-size: 12px;
-		margin-left: 16px;
-		margin-bottom: 16px;
-		text-align: left;
-	}
-	section.datenschutz ul li {
-		font-size: 12px;
-	}
-	section.datenschutz a {
-		font-size: 12px;
-		overflow-wrap: break-word;
-	}
-
-	h3 {
-		font-size: 14px;
-	}
 }

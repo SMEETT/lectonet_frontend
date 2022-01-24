@@ -68,9 +68,13 @@ app.use("/static", express.static(path.resolve(__dirname, "static")));
 const findSpecificCSS = (pageTitle) => {
 	let urlCSS;
 	try {
-		fs.existsSync(`./static/css/specific/${pageTitle}.css`);
-		urlCSS = `./static/css/specific/${pageTitle}.css`;
-		return urlCSS;
+		if (fs.existsSync(`./static/css/specific/${pageTitle}.css`)) {
+			urlCSS = `./static/css/specific/${pageTitle}.css`;
+			return urlCSS;
+		} else {
+			urlCSS = false;
+			return urlCSS;
+		}
 	} catch (err) {
 		console.error(err);
 		urlCSS = false;
@@ -90,7 +94,6 @@ app.use(function (req, res, next) {
 	requestPages
 		.then((response) => {
 			const pages = response.data.data;
-			// console.log("PAAAAGES", pages);
 			pages.forEach((page) => {
 				if (page.attributes.category === "leistungen") {
 					navItems.leistungen.push({
@@ -193,7 +196,6 @@ app.get("/faqs", (req, res) => {
 		data.forEach((faq, i) => {
 			data[i].answer = md.renderInline(data[i].answer);
 		});
-		console.log("faq data", data);
 		res.render("pages/faqs", {
 			navItems: res.locals.navItems,
 			title: "FAQs",
@@ -218,7 +220,7 @@ app.get("/impressum", (req, res) => {
 });
 
 //////////////////////////////////
-// Imprint
+// Datenschutz
 //////////////////////////////////
 
 app.get("/datenschutz", (req, res) => {
@@ -227,6 +229,22 @@ app.get("/datenschutz", (req, res) => {
 			navItems: res.locals.navItems,
 			title: "Datenschutz",
 			copytext: md.render(response.data.data.attributes.copytext),
+		});
+	});
+});
+
+//////////////////////////////////
+// Links
+//////////////////////////////////
+
+app.get("/links", (req, res) => {
+	axios.get(`${strapiAPI}/link?populate=*`).then((response) => {
+		const data = response.data.data.attributes;
+		res.render("pages/links", {
+			navItems: res.locals.navItems,
+			title: "Links",
+			subhead: data.subhead,
+			data: data.Link,
 		});
 	});
 });
@@ -243,10 +261,8 @@ app.get("/:path", (req, res) => {
 
 		// if no match is returned, redirect to index-route ("/")
 		if (!match) {
-			console.log("no match");
 			res.redirect("/");
 		} else {
-			console.log("MATCH!", match);
 			// render template based on provided category
 			if (match.attributes.category === "leistungen") {
 				res.render("pages/leistungen", {
@@ -265,7 +281,6 @@ app.get("/:path", (req, res) => {
 			}
 
 			if (match.attributes.category === "ueber_uns") {
-				console.log("Ueber Uns");
 				res.render("pages/ueber_uns", {
 					navItems: res.locals.navItems,
 					title: match.attributes.title,
@@ -288,8 +303,6 @@ app.get("/:path", (req, res) => {
 //////////////////////////////////
 
 app.post("/send/price", (req, res) => {
-	console.log("/send/price");
-
 	const receiver = req.query.email;
 	const firstname = req.query.firstname;
 	const lastname = req.query.lastname;
