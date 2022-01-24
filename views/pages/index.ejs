@@ -38,22 +38,34 @@
 			<section id="cards" class="cards">
                 <h1 id="h1-leistungen">Leistungen</h1>
                 <h2>Sie brauchen's, wir können's.</h2>
-				<div class="cards-wrapper">
-                    <% cards.forEach(card => { %>
-                        <a class="card-a" href=<%= card.slug %>>
-                            <div class="card grow">
-                                <div class="card-header"><%= card.title %></div>
-                                <h1 class="cardheadline"><%= card.headline %></h1>
-                                <p class="cardcopy"><%= card.teasertext %></p>
-                                <button class="btn outline card">MEHR</button>
-                            </div>
-                        </a>
-                        
-                    <% }) %>	
-                </div>
+                <div class="wrapper-slider">
+                                    <div class="your-class">
+                    <% cards.forEach(card=> { %>
+                      <a class="card-a" href=<%=card.slug %>>
+                        <div class="card grow">
+                          <div class="card-header">
+                            <%= card.title %>
+                          </div>
+                          <h1 class="cardheadline">
+                            <%= card.headline %>
+                          </h1>
+                          <p class="cardcopy">
+                            <%= card.teasertext %>
+                          </p>
+                          <button class="btn outline card">MEHR</button>
+                        </div>
+                      </a>
+                    
+                      <% }) %>
+                                    </div>
+                                    </div>
+
+
 			</section>
             <footer><%- include ("../partials/footer.ejs") %></footer>
             <div class="gradient"></div>
 		</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/slick/slick.min.js"></script>
 	</body>
 </html>

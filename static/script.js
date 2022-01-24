@@ -14,6 +14,38 @@ window.addEventListener("DOMContentLoaded", () => {
 		});
 	} catch {}
 
+	// card-slider
+
+	$(document).ready(function () {
+		$(".your-class").slick({
+			infinite: false,
+			slidesToShow: 4,
+			slidesToScroll: 4,
+			dots: true,
+			arrows: true,
+			prevArrow: '<button type="button" class="my-prev"><</button>',
+			nextArrow: '<button type="button" class="my-next">></button>',
+			responsive: [
+				{
+					breakpoint: 1279,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 3,
+					},
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						arrows: false,
+						centerMode: true,
+						centerPadding: "40px",
+						slidesToShow: 1,
+					},
+				},
+			],
+		});
+	});
+
 	// open and close calculator overlay
 	let calculatorIsOpen = false;
 	const btnOpenCalculator = document.getElementById("btn-open-calculator");

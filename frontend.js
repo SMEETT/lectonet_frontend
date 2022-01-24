@@ -44,12 +44,12 @@ app.use(
 	expressCspHeader({
 		directives: {
 			"default-src": [SELF, strapiURL],
-			"script-src": [SELF, "http://localhost:35729", "http://localhost:35730"],
+			"script-src": [SELF, INLINE, "http://localhost:35729", "http://localhost:35730", "https://ajax.googleapis.com"],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"img-src": [SELF, strapiURL, frontendURL],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
-			"font-src": ["https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+			"font-src": [SELF, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"frame-ancestors": [NONE],
 			"connect-src": [SELF, strapiURL, frontendURL, "ws://localhost:35729", "ws://localhost:35730"],
 		},
