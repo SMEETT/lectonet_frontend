@@ -11,19 +11,9 @@
 .gradient {
 	grid-column: 1/3;
 	grid-row: 1/3;
-	/* background: linear-gradient(270.31deg, #ffffff 0.25%, rgba(255, 255, 255, 0) 99.71%), #c4c4c4; */
-	/* background: linear-gradient(270.31deg, #fff 0.25%, rgba(105, 46, 46, 0) 99.71%), #f0f0f0; */
 	background-repeat: no-repeat;
-	/* background: linear-gradient(170.31deg, #fff 0.25%, rgba(105, 46, 46, 0) 99.71%), #e9e9e9; */
-	/* background: linear-gradient(170.31deg, #fff 0.25%, rgba(105, 46, 46, 0) 99.71%), #e9e9e9; */
 	background: linear-gradient(110deg, rgb(248, 248, 248) 40%, rgb(235, 235, 235) 60%);
 }
-/* 
-#photo-wackwitz {
-	width: 778px;
-	height: 680px;
-	position: absolute;
-} */
 
 section.picture.index {
 	justify-content: flex-end;
@@ -37,10 +27,14 @@ section.picture.index {
 /* object-fit: cover;
 } */
 
+.container-headlines {
+	padding-left: 64px;
+}
+
 section.cards {
 	width: 1280px;
 	grid-area: cards;
-	padding: 0 64px 0 64px;
+	/* padding: 0 64px 0 64px; */
 	background-color: white;
 	border-top: 1px solid rgba(0, 0, 0, 0.075);
 	/* border-bottom: 1px solid #bfbfbf; */
@@ -51,97 +45,64 @@ section.cards {
 	flex-direction: column;
 }
 
-.a-box {
-	width: 50px;
-	height: 200px;
-	min-height: 200px;
-	margin-left: 10px;
-	border: 1px solid red;
-}
-
 .your-class {
 	/* min-height: 300px; */
 	/* border: 1px solid blue; */
 }
 
-.paginator-center {
-	border: 1px solid red;
-	min-height: 200px;
-}
-
-/* .my-prev {
-	border: 1px solid red;
-	line-height: 0;
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 30px;
-	height: 100px;
+.my-prev {
+	/* position: absolute; */
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	padding-right: 80px;
 	border: 0;
-	padding: 0;
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	cursor: pointer;
-	outline: none;
-	left: -35px;
 	background-color: transparent;
-	background-image: url("../../images/icon_slider_prev.svg");
+	width: 200px;
+	height: 130px;
+	transition: all 0.3s;
 }
 
 .my-next {
-	border: 1px solid red;
-	line-height: 0;
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 30px;
-	height: 100px;
+	/* position: absolute; */
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	padding-left: 80px;
 	border: 0;
-	padding: 0;
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	cursor: pointer;
-	outline: none;
-	right: -35px;
 	background-color: transparent;
-	background-image: url("../../images/icon_slider_next.svg");
+	width: 200px;
+	height: 130px;
+	transition: all 0.3s;
+}
+
+.my-prev:hover {
+	cursor: pointer;
+	transform: scale(1.15);
+}
+
+.my-next:hover {
+	cursor: pointer;
+	transform: scale(1.15);
+}
+
+/* .mask {
+	mask-image: linear-gradient(to right, black 75%, transparent 100%);
+	-webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
 } */
 
-.my-prev {
-	position: absolute;
-	border: 0;
-	background-color: transparent;
-	left: 0;
-	top: 40%;
-	width: 30px;
-	height: 100px;
-	background-image: url("../../images/icon_slider_prev.svg");
-}
-
-.my-next {
-	position: absolute;
-	border: 0;
-	background-color: transparent;
-	right: 0px;
-	top: 40%;
-	width: 30px;
-	height: 100px;
-	background-image: url("../../images/icon_slider_next.svg");
-}
-
-.mask {
-	/* -webkit-mask-image: linear-gradient(to bottom, transparent 25%, black 75%); */
-	mask-image: linear-gradient(to right, black 85%, transparent 100%);
-	-webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
-}
-
 .wrapper-slider {
-	padding-right: 64px;
-	padding-left: 64px;
 	position: relative;
-	/* padding: 0 64px; */
+	/* display: flex; */
+}
+
+.wrapper-slider-nav {
+	position: absolute;
+	top: 82%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .cards-outer {
@@ -277,12 +238,19 @@ p.cardcopy {
 		width: 778px;
 		height: 680px;
 	}
+	#btn-open-calculator {
+		margin-left: 16px;
+	}
 }
 
 /* ----------- 960-WIDTH */
 @media (max-width: 1279px) {
 	.wrapper {
 		grid-template-columns: 58% 42%;
+	}
+
+	#btn-open-calculator {
+		margin-left: 16px;
 	}
 
 	#photo-wackwitz {
@@ -302,6 +270,18 @@ p.cardcopy {
 	section.cards {
 		width: 940px;
 	}
+
+	.my-prev {
+		left: -30px;
+	}
+
+	.my-next {
+		right: -30px;
+	}
+
+	.wrapper-slider {
+		padding-left: 64px;
+	}
 }
 
 /* ----------- 600-WIDTH */
@@ -315,6 +295,10 @@ p.cardcopy {
 			"txt"
 			"cards"
 			"footer";
+	}
+
+	#btn-open-calculator {
+		margin-left: 0;
 	}
 
 	section.cards {

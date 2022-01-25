@@ -36,8 +36,10 @@
                 </picture>
       </section>
 			<section id="cards" class="cards">
-                <h1 id="h1-leistungen">Leistungen</h1>
-                <h2>Sie brauchen's, wir können's.</h2>
+                <div class="container-headlines">
+                  <h1 id="h1-leistungen">Leistungen</h1>
+                  <h2>Sie brauchen's, wir können's.</h2>
+                </div>
                 <div class="wrapper-slider">
                     <div class="your-class">
                     <% cards.forEach(card=> { %>
@@ -58,14 +60,21 @@
                     
                       <% }) %>
                     </div>
-                    <button class="my-prev"></button>
-                    <button class="my-next"></button>
+                    <div class="wrapper-slider-nav">
+                      <button class="my-prev">
+                        <img width=24 height=75 src="../../static/images/icon_slider_prev.svg" alt="">
+                      </button>
+                      <button class="my-next">
+                        <img width=24 height=75 src="../../static/images/icon_slider_next.svg" alt="">
+                      </button>
+                    </div>
+                    
                                     </div>
 			</section>
             <footer><%- include ("../partials/footer.ejs") %></footer>
             <div class="gradient"></div>
 		</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../../static/slick/slick.js"></script>
 	</body>
 </html>

@@ -24,7 +24,9 @@
 	overflow: hidden;
 
 	margin: 0;
-	padding: 32px;
+	padding-top: 16px;
+	padding-bottom: 32px;
+	padding-left: 64px;
 }
 .slick-list:focus {
 	outline: none;

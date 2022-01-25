@@ -20,8 +20,9 @@ window.addEventListener("DOMContentLoaded", () => {
 	$(document).ready(function () {
 		$(".your-class").slick({
 			infinite: false,
-			slidesToShow: 3,
-			slidesToScroll: 3,
+			slidesToShow: 4.2,
+			slidesToScroll: 4,
+			draggable: true,
 			dots: true,
 			arrows: true,
 			prevArrow: $(".my-prev"),
@@ -30,8 +31,8 @@ window.addEventListener("DOMContentLoaded", () => {
 				{
 					breakpoint: 1279,
 					settings: {
-						slidesToShow: 3,
-						slidesToScroll: 3,
+						slidesToShow: 2.4,
+						slidesToScroll: 2,
 					},
 				},
 				{
