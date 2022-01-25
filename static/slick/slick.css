@@ -24,9 +24,7 @@
 	overflow: hidden;
 
 	margin: 0;
-	padding-top: 16px;
-	padding-bottom: 32px;
-	padding-left: 64px;
+	/* padding: auto; */
 }
 .slick-list:focus {
 	outline: none;
@@ -53,6 +51,7 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	margin: 0 auto;
 }
 .slick-track:before,
 .slick-track:after {
@@ -101,4 +100,27 @@
 }
 .slick-arrow.slick-hidden {
 	display: none;
+}
+
+/* ----------- 1280-WIDTH */
+@media only screen and (min-width: 1280px) {
+}
+
+/* ----------- 960-WIDTH */
+@media (max-width: 1279px) {
+	.slick-list {
+		padding-left: 32px;
+	}
+}
+
+/* ----------- 600-WIDTH */
+@media only screen and (max-width: 959px) {
+}
+/* ----------- 320-WIDTH */
+@media only screen and (max-width: 599px) {
+	.slick-list {
+		/* padding: 0; */
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
 }

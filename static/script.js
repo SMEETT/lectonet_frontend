@@ -20,9 +20,10 @@ window.addEventListener("DOMContentLoaded", () => {
 	$(document).ready(function () {
 		$(".your-class").slick({
 			infinite: false,
-			slidesToShow: 4.2,
+			slidesToShow: 4.1,
 			slidesToScroll: 4,
 			draggable: true,
+			focusOnSelect: true,
 			dots: true,
 			arrows: true,
 			prevArrow: $(".my-prev"),
@@ -31,17 +32,25 @@ window.addEventListener("DOMContentLoaded", () => {
 				{
 					breakpoint: 1279,
 					settings: {
-						slidesToShow: 2.4,
+						slidesToShow: 3.1,
 						slidesToScroll: 2,
 					},
 				},
 				{
-					breakpoint: 480,
+					breakpoint: 959,
 					settings: {
+						slidesToShow: 1.75,
+						slidesToScroll: 1,
+					},
+				},
+				{
+					breakpoint: 599,
+					settings: {
+						// centerMode: true,
+						// centerPadding: "40px",
 						arrows: false,
-						centerMode: true,
-						centerPadding: "40px",
 						slidesToShow: 1,
+						slidesToScroll: 1,
 					},
 				},
 			],
