@@ -54,7 +54,7 @@ app.use(
 				"https://consentcdn.cookiebot.com",
 			],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-			"img-src": [SELF, strapiURL, frontendURL, "https://consentcdn.cookiebot.com", "https://consent.cookiebot.com"],
+			"img-src": [SELF, strapiURL, frontendURL, "https://consentcdn.cookiebot.com", "https://consent.cookiebot.com", "* data:"],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
 			"font-src": [SELF, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
