@@ -106,7 +106,7 @@ section.cards {
 
 .wrapper-slider-nav {
 	position: absolute;
-	top: 88%;
+	top: 89%;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -381,5 +381,12 @@ p.cardcopy {
 
 	section.cards {
 		width: 100%;
+	}
+	.my-prev {
+		margin-right: 30px;
+	}
+
+	.my-next {
+		margin-left: 30px;
 	}
 }
