@@ -112,12 +112,15 @@
 /* ----------- 960-WIDTH */
 @media (max-width: 1279px) {
 	.slick-list {
-		/* padding-left: 16px; */
+		padding-left: 32px;
 	}
 }
 
 /* ----------- 600-WIDTH */
 @media only screen and (max-width: 959px) {
+	.slick-list {
+		padding-left: 0;
+	}
 }
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
