@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			slidesToShow: 4.1,
 			slidesToScroll: 4,
 			draggable: true,
-			focusOnSelect: true,
+			// focusOnSelect: true,
 			dots: true,
 			arrows: true,
 			prevArrow: $(".my-prev"),

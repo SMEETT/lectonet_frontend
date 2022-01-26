@@ -63,7 +63,6 @@ nav .icon-social-media {
 
 nav .icon-social-media:hover {
 	filter: brightness(3);
-	transform: scale(1.2);
 }
 
 nav a {
