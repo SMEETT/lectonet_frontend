@@ -355,6 +355,7 @@ p a {
 		background: var(--default-red);
 		color: white;
 		margin: 16px 0px;
+		margin-bottom: 32px;
 	}
 
 	.container-btn-open-calculator-hamburger {
