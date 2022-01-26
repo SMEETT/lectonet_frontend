@@ -342,6 +342,11 @@ p.cardcopy {
 		position: relative;
 	}
 
+	.card-wrapper {
+		justify-content: center;
+		margin: 0 auto;
+	}
+
 	.my-prev {
 		margin-right: 50px;
 	}
@@ -354,11 +359,6 @@ p.cardcopy {
 @media only screen and (max-width: 599px) {
 	.wrapper {
 		grid-template-rows: 60px auto auto auto;
-	}
-
-	.card-wrapper {
-		justify-content: center;
-		margin: 0 auto;
 	}
 
 	.container-headlines {
