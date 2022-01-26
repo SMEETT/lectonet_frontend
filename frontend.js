@@ -43,15 +43,23 @@ app.use(compression());
 app.use(
 	expressCspHeader({
 		directives: {
-			"default-src": [SELF, strapiURL],
-			"script-src": [SELF, INLINE, "http://localhost:35729", "http://localhost:35730", "https://ajax.googleapis.com", "https://consent.cookiebot.com"],
+			"default-src": [SELF, strapiURL, "https://consentcdn.cookiebot.com"],
+			"script-src": [
+				SELF,
+				INLINE,
+				"http://localhost:35729",
+				"http://localhost:35730",
+				"https://ajax.googleapis.com",
+				"https://consent.cookiebot.com",
+				"https://consentcdn.cookiebot.com",
+			],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"img-src": [SELF, strapiURL, frontendURL],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
 			"font-src": [SELF, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"frame-ancestors": [NONE],
-			"connect-src": [SELF, strapiURL, frontendURL, "ws://localhost:35729", "ws://localhost:35730"],
+			"connect-src": [SELF, strapiURL, frontendURL, "ws://localhost:35729", "ws://localhost:35730", "https://consentcdn.cookiebot.com"],
 		},
 	})
 );
