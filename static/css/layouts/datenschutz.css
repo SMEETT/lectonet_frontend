@@ -10,7 +10,7 @@
 section.datenschutz {
 	width: 100%;
 	grid-area: imprint;
-	position: relative;
+	/* position: relative; */
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -66,7 +66,8 @@ br {
 /* ----------- 600-WIDTH */
 @media only screen and (max-width: 959px) {
 	section.datenschutz {
-		padding: 0 32px;
+		padding: 32px;
+		padding-top: 64px;
 		justify-content: center;
 		text-align: center;
 		hyphens: auto;
@@ -93,11 +94,16 @@ br {
 
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
+	section.datenschutz {
+		padding-top: 48px;
+	}
+
 	section.datenschutz ul {
 		font-size: 12px;
 		margin-left: 16px;
 		margin-bottom: 16px;
 		text-align: left;
+		padding-top: 32px;
 	}
 	section.datenschutz ul li {
 		font-size: 12px;

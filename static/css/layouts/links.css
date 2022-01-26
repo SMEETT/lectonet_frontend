@@ -84,6 +84,7 @@ br {
 @media only screen and (max-width: 959px) {
 	section.imprint {
 		padding: 0 32px;
+		padding-top: 64px;
 		justify-content: center;
 		text-align: center;
 		hyphens: auto;
@@ -105,4 +106,7 @@ br {
 
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
+	section.imprint {
+		padding-top: 48px;
+	}
 }
