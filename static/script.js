@@ -59,11 +59,19 @@ window.addEventListener("DOMContentLoaded", () => {
 		console.log(sliderThing);
 		sliderThing.classList.add("mask");
 
-		// remove automatically by Slick-Slider attached 'inline-block' and replace with 'flex'
-		const cardWrappers = Array.from(document.getElementsByClassName("card-wrapper"));
-		cardWrappers.forEach((el, index) => {
-			el.style.display = "flex";
-		});
+		// Listen for resize changes
+		window.addEventListener(
+			"resize",
+			function () {
+				// Get screen size (inner/outerWidth, inner/outerHeight)
+				// remove automatically by Slick-Slider attached 'inline-block' and replace with 'flex'
+				const cardWrappers = Array.from(document.getElementsByClassName("card-wrapper"));
+				cardWrappers.forEach((el, index) => {
+					el.style.display = "flex";
+				});
+			},
+			false
+		);
 	});
 
 	// open and close calculator overlay
