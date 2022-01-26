@@ -359,8 +359,8 @@ p.cardcopy {
 	}
 
 	.card {
-		height: 320px;
-		grid-template-rows: 64px 64px 120px auto;
+		/* height: 320px; */
+		grid-template-rows: 64px auto auto auto;
 	}
 
 	#photo-wackwitz {
