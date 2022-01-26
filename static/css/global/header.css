@@ -37,7 +37,7 @@ nav .logo {
 
 nav .logo:hover {
 	filter: brightness(0) saturate(100%) invert(33%) sepia(54%) saturate(0%) hue-rotate(249deg) brightness(95%) contrast(99%);
-	transform: scale(1.1);
+	/* transform: scale(1.1); */
 }
 
 nav .wrapper-nav-elements {
@@ -58,10 +58,12 @@ nav .icon-social-media {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: 0.2s ease;
 }
 
 nav .icon-social-media:hover {
 	filter: brightness(3);
+	transform: scale(1.2);
 }
 
 nav a {

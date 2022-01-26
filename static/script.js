@@ -58,6 +58,12 @@ window.addEventListener("DOMContentLoaded", () => {
 		const sliderThing = document.getElementsByClassName("slick-list").item(0);
 		console.log(sliderThing);
 		sliderThing.classList.add("mask");
+
+		// remove automatically by Slick-Slider attached 'inline-block' and replace with 'flex'
+		const cardWrappers = Array.from(document.getElementsByClassName("card-wrapper"));
+		cardWrappers.forEach((el, index) => {
+			el.style.display = "flex";
+		});
 	});
 
 	// open and close calculator overlay

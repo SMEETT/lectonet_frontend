@@ -100,7 +100,6 @@ section.cards {
 .wrapper-slider {
 	width: 100%;
 	position: relative;
-	border: 1px solid red;
 	/* display: flex; */
 }
 
@@ -116,8 +115,12 @@ section.cards {
 .cards-outer {
 	overflow-x: scroll;
 	overflow-y: hidden;
-	border: 3px solid red;
 	width: 100%;
+}
+
+.card-wrapper {
+	display: flex;
+	justify-content: start;
 }
 
 .cards-wrapper {
@@ -340,6 +343,15 @@ p.cardcopy {
 @media only screen and (max-width: 599px) {
 	.wrapper {
 		grid-template-rows: 60px auto auto auto;
+	}
+
+	.card-wrapper {
+		justify-content: center;
+		margin: 0 auto;
+	}
+
+	.container-headlines {
+		padding: 0;
 	}
 
 	.wrapper-slider-nav {
