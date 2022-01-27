@@ -1,20 +1,6 @@
 const wrapper = document.getElementsByClassName("wrapper")[0];
 
 window.addEventListener("DOMContentLoaded", () => {
-	// disclaimer
-	try {
-		const btnDisclaimer = document.getElementById("btn-disclaimer");
-
-		const wrapperDisclaimer = document.getElementById("wrapper-disclaimer");
-		if (localStorage.getItem("disclaimerAccepted") === null) {
-			wrapperDisclaimer.style.display = "flex";
-		}
-		btnDisclaimer.addEventListener("click", () => {
-			wrapperDisclaimer.style.display = "none";
-			localStorage.setItem("disclaimerAccepted", true);
-		});
-	} catch {}
-
 	// open and close calculator overlay
 	let calculatorIsOpen = false;
 	const btnOpenCalculator = document.getElementById("btn-open-calculator");

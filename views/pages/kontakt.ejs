@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+        <%- include ("../partials/head.ejs") %>
+        <style>
+            @import url('../../static/css/layouts/impressum.css');
+        </style>
+	</head>
+	<body>
+        <div id="preisrechner-hook"></div>
+		<div class="wrapper">
+			<header><%- include ("../partials/header.ejs") %></header>
+			<section class="imprint">
+                <h1><%- title %></h1>
+                <h2><%- subhead %></h2>
+                <%- copytext %>
+			</section>
+			<footer><%- include ("../partials/footer.ejs") %></footer>
+		</div>
+	</body>
+</html>

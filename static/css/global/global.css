@@ -11,41 +11,6 @@
 /* GENERAL */
 /* #################### */
 
-.disclaimer {
-	display: none;
-	flex-direction: column;
-	text-align: center;
-	align-items: center;
-	padding: 16px 84px;
-	width: 100%;
-	color: white;
-	height: auto;
-	position: fixed;
-	bottom: 0;
-	z-index: 30;
-	background-color: var(--default-grey);
-	font-size: 14px;
-	font-weight: 500;
-}
-
-.disclaimer h1 {
-	font-size: 24px;
-	text-decoration: underline;
-	color: white;
-}
-
-.disclaimer p {
-	color: white;
-}
-
-.disclaimer-hidden {
-	display: none;
-}
-
-.disclaimer-visible {
-	display: flex;
-}
-
 .wrapper {
 	width: 1280px;
 	/* border-style: inset; */

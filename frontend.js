@@ -233,10 +233,11 @@ app.get("/impressum", (req, res) => {
 
 app.get("/datenschutz", (req, res) => {
 	axios.get(`${strapiAPI}/datenschutz`).then((response) => {
+		const data = response.data.data.attributes;
 		res.render("pages/datenschutz", {
 			navItems: res.locals.navItems,
-			title: "Datenschutz",
-			copytext: md.render(response.data.data.attributes.copytext),
+			title: data.title,
+			copytext: md.render(data.copytext),
 		});
 	});
 });
@@ -250,9 +251,25 @@ app.get("/links", (req, res) => {
 		const data = response.data.data.attributes;
 		res.render("pages/links", {
 			navItems: res.locals.navItems,
-			title: "Links",
+			title: data.title,
 			subhead: data.subhead,
 			data: data.Link,
+		});
+	});
+});
+
+//////////////////////////////////
+// Kontakt
+//////////////////////////////////
+
+app.get("/kontakt", (req, res) => {
+	axios.get(`${strapiAPI}/kontakt?populate=*`).then((response) => {
+		const data = response.data.data.attributes;
+		res.render("pages/kontakt", {
+			navItems: res.locals.navItems,
+			title: data.title,
+			subhead: data.subhead,
+			copytext: md.render(data.copytext),
 		});
 	});
 });

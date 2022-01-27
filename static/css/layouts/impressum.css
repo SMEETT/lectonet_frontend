@@ -15,6 +15,7 @@ section.imprint {
 	flex-direction: column;
 	justify-content: flex-start;
 	padding-top: 16px;
+	padding-bottom: 16px;
 	padding-left: 64px;
 	padding-right: 256px;
 	animation: fadein 1.15s;
@@ -47,6 +48,7 @@ br {
 @media only screen and (max-width: 959px) {
 	section.imprint {
 		padding: 0 32px;
+		padding-top: 64px;
 		justify-content: center;
 		text-align: center;
 		hyphens: auto;
@@ -61,4 +63,7 @@ br {
 
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
+	section.imprint {
+		padding-top: 48px;
+	}
 }
