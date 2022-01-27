@@ -97,4 +97,7 @@ section.faqs {
 	section.faqs {
 		padding-top: 56px;
 	}
+	.accordion {
+		font-size: 12px;
+	}
 }

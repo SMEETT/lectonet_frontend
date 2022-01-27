@@ -94,7 +94,7 @@
     label {
         display: block;
         padding-left: 15px;
-        color: #c4c4c4;
+        color: #949494;
         margin-bottom: 5px;
     }
     /* number input field */

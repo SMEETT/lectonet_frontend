@@ -333,6 +333,7 @@ app.post("/send/price", (req, res) => {
 	const lastname = req.query.lastname;
 	const price = req.query.price;
 	const service = req.query.service;
+	const group = req.query.group;
 	const type = req.query.type;
 	const quantity = req.query.quantity;
 
@@ -344,7 +345,7 @@ app.post("/send/price", (req, res) => {
         `;
 	} else {
 		interchangeableBit = `
-        <b>Art: </b>${type}<br>
+        <b>Art der Arbeit: </b>${type}<br>
         <b>Umfang: </b>${quantity} Seite(n)<br>
         `;
 	}
@@ -354,9 +355,10 @@ app.post("/send/price", (req, res) => {
     <br>
     Anbei finden Sie den von Ihnen berechneten Preis:<br>
     <br>
-    <b>Leistung: </b>${service}<br>
+    <b>Sie sind: </b>${group}<br>
+    <b>Sie benötigen: </b>${service}<br>
     ${interchangeableBit}
-    <b>Preis: </b>${price} €<br>
+    <b>Preis: </b>${price} (* unverbindliche Preisauskunft)<br>
     <br>
     Bei weiteren Fragen stehen wir Ihnen gerne zur Verfügung.<br/>
     <br>

@@ -8,6 +8,7 @@
         calculatedPrice,
         quantity,
         bewerbungenSelectedTypes,
+        priceUpperBound,
     } from "../stores/stores.js";
 
     const fields = {
@@ -63,6 +64,9 @@
             .then((res) => {
                 errors = {};
                 foundError = false;
+                const price = `* ${$calculatedPrice} € - ${(
+                    $calculatedPrice * $priceUpperBound
+                ).toFixed(2)} €`;
                 axios
                     .post(
                         `${frontendURL}/send/price`,
@@ -73,8 +77,9 @@
                                 lastname: fields.lastname,
                                 email: fields.email,
                                 service: $selectedCategories.service,
+                                group: $selectedCategories.group,
                                 type: typeOrTypes,
-                                price: $calculatedPrice,
+                                price: price,
                                 quantity: $quantity,
                             },
                         }
@@ -90,7 +95,6 @@
             .catch((err) => {
                 errors = extractErrors(err);
                 foundError = true;
-                console.log(errors);
                 formSuccessfullySubmitted = false;
             });
     };
@@ -103,8 +107,8 @@
 {#if !formSuccessfullySubmitted}
     <form class="email" on:submit|preventDefault>
         <div class="email-form-desc">
-            Sit dui diam, suspendisse in nunc. Leo lacus, eget pretium
-            consectetur.
+            Unschlüssig? Dann fordern Sie hier ein unverbindliches,
+            detailliertes Angebot an:
         </div>
         <div class="email-form-name">
             <input
@@ -128,18 +132,21 @@
                 name="email"
                 placeholder="E-Mail Adresse" />
         </div>
-        <div class="email-form-checkboxes">
+        <div class="email-form-checkboxes" style="cursor: pointer">
             <input
                 bind:checked={fields.agreed}
                 type="checkbox"
                 class="checkbox"
+                style="cursor: pointer"
                 name="checkbox" />
-            <label for="checkbox">Mit Datenschutzerklärung einverstanden</label>
+            <label for="checkbox">Mit
+                <a href="/datenschutz">Datenschutzerklärung</a>
+                einverstanden</label>
         </div>
         {#if foundError}
             <div class="errors">
-                <ul />
-                {#if errors.priceCalculated}
+                Bitte fuellen Sie alle Felder vollstaendig aus.
+                <!-- {#if errors.priceCalculated}
                     <li>{errors.priceCalculated}</li>
                 {/if}
                 {#if errors.firstname}
@@ -153,7 +160,7 @@
                 {/if}
                 {#if errors.agreed}
                     <li>{errors.agreed}</li>
-                {/if}
+                {/if} -->
             </div>
         {/if}
         <div class="email-form-button">
@@ -164,7 +171,8 @@
     </form>
 {:else}
     <div class="success">
-        <p>Danke dass Sie Lectonet nutzen. Bei weiteren Fragen...</p>
+        Gut, dass Sie uns vertrauen – vielen Dank!<br />
+        Wir setzen uns mit Ihnen in Verbindung.
         <button class="btn outline back" on:click={handleBack}>Zurück</button>
     </div>
 {/if}
@@ -186,6 +194,8 @@
 
     .success {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         margin-top: 32px;
         padding: 0 10px;
@@ -212,7 +222,6 @@
         justify-items: center;
         align-items: center;
         width: 100%;
-
         /* border: 1px solid red; */
         padding: 0 50px 10px 50px;
         grid-template-columns: 100%;
@@ -284,6 +293,8 @@
         font-weight: 500;
         font-size: 16px;
         padding: 0 16px;
+        background: transparent;
+        border: 0;
     }
     .btn {
         display: flex;
@@ -302,6 +313,15 @@
         background: var(--default-grey);
         color: white;
     }
+
+    .btn.agree {
+        padding-top: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 500px;
+    }
+
     /* .btn.inactive {
         border: 1px solid lightgray;
         color: lightgray;
@@ -331,6 +351,10 @@
         }
         form.email {
             padding: 0 10px 10px 10px;
+        }
+
+        .errors {
+            text-align: center;
         }
         .email-form-name {
             grid-row: 2;

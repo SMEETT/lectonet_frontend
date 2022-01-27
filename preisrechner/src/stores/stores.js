@@ -1,4 +1,4 @@
-import { writable, get } from "svelte/store";
+import { writable, get, readable } from "svelte/store";
 import pp from "papaparse";
 const ppConfig = { header: true };
 import axios from "axios";
@@ -22,8 +22,9 @@ export const services = writable([]);
 export const types = writable([]);
 
 export const quantity = writable(1);
-export const price = writable(0);
-export const calculatedPrice = writable("0.00");
+export const price = writable("* 0.00");
+export const calculatedPrice = writable("* 0.00");
+export const priceUpperBound = readable(1.2);
 
 export const priceDisableStatus = writable(true);
 

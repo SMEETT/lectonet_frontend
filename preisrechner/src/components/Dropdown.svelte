@@ -138,7 +138,7 @@
     label {
         /* border: 1px solid red; */
         padding-left: 15px;
-        color: #c4c4c4;
+        color: #949494;
         display: inline-block;
         margin-bottom: 5px;
     }
@@ -158,25 +158,18 @@
         padding-top: 12px;
         padding-left: 20px;
         right: 15px;
-        /* border: 1px solid red; */
-        /* border-left: 1px solid grey; */
         width: 20px;
     }
 
-    .select-wrapper:hover::after {
-        content: url("../../../static/images/icon_dropdown_open.svg");
-        transition: 0.3s;
-    }
-
-    .select-wrapper.inactive::after {
+    /* .select-wrapper.inactive::after {
         content: url("../../../static/images/icon_dropdown_inactive.svg");
         transition: 0s;
-    }
+    } */
 
-    .select-wrapper.inactive:hover::after {
+    /* .select-wrapper.inactive:hover::after {
         content: url("../../../static/images/icon_dropdown_inactive.svg");
         transition: 0s;
-    }
+    } */
 
     select {
         -moz-appearance: none;

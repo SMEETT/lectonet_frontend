@@ -442,6 +442,16 @@ var app = (function () {
 
     const subscriber_queue = [];
     /**
+     * Creates a `Readable` store that allows reading by subscription.
+     * @param value initial value
+     * @param {StartStopNotifier}start start and stop notifications for subscriptions
+     */
+    function readable(value, start) {
+        return {
+            subscribe: writable(value, start).subscribe
+        };
+    }
+    /**
      * Create a `Writable` store that allows both updating and reading by subscription.
      * @param {*=}value initial value
      * @param {StartStopNotifier=}start start and stop notifications for subscriptions
@@ -1992,8 +2002,9 @@ var app = (function () {
     const types = writable([]);
 
     const quantity = writable(1);
-    const price = writable(0);
-    const calculatedPrice = writable("0.00");
+    const price = writable("* 0.00");
+    const calculatedPrice = writable("* 0.00");
+    const priceUpperBound = readable(1.2);
 
     const priceDisableStatus = writable(true);
 
@@ -2207,7 +2218,7 @@ var app = (function () {
     			};
 
     			option.value = option.__value;
-    			attr_dev(option, "class", "svelte-a9pndh");
+    			attr_dev(option, "class", "svelte-1ex8v5o");
     			add_location(option, file, 121, 12, 4718);
     		},
     		m: function mount(target, anchor) {
@@ -2274,7 +2285,7 @@ var app = (function () {
     			}
 
     			attr_dev(label_1, "for", /*labelIdentifier*/ ctx[7]);
-    			attr_dev(label_1, "class", "svelte-a9pndh");
+    			attr_dev(label_1, "class", "svelte-1ex8v5o");
     			add_location(label_1, file, 110, 4, 4300);
     			option.selected = true;
     			option.disabled = true;
@@ -2282,17 +2293,17 @@ var app = (function () {
     			attr_dev(option, "id", /*resetId*/ ctx[6]);
     			option.__value = "Bitte auswählen";
     			option.value = option.__value;
-    			attr_dev(option, "class", "svelte-a9pndh");
+    			attr_dev(option, "class", "svelte-1ex8v5o");
     			add_location(option, file, 119, 8, 4604);
     			attr_dev(select, "name", /*labelIdentifier*/ ctx[7]);
     			attr_dev(select, "id", /*id*/ ctx[2]);
     			select.disabled = /*disableDropdown*/ ctx[5];
-    			attr_dev(select, "class", "svelte-a9pndh");
+    			attr_dev(select, "class", "svelte-1ex8v5o");
     			if (/*currentSelection*/ ctx[4] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[11].call(select));
     			toggle_class(select, "inactive", /*disableDropdown*/ ctx[5]);
     			add_location(select, file, 112, 4, 4393);
     			attr_dev(div, "id", /*selectWrapperId*/ ctx[8]);
-    			attr_dev(div, "class", "select-wrapper svelte-a9pndh");
+    			attr_dev(div, "class", "select-wrapper svelte-1ex8v5o");
     			toggle_class(div, "inactive", /*disableDropdown*/ ctx[5]);
     			add_location(div, file, 106, 0, 4201);
     		},
@@ -2687,33 +2698,33 @@ var app = (function () {
     			t5 = space();
     			button1 = element("button");
     			attr_dev(label, "for", "quantity");
-    			attr_dev(label, "class", "svelte-1xlnpap");
+    			attr_dev(label, "class", "svelte-1j3ezkz");
     			add_location(label, file$1, 48, 4, 1179);
     			attr_dev(input, "name", "quantity");
     			input.disabled = /*disabled*/ ctx[0];
     			attr_dev(input, "type", "number");
     			attr_dev(input, "min", "1");
-    			attr_dev(input, "class", "svelte-1xlnpap");
+    			attr_dev(input, "class", "svelte-1j3ezkz");
     			toggle_class(input, "inactive", /*disabled*/ ctx[0]);
     			add_location(input, file$1, 50, 8, 1252);
-    			attr_dev(span, "class", "svelte-1xlnpap");
+    			attr_dev(span, "class", "svelte-1j3ezkz");
     			toggle_class(span, "inactive", /*disabled*/ ctx[0]);
     			add_location(span, file$1, 59, 8, 1579);
     			attr_dev(button0, "alt", "up");
-    			attr_dev(button0, "class", "up svelte-1xlnpap");
+    			attr_dev(button0, "class", "up svelte-1j3ezkz");
     			button0.disabled = /*disabled*/ ctx[0];
     			toggle_class(button0, "inactive", /*disabled*/ ctx[0]);
     			add_location(button0, file$1, 62, 12, 1715);
     			attr_dev(button1, "alt", "down");
-    			attr_dev(button1, "class", "down svelte-1xlnpap");
+    			attr_dev(button1, "class", "down svelte-1j3ezkz");
     			button1.disabled = /*disabled*/ ctx[0];
     			toggle_class(button1, "inactive", /*disabled*/ ctx[0]);
     			add_location(button1, file$1, 68, 12, 1904);
-    			attr_dev(div0, "class", "plus-minus svelte-1xlnpap");
+    			attr_dev(div0, "class", "plus-minus svelte-1j3ezkz");
     			add_location(div0, file$1, 61, 8, 1678);
-    			attr_dev(div1, "class", "lower-row svelte-1xlnpap");
+    			attr_dev(div1, "class", "lower-row svelte-1j3ezkz");
     			add_location(div1, file$1, 49, 4, 1220);
-    			attr_dev(div2, "class", "wrapper-quantity svelte-1xlnpap");
+    			attr_dev(div2, "class", "wrapper-quantity svelte-1j3ezkz");
     			add_location(div2, file$1, 47, 0, 1144);
     		},
     		l: function claim(nodes) {
@@ -2907,12 +2918,15 @@ var app = (function () {
     }
 
     /* src/components/PriceDisplay.svelte generated by Svelte v3.31.0 */
+
+    const { console: console_1 } = globals;
+
     const file$2 = "src/components/PriceDisplay.svelte";
 
     function create_fragment$2(ctx) {
     	let div;
     	let p;
-    	let t_value = `${/*displayedPrice*/ ctx[1]} €` + "";
+    	let t_value = `${/*displayedPrice*/ ctx[1]}` + "";
     	let t;
 
     	const block = {
@@ -2921,12 +2935,12 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "id", "price");
+    			attr_dev(p, "class", "price svelte-hcxb7d");
     			attr_dev(p, "disabled", /*disabled*/ ctx[0]);
-    			attr_dev(p, "class", "svelte-a4kz6p");
     			toggle_class(p, "inactive", /*disabled*/ ctx[0]);
-    			add_location(p, file$2, 18, 4, 540);
-    			attr_dev(div, "class", "wrapper-price svelte-a4kz6p");
-    			add_location(div, file$2, 17, 0, 508);
+    			add_location(p, file$2, 32, 4, 933);
+    			attr_dev(div, "class", "wrapper-price svelte-hcxb7d");
+    			add_location(div, file$2, 31, 0, 901);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2937,7 +2951,7 @@ var app = (function () {
     			append_dev(p, t);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*displayedPrice*/ 2 && t_value !== (t_value = `${/*displayedPrice*/ ctx[1]} €` + "")) set_data_dev(t, t_value);
+    			if (dirty & /*displayedPrice*/ 2 && t_value !== (t_value = `${/*displayedPrice*/ ctx[1]}` + "")) set_data_dev(t, t_value);
 
     			if (dirty & /*disabled*/ 1) {
     				attr_dev(p, "disabled", /*disabled*/ ctx[0]);
@@ -2966,6 +2980,9 @@ var app = (function () {
     }
 
     function instance$2($$self, $$props, $$invalidate) {
+    	let $priceUpperBound;
+    	validate_store(priceUpperBound, "priceUpperBound");
+    	component_subscribe($$self, priceUpperBound, $$value => $$invalidate(2, $priceUpperBound = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("PriceDisplay", slots, []);
     	let disabled;
@@ -2975,25 +2992,36 @@ var app = (function () {
     	});
 
     	// initially set the displayed price to "0.00"
-    	let displayedPrice = "0.00";
+    	let displayedPrice = "*0.00";
 
     	// subscribe to the global price and wait for changes,
     	// update the "displayedPrice"
     	calculatedPrice.subscribe(price => {
-    		$$invalidate(1, displayedPrice = price);
+    		console.log("price updated", price);
+    		console.log("upperBound", $priceUpperBound);
+
+    		if (price === "0.00") {
+    			$$invalidate(1, displayedPrice = "* 0.00 €");
+    		} else {
+    			const priceString = `* ${price} € - ${(price * $priceUpperBound).toFixed(2)} €`;
+    			$$invalidate(1, displayedPrice = priceString);
+    		}
     	});
 
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<PriceDisplay> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<PriceDisplay> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$capture_state = () => ({
     		calculatedPrice,
     		priceDisableStatus,
+    		price,
+    		priceUpperBound,
     		disabled,
-    		displayedPrice
+    		displayedPrice,
+    		$priceUpperBound
     	});
 
     	$$self.$inject_state = $$props => {
@@ -9025,14 +9053,15 @@ var app = (function () {
 
     /* src/components/MailForm.svelte generated by Svelte v3.31.0 */
 
-    const { console: console_1 } = globals;
+    const { console: console_1$1 } = globals;
 
     const file$4 = "src/components/MailForm.svelte";
 
-    // (165:0) {:else}
+    // (172:0) {:else}
     function create_else_block(ctx) {
     	let div;
-    	let p;
+    	let t0;
+    	let br;
     	let t1;
     	let button;
     	let mounted;
@@ -9041,26 +9070,27 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			p = element("p");
-    			p.textContent = "Danke dass Sie Lectonet nutzen. Bei weiteren Fragen...";
-    			t1 = space();
+    			t0 = text("Gut, dass Sie uns vertrauen – vielen Dank!");
+    			br = element("br");
+    			t1 = text("\n        Wir setzen uns mit Ihnen in Verbindung.\n        ");
     			button = element("button");
     			button.textContent = "Zurück";
-    			attr_dev(p, "class", "svelte-89tkvx");
-    			add_location(p, file$4, 166, 8, 5055);
-    			attr_dev(button, "class", "btn outline back svelte-89tkvx");
-    			add_location(button, file$4, 167, 8, 5125);
-    			attr_dev(div, "class", "success svelte-89tkvx");
-    			add_location(div, file$4, 165, 4, 5025);
+    			attr_dev(br, "class", "svelte-14uaa0p");
+    			add_location(br, file$4, 173, 50, 5474);
+    			attr_dev(button, "class", "btn outline back svelte-14uaa0p");
+    			add_location(button, file$4, 175, 8, 5537);
+    			attr_dev(div, "class", "success svelte-14uaa0p");
+    			add_location(div, file$4, 172, 4, 5402);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, p);
+    			append_dev(div, t0);
+    			append_dev(div, br);
     			append_dev(div, t1);
     			append_dev(div, button);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*handleBack*/ ctx[5], false, false, false);
+    				dispose = listen_dev(button, "click", /*handleBack*/ ctx[4], false, false, false);
     				mounted = true;
     			}
     		},
@@ -9076,14 +9106,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(165:0) {:else}",
+    		source: "(172:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:0) {#if !formSuccessfullySubmitted}
+    // (107:0) {#if !formSuccessfullySubmitted}
     function create_if_block(ctx) {
     	let form;
     	let div0;
@@ -9100,19 +9130,22 @@ var app = (function () {
     	let input3;
     	let t5;
     	let label;
-    	let t7;
+    	let t6;
+    	let a;
     	let t8;
+    	let t9;
+    	let t10;
     	let div4;
     	let button;
     	let mounted;
     	let dispose;
-    	let if_block = /*foundError*/ ctx[2] && create_if_block_1(ctx);
+    	let if_block = /*foundError*/ ctx[1] && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
     			form = element("form");
     			div0 = element("div");
-    			div0.textContent = "Sit dui diam, suspendisse in nunc. Leo lacus, eget pretium\n            consectetur.";
+    			div0.textContent = "Unschlüssig? Dann fordern Sie hier ein unverbindliches,\n            detailliertes Angebot an:";
     			t1 = space();
     			div1 = element("div");
     			input0 = element("input");
@@ -9126,49 +9159,57 @@ var app = (function () {
     			input3 = element("input");
     			t5 = space();
     			label = element("label");
-    			label.textContent = "Mit Datenschutzerklärung einverstanden";
-    			t7 = space();
+    			t6 = text("Mit\n                ");
+    			a = element("a");
+    			a.textContent = "Datenschutzerklärung";
+    			t8 = text("\n                einverstanden");
+    			t9 = space();
     			if (if_block) if_block.c();
-    			t8 = space();
+    			t10 = space();
     			div4 = element("div");
     			button = element("button");
     			button.textContent = "Abschicken";
-    			attr_dev(div0, "class", "email-form-desc svelte-89tkvx");
-    			add_location(div0, file$4, 104, 8, 3023);
+    			attr_dev(div0, "class", "email-form-desc svelte-14uaa0p");
+    			add_location(div0, file$4, 108, 8, 3217);
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "name", "firstname");
-    			attr_dev(input0, "class", "name svelte-89tkvx");
+    			attr_dev(input0, "class", "name svelte-14uaa0p");
     			attr_dev(input0, "placeholder", "Vorname");
-    			add_location(input0, file$4, 109, 12, 3214);
+    			add_location(input0, file$4, 113, 12, 3418);
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "name", "lastname");
-    			attr_dev(input1, "class", "name svelte-89tkvx");
+    			attr_dev(input1, "class", "name svelte-14uaa0p");
     			attr_dev(input1, "placeholder", "Name");
-    			add_location(input1, file$4, 115, 12, 3410);
-    			attr_dev(div1, "class", "email-form-name svelte-89tkvx");
-    			add_location(div1, file$4, 108, 8, 3172);
-    			attr_dev(input2, "class", "email svelte-89tkvx");
+    			add_location(input1, file$4, 119, 12, 3614);
+    			attr_dev(div1, "class", "email-form-name svelte-14uaa0p");
+    			add_location(div1, file$4, 112, 8, 3376);
+    			attr_dev(input2, "class", "email svelte-14uaa0p");
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "name", "email");
     			attr_dev(input2, "placeholder", "E-Mail Adresse");
-    			add_location(input2, file$4, 123, 12, 3657);
-    			attr_dev(div2, "class", "email-form-address svelte-89tkvx");
-    			add_location(div2, file$4, 122, 8, 3612);
+    			add_location(input2, file$4, 127, 12, 3861);
+    			attr_dev(div2, "class", "email-form-address svelte-14uaa0p");
+    			add_location(div2, file$4, 126, 8, 3816);
     			attr_dev(input3, "type", "checkbox");
-    			attr_dev(input3, "class", "checkbox svelte-89tkvx");
+    			attr_dev(input3, "class", "checkbox svelte-14uaa0p");
+    			set_style(input3, "cursor", "pointer");
     			attr_dev(input3, "name", "checkbox");
-    			add_location(input3, file$4, 131, 12, 3912);
+    			add_location(input3, file$4, 135, 12, 4140);
+    			attr_dev(a, "href", "/datenschutz");
+    			attr_dev(a, "class", "svelte-14uaa0p");
+    			add_location(a, file$4, 142, 16, 4386);
     			attr_dev(label, "for", "checkbox");
-    			attr_dev(label, "class", "svelte-89tkvx");
-    			add_location(label, file$4, 136, 12, 4076);
-    			attr_dev(div3, "class", "email-form-checkboxes svelte-89tkvx");
-    			add_location(div3, file$4, 130, 8, 3864);
-    			attr_dev(button, "class", "btn outline svelte-89tkvx");
-    			add_location(button, file$4, 159, 12, 4867);
-    			attr_dev(div4, "class", "email-form-button svelte-89tkvx");
-    			add_location(div4, file$4, 158, 8, 4823);
-    			attr_dev(form, "class", "email svelte-89tkvx");
-    			add_location(form, file$4, 103, 4, 2969);
+    			attr_dev(label, "class", "svelte-14uaa0p");
+    			add_location(label, file$4, 141, 12, 4344);
+    			attr_dev(div3, "class", "email-form-checkboxes svelte-14uaa0p");
+    			set_style(div3, "cursor", "pointer");
+    			add_location(div3, file$4, 134, 8, 4068);
+    			attr_dev(button, "class", "btn outline svelte-14uaa0p");
+    			add_location(button, file$4, 166, 12, 5244);
+    			attr_dev(div4, "class", "email-form-button svelte-14uaa0p");
+    			add_location(div4, file$4, 165, 8, 5200);
+    			attr_dev(form, "class", "email svelte-14uaa0p");
+    			add_location(form, file$4, 107, 4, 3163);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, form, anchor);
@@ -9190,20 +9231,23 @@ var app = (function () {
     			input3.checked = /*fields*/ ctx[0].agreed;
     			append_dev(div3, t5);
     			append_dev(div3, label);
-    			append_dev(form, t7);
+    			append_dev(label, t6);
+    			append_dev(label, a);
+    			append_dev(label, t8);
+    			append_dev(form, t9);
     			if (if_block) if_block.m(form, null);
-    			append_dev(form, t8);
+    			append_dev(form, t10);
     			append_dev(form, div4);
     			append_dev(div4, button);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[8]),
-    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[9]),
-    					listen_dev(input3, "change", /*input3_change_handler*/ ctx[10]),
-    					listen_dev(button, "click", prevent_default(/*handleSubmit*/ ctx[4]), false, true, false),
-    					listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[6]), false, true, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[6]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[7]),
+    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[8]),
+    					listen_dev(input3, "change", /*input3_change_handler*/ ctx[9]),
+    					listen_dev(button, "click", prevent_default(/*handleSubmit*/ ctx[3]), false, true, false),
+    					listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[5]), false, true, false)
     				];
 
     				mounted = true;
@@ -9226,13 +9270,11 @@ var app = (function () {
     				input3.checked = /*fields*/ ctx[0].agreed;
     			}
 
-    			if (/*foundError*/ ctx[2]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-    				} else {
+    			if (/*foundError*/ ctx[1]) {
+    				if (if_block) ; else {
     					if_block = create_if_block_1(ctx);
     					if_block.c();
-    					if_block.m(form, t8);
+    					if_block.m(form, t10);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -9251,134 +9293,29 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(103:0) {#if !formSuccessfullySubmitted}",
+    		source: "(107:0) {#if !formSuccessfullySubmitted}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (139:8) {#if foundError}
+    // (146:8) {#if foundError}
     function create_if_block_1(ctx) {
     	let div;
-    	let ul;
-    	let t0;
-    	let t1;
-    	let t2;
-    	let t3;
-    	let t4;
-    	let if_block0 = /*errors*/ ctx[1].priceCalculated && create_if_block_6(ctx);
-    	let if_block1 = /*errors*/ ctx[1].firstname && create_if_block_5(ctx);
-    	let if_block2 = /*errors*/ ctx[1].lastname && create_if_block_4(ctx);
-    	let if_block3 = /*errors*/ ctx[1].email && create_if_block_3(ctx);
-    	let if_block4 = /*errors*/ ctx[1].agreed && create_if_block_2(ctx);
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			ul = element("ul");
-    			t0 = space();
-    			if (if_block0) if_block0.c();
-    			t1 = space();
-    			if (if_block1) if_block1.c();
-    			t2 = space();
-    			if (if_block2) if_block2.c();
-    			t3 = space();
-    			if (if_block3) if_block3.c();
-    			t4 = space();
-    			if (if_block4) if_block4.c();
-    			attr_dev(ul, "class", "svelte-89tkvx");
-    			add_location(ul, file$4, 140, 16, 4234);
-    			attr_dev(div, "class", "errors svelte-89tkvx");
-    			add_location(div, file$4, 139, 12, 4197);
+    			div.textContent = "Bitte fuellen Sie alle Felder vollstaendig aus.";
+    			attr_dev(div, "class", "errors svelte-14uaa0p");
+    			add_location(div, file$4, 146, 12, 4524);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, ul);
-    			append_dev(div, t0);
-    			if (if_block0) if_block0.m(div, null);
-    			append_dev(div, t1);
-    			if (if_block1) if_block1.m(div, null);
-    			append_dev(div, t2);
-    			if (if_block2) if_block2.m(div, null);
-    			append_dev(div, t3);
-    			if (if_block3) if_block3.m(div, null);
-    			append_dev(div, t4);
-    			if (if_block4) if_block4.m(div, null);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (/*errors*/ ctx[1].priceCalculated) {
-    				if (if_block0) {
-    					if_block0.p(ctx, dirty);
-    				} else {
-    					if_block0 = create_if_block_6(ctx);
-    					if_block0.c();
-    					if_block0.m(div, t1);
-    				}
-    			} else if (if_block0) {
-    				if_block0.d(1);
-    				if_block0 = null;
-    			}
-
-    			if (/*errors*/ ctx[1].firstname) {
-    				if (if_block1) {
-    					if_block1.p(ctx, dirty);
-    				} else {
-    					if_block1 = create_if_block_5(ctx);
-    					if_block1.c();
-    					if_block1.m(div, t2);
-    				}
-    			} else if (if_block1) {
-    				if_block1.d(1);
-    				if_block1 = null;
-    			}
-
-    			if (/*errors*/ ctx[1].lastname) {
-    				if (if_block2) {
-    					if_block2.p(ctx, dirty);
-    				} else {
-    					if_block2 = create_if_block_4(ctx);
-    					if_block2.c();
-    					if_block2.m(div, t3);
-    				}
-    			} else if (if_block2) {
-    				if_block2.d(1);
-    				if_block2 = null;
-    			}
-
-    			if (/*errors*/ ctx[1].email) {
-    				if (if_block3) {
-    					if_block3.p(ctx, dirty);
-    				} else {
-    					if_block3 = create_if_block_3(ctx);
-    					if_block3.c();
-    					if_block3.m(div, t4);
-    				}
-    			} else if (if_block3) {
-    				if_block3.d(1);
-    				if_block3 = null;
-    			}
-
-    			if (/*errors*/ ctx[1].agreed) {
-    				if (if_block4) {
-    					if_block4.p(ctx, dirty);
-    				} else {
-    					if_block4 = create_if_block_2(ctx);
-    					if_block4.c();
-    					if_block4.m(div, null);
-    				}
-    			} else if (if_block4) {
-    				if_block4.d(1);
-    				if_block4 = null;
-    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			if (if_block0) if_block0.d();
-    			if (if_block1) if_block1.d();
-    			if (if_block2) if_block2.d();
-    			if (if_block3) if_block3.d();
-    			if (if_block4) if_block4.d();
     		}
     	};
 
@@ -9386,187 +9323,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(139:8) {#if foundError}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (142:16) {#if errors.priceCalculated}
-    function create_if_block_6(ctx) {
-    	let li;
-    	let t_value = /*errors*/ ctx[1].priceCalculated + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			li = element("li");
-    			t = text(t_value);
-    			attr_dev(li, "class", "svelte-89tkvx");
-    			add_location(li, file$4, 142, 20, 4306);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, t);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].priceCalculated + "")) set_data_dev(t, t_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_6.name,
-    		type: "if",
-    		source: "(142:16) {#if errors.priceCalculated}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (145:16) {#if errors.firstname}
-    function create_if_block_5(ctx) {
-    	let li;
-    	let t_value = /*errors*/ ctx[1].firstname + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			li = element("li");
-    			t = text(t_value);
-    			attr_dev(li, "class", "svelte-89tkvx");
-    			add_location(li, file$4, 145, 20, 4421);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, t);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].firstname + "")) set_data_dev(t, t_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_5.name,
-    		type: "if",
-    		source: "(145:16) {#if errors.firstname}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (148:16) {#if errors.lastname}
-    function create_if_block_4(ctx) {
-    	let li;
-    	let t_value = /*errors*/ ctx[1].lastname + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			li = element("li");
-    			t = text(t_value);
-    			attr_dev(li, "class", "svelte-89tkvx");
-    			add_location(li, file$4, 148, 20, 4529);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, t);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].lastname + "")) set_data_dev(t, t_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_4.name,
-    		type: "if",
-    		source: "(148:16) {#if errors.lastname}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (151:16) {#if errors.email}
-    function create_if_block_3(ctx) {
-    	let li;
-    	let t_value = /*errors*/ ctx[1].email + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			li = element("li");
-    			t = text(t_value);
-    			attr_dev(li, "class", "svelte-89tkvx");
-    			add_location(li, file$4, 151, 20, 4633);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, t);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].email + "")) set_data_dev(t, t_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_3.name,
-    		type: "if",
-    		source: "(151:16) {#if errors.email}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (154:16) {#if errors.agreed}
-    function create_if_block_2(ctx) {
-    	let li;
-    	let t_value = /*errors*/ ctx[1].agreed + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			li = element("li");
-    			t = text(t_value);
-    			attr_dev(li, "class", "svelte-89tkvx");
-    			add_location(li, file$4, 154, 20, 4735);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, t);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].agreed + "")) set_data_dev(t, t_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_2.name,
-    		type: "if",
-    		source: "(154:16) {#if errors.agreed}",
+    		source: "(146:8) {#if foundError}",
     		ctx
     	});
 
@@ -9577,7 +9334,7 @@ var app = (function () {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (!/*formSuccessfullySubmitted*/ ctx[3]) return create_if_block;
+    		if (!/*formSuccessfullySubmitted*/ ctx[2]) return create_if_block;
     		return create_else_block;
     	}
 
@@ -9631,13 +9388,16 @@ var app = (function () {
     function instance$4($$self, $$props, $$invalidate) {
     	let $selectedCategories;
     	let $calculatedPrice;
+    	let $priceUpperBound;
     	let $quantity;
     	validate_store(selectedCategories, "selectedCategories");
     	component_subscribe($$self, selectedCategories, $$value => $$invalidate(13, $selectedCategories = $$value));
     	validate_store(calculatedPrice, "calculatedPrice");
     	component_subscribe($$self, calculatedPrice, $$value => $$invalidate(14, $calculatedPrice = $$value));
+    	validate_store(priceUpperBound, "priceUpperBound");
+    	component_subscribe($$self, priceUpperBound, $$value => $$invalidate(15, $priceUpperBound = $$value));
     	validate_store(quantity, "quantity");
-    	component_subscribe($$self, quantity, $$value => $$invalidate(15, $quantity = $$value));
+    	component_subscribe($$self, quantity, $$value => $$invalidate(16, $quantity = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("MailForm", slots, []);
 
@@ -9698,8 +9458,9 @@ var app = (function () {
     		const result = regSchema.validate(fields, { abortEarly: false });
 
     		result.then(res => {
-    			$$invalidate(1, errors = {});
-    			$$invalidate(2, foundError = false);
+    			errors = {};
+    			$$invalidate(1, foundError = false);
+    			const price = `* ${$calculatedPrice} € - ${($calculatedPrice * $priceUpperBound).toFixed(2)} €`;
 
     			axios$1.post(`${frontendURL}/send/price`, {}, {
     				params: {
@@ -9707,8 +9468,9 @@ var app = (function () {
     					lastname: fields.lastname,
     					email: fields.email,
     					service: $selectedCategories.service,
+    					group: $selectedCategories.group,
     					type: typeOrTypes,
-    					price: $calculatedPrice,
+    					price,
     					quantity: $quantity
     				}
     			}).then(response => {
@@ -9717,23 +9479,22 @@ var app = (function () {
     				console.log(error);
     			});
 
-    			$$invalidate(3, formSuccessfullySubmitted = true);
+    			$$invalidate(2, formSuccessfullySubmitted = true);
     		}).catch(err => {
-    			$$invalidate(1, errors = extractErrors(err));
-    			$$invalidate(2, foundError = true);
-    			console.log(errors);
-    			$$invalidate(3, formSuccessfullySubmitted = false);
+    			errors = extractErrors(err);
+    			$$invalidate(1, foundError = true);
+    			$$invalidate(2, formSuccessfullySubmitted = false);
     		});
     	};
 
     	const handleBack = () => {
-    		$$invalidate(3, formSuccessfullySubmitted = false);
+    		$$invalidate(2, formSuccessfullySubmitted = false);
     	};
 
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<MailForm> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$1.warn(`<MailForm> was created with unknown prop '${key}'`);
     	});
 
     	function submit_handler(event) {
@@ -9768,6 +9529,7 @@ var app = (function () {
     		calculatedPrice,
     		quantity,
     		bewerbungenSelectedTypes,
+    		priceUpperBound,
     		fields,
     		errors,
     		foundError,
@@ -9779,13 +9541,14 @@ var app = (function () {
     		handleBack,
     		$selectedCategories,
     		$calculatedPrice,
+    		$priceUpperBound,
     		$quantity
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("errors" in $$props) $$invalidate(1, errors = $$props.errors);
-    		if ("foundError" in $$props) $$invalidate(2, foundError = $$props.foundError);
-    		if ("formSuccessfullySubmitted" in $$props) $$invalidate(3, formSuccessfullySubmitted = $$props.formSuccessfullySubmitted);
+    		if ("errors" in $$props) errors = $$props.errors;
+    		if ("foundError" in $$props) $$invalidate(1, foundError = $$props.foundError);
+    		if ("formSuccessfullySubmitted" in $$props) $$invalidate(2, formSuccessfullySubmitted = $$props.formSuccessfullySubmitted);
     		if ("typeOrTypes" in $$props) typeOrTypes = $$props.typeOrTypes;
     		if ("frontendURL" in $$props) frontendURL = $$props.frontendURL;
     	};
@@ -9796,7 +9559,6 @@ var app = (function () {
 
     	return [
     		fields,
-    		errors,
     		foundError,
     		formSuccessfullySubmitted,
     		handleSubmit,
@@ -9827,7 +9589,7 @@ var app = (function () {
     const file$5 = "src/App.svelte";
 
     function create_fragment$5(ctx) {
-    	let div6;
+    	let div8;
     	let div1;
     	let span;
     	let t1;
@@ -9850,9 +9612,11 @@ var app = (function () {
     	let div5;
     	let pricedisplay;
     	let t8;
-    	let hr;
-    	let t9;
+    	let div7;
     	let mailform;
+    	let t9;
+    	let div6;
+    	let p;
     	let current;
     	let mounted;
     	let dispose;
@@ -9907,7 +9671,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div6 = element("div");
+    			div8 = element("div");
     			div1 = element("div");
     			span = element("span");
     			span.textContent = "Preisrechner";
@@ -9931,45 +9695,52 @@ var app = (function () {
     			div5 = element("div");
     			create_component(pricedisplay.$$.fragment);
     			t8 = space();
-    			hr = element("hr");
-    			t9 = space();
+    			div7 = element("div");
     			create_component(mailform.$$.fragment);
-    			attr_dev(span, "class", "preisrechner-title svelte-11rs4k1");
+    			t9 = space();
+    			div6 = element("div");
+    			p = element("p");
+    			p.textContent = "* Unverbindliche Preisauskunft";
+    			attr_dev(span, "class", "preisrechner-title svelte-sdfibu");
     			add_location(span, file$5, 62, 8, 1996);
-    			attr_dev(div0, "class", "icon-close-calculator svelte-11rs4k1");
+    			attr_dev(div0, "class", "icon-close-calculator svelte-sdfibu");
     			attr_dev(div0, "id", "icon-close-calculator");
     			add_location(div0, file$5, 63, 8, 2057);
-    			attr_dev(div1, "class", "preisrechner-title-wrapper svelte-11rs4k1");
+    			attr_dev(div1, "class", "preisrechner-title-wrapper svelte-sdfibu");
     			add_location(div1, file$5, 61, 4, 1947);
-    			attr_dev(div2, "class", "calculator-top svelte-11rs4k1");
-    			add_location(div2, file$5, 68, 8, 2241);
-    			attr_dev(div3, "class", "calculator-mid-regular svelte-11rs4k1");
+    			attr_dev(div2, "class", "calculator-top svelte-sdfibu");
+    			add_location(div2, file$5, 69, 8, 2301);
+    			attr_dev(div3, "class", "calculator-mid-regular svelte-sdfibu");
     			attr_dev(div3, "id", "calculator-mid-regular");
-    			add_location(div3, file$5, 84, 8, 2823);
-    			attr_dev(div4, "class", "calculator-mid-bewerbung svelte-11rs4k1");
+    			add_location(div3, file$5, 85, 8, 2883);
+    			attr_dev(div4, "class", "calculator-mid-bewerbung svelte-sdfibu");
     			attr_dev(div4, "id", "calculator-mid-bewerbung");
-    			add_location(div4, file$5, 94, 8, 3230);
-    			attr_dev(div5, "class", "wrapper-price-display svelte-11rs4k1");
-    			add_location(div5, file$5, 99, 8, 3472);
-    			attr_dev(form, "class", "svelte-11rs4k1");
+    			add_location(div4, file$5, 95, 8, 3290);
+    			attr_dev(div5, "class", "wrapper-price-display svelte-sdfibu");
+    			add_location(div5, file$5, 100, 8, 3532);
+    			set_style(form, "border-bottom", "1px solid rgb(221, 221, 221)");
+    			attr_dev(form, "class", "svelte-sdfibu");
     			add_location(form, file$5, 65, 4, 2137);
-    			set_style(hr, "width", "100%");
-    			attr_dev(hr, "class", "svelte-11rs4k1");
-    			add_location(hr, file$5, 103, 4, 3568);
-    			attr_dev(div6, "class", "preisrechner-wrapper svelte-11rs4k1");
-    			add_location(div6, file$5, 60, 0, 1908);
+    			attr_dev(p, "class", "svelte-sdfibu");
+    			add_location(p, file$5, 107, 12, 3732);
+    			attr_dev(div6, "class", "price-disclaimer svelte-sdfibu");
+    			add_location(div6, file$5, 106, 8, 3689);
+    			attr_dev(div7, "class", "calculator-bottom svelte-sdfibu");
+    			add_location(div7, file$5, 104, 4, 3628);
+    			attr_dev(div8, "class", "preisrechner-wrapper svelte-sdfibu");
+    			add_location(div8, file$5, 60, 0, 1908);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div6, anchor);
-    			append_dev(div6, div1);
+    			insert_dev(target, div8, anchor);
+    			append_dev(div8, div1);
     			append_dev(div1, span);
     			append_dev(div1, t1);
     			append_dev(div1, div0);
-    			append_dev(div6, t2);
-    			append_dev(div6, form);
+    			append_dev(div8, t2);
+    			append_dev(div8, form);
     			append_dev(form, div2);
     			mount_component(dropdown0, div2, null);
     			append_dev(div2, t3);
@@ -9985,10 +9756,12 @@ var app = (function () {
     			append_dev(form, t7);
     			append_dev(form, div5);
     			mount_component(pricedisplay, div5, null);
-    			append_dev(div6, t8);
-    			append_dev(div6, hr);
-    			append_dev(div6, t9);
-    			mount_component(mailform, div6, null);
+    			append_dev(div8, t8);
+    			append_dev(div8, div7);
+    			mount_component(mailform, div7, null);
+    			append_dev(div7, t9);
+    			append_dev(div7, div6);
+    			append_dev(div6, p);
     			current = true;
 
     			if (!mounted) {
@@ -10036,7 +9809,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div6);
+    			if (detaching) detach_dev(div8);
     			destroy_component(dropdown0);
     			destroy_component(dropdown1);
     			destroy_component(dropdown2);

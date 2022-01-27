@@ -64,6 +64,7 @@
         <div class="icon-close-calculator" id="icon-close-calculator" />
     </div>
     <form
+        style="border-bottom: 1px solid rgb(221, 221, 221)"
         on:submit|preventDefault
         on:change|preventDefault={handleDropdownChange}>
         <div class="calculator-top">
@@ -101,8 +102,12 @@
             <PriceDisplay />
         </div>
     </form>
-    <hr style="width: 100%" />
-    <MailForm />
+    <div class="calculator-bottom">
+        <MailForm />
+        <div class="price-disclaimer">
+            <p>* Unverbindliche Preisauskunft</p>
+        </div>
+    </div>
 </div>
 
 <!-- STYLES /////////////////////////////////////////////////////////////////////////////////////// -->
@@ -115,6 +120,22 @@
         font-family: Montserrat;
         font-style: normal;
         list-style: none;
+    }
+
+    .calculator-bottom {
+        height: 100%;
+        width: 100%;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        background-color: white;
+        padding-bottom: 16px;
+    }
+
+    .price-disclaimer {
+        /* border: 1px solid red; */
+        display: flex;
+        /* justify-content: center; */
+        padding-left: 50px;
     }
 
     .calculator-top {
@@ -158,6 +179,7 @@
         display: grid;
         justify-items: center;
         align-items: center;
+        background-color: white;
         width: 100%;
         height: auto;
         padding: 0 50px 10px 50px;
@@ -173,7 +195,8 @@
         grid-template-columns: 1fr repeat(8, 1fr) 1fr;
         justify-items: center;
         align-items: center;
-        background-color: #cfcfcf;
+        background-color: #555;
+        color: white;
     }
 
     .preisrechner-title {
@@ -207,7 +230,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: white;
         position: static;
         margin: auto;
         margin-top: 60px;
@@ -215,7 +237,6 @@
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.25);
         border-radius: 25px;
         overflow: hidden;
-        padding-bottom: 32px;
     }
 
     /* ----------- 1280-WIDTH */
@@ -235,6 +256,10 @@
             height: auto;
             margin: auto;
             margin-top: 40px;
+        }
+
+        .price-disclaimer {
+            padding-left: 20px;
         }
 
         .calculator-top {
@@ -260,6 +285,11 @@
         }
         form {
             padding: 0 10px 0px 10px;
+        }
+
+        .price-disclaimer {
+            padding: 0;
+            justify-content: center;
         }
 
         .calculator-mid-bewerbung {

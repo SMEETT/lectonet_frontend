@@ -68,7 +68,7 @@ footer .icon-social-media {
 }
 
 a.footer {
-	text-decoration: none;
+	text-decoration: underline;
 	color: white;
 	font-weight: 400;
 	height: 28px;
