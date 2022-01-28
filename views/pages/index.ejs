@@ -71,5 +71,85 @@
 		</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../static/slick/slick.min.js"></script>
+    <!DOCTYPE html>
+<html lang="de">
+	<head>
+        <style>
+            @import url('../../static/css/layouts/index.css');
+        </style>
+        <meta name="keywords" content="<%= meta_keywords %>">
+        <meta name="description" content="<%= meta_description %>">
+        <%- include ("../partials/head.ejs") %>
+        <script src="../../static/index_slider.js" defer></script>
+	</head>
+	<div id="preisrechner-hook"></div>
+	<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M54J87M" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+		<div class="wrapper">
+			<header><%- include ("../partials/header.ejs") %></header>
+			<section class="text">
+				<h1><%- headline %></h1>
+				<h2><%- subheadline %></h2>
+				<p class="main-text-area"><%- copytext %></p>
+				<button id="btn-leistungen" class="btn outline">LEISTUNGEN</button>
+				<button id="btn-open-calculator" class="btn red">PREISRECHNER</button>
+			</section>
+			<section class="picture index">
+				<!-- <img id="photo-wackwitz" src="../../static/images/ruediger.webp"" alt="Foto Ruediger Wackwitz" /> -->
+                <picture id="photo-wackwitz">
+                    <source srcset="../../static/images/rw.webp" type="image/webp">
+                    <source srcset="../../static/images/rw.png" type="image/png">
+                    <img id="photo-wackwitz" src="../../static/images/rw.png" alt="Foto Ruediger Wackwitz">
+                </picture>
+      </section>
+			<section id="cards" class="cards">
+                <div class="container-headlines">
+                  <h1 id="h1-leistungen">Leistungen</h1>
+                  <h2>Sie brauchen's, wir können's.</h2>
+                </div>
+                <div class="wrapper-slider">
+                    <div class="your-class">
+                    <% cards.forEach(card=> { %>
+                      <div class="card-wrapper">
+                          <a class="card-a" href=<%=card.slug %>>
+                            <div class="card grow">
+                              <div class="card-header">
+                                <%= card.title %>
+                              </div>
+                              <h1 class="cardheadline">
+                                <%= card.headline %>
+                              </h1>
+                              <p class="cardcopy">
+                                <%= card.teasertext %>
+                              </p>
+                              <button class="btn outline card">MEHR</button>
+                            </div>
+                          </a>
+                          </div>
+                          <% }) %>
+
+                    </div>
+                    <div class="wrapper-slider-nav">
+                      <button class="my-prev">
+                        <img width=24 height=75 src="../../static/images/icon_slider_prev.svg" alt="">
+                      </button>
+                      <button class="my-next">
+                        <img width=24 height=75 src="../../static/images/icon_slider_next.svg" alt="">
+                      </button>
+                    </div>
+                    
+                                    </div>
+			</section>
+            <footer><%- include ("../partials/footer.ejs") %></footer>
+            <div class="gradient"></div>
+		</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/slick/slick.min.js"></script>
+	</body>
+</html>
+
 	</body>
 </html>
