@@ -31,10 +31,11 @@ h2 {
 }
 
 .link-container {
-	margin-bottom: 32px;
+	padding: 16px 0;
 	display: flex;
 	flex-direction: column;
 	text-align: left;
+	font-size: 14px;
 }
 
 .link-headline {
@@ -110,5 +111,17 @@ br {
 @media only screen and (max-width: 599px) {
 	section.imprint {
 		padding-top: 48px;
+	}
+	.link-container {
+		text-align: center;
+		align-items: center;
+		font-size: 12px;
+	}
+	.link-external {
+		font-size: 14px;
+		text-decoration: underline;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
 	}
 }

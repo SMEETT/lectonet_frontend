@@ -21,7 +21,6 @@
           <% data.forEach(link=> { %>
               <div class="link-container">
                 <div class="link-headline">
-
                   <a class="link-external" href=<%- link.target %> target="_blank"><svg class="icon-external-link" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.0217 0.169708L15.8297 0.97828L7.26399 9.54399L6.45599 8.73599L15.0217 0.169708Z"
                       fill="black" />
@@ -34,11 +33,9 @@
                 <div class="link-description">
                   <%- link.description %>
                 </div>
-
               </div>  
             <% }) %>
           </div>
-
     </section>
     <footer>
       <%- include ("../partials/footer.ejs") %>

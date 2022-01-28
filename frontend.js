@@ -52,6 +52,7 @@ app.use(
 				"https://ajax.googleapis.com",
 				"https://consent.cookiebot.com",
 				"https://consentcdn.cookiebot.com",
+				"https://www.googletagmanager.com",
 			],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"img-src": [SELF, strapiURL, frontendURL, "https://consentcdn.cookiebot.com", "https://consent.cookiebot.com", "* data:"],
@@ -59,7 +60,15 @@ app.use(
 			"block-all-mixed-content": true,
 			"font-src": [SELF, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
 			"frame-ancestors": [NONE],
-			"connect-src": [SELF, strapiURL, frontendURL, "ws://localhost:35729", "ws://localhost:35730", "https://consentcdn.cookiebot.com"],
+			"connect-src": [
+				SELF,
+				strapiURL,
+				frontendURL,
+				"ws://localhost:35729",
+				"ws://localhost:35730",
+				"https://consentcdn.cookiebot.com",
+				"https://www.google-analytics.com",
+			],
 		},
 	})
 );
@@ -392,7 +401,7 @@ app.post("/send/price", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
-		bcc: "info@texte-wackwitz.de",
+		// bcc: "info@texte-wackwitz.de",
 		subject: subject,
 		html: html,
 		attachments: [

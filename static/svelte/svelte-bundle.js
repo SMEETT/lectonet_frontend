@@ -9076,11 +9076,11 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Zurück";
     			attr_dev(br, "class", "svelte-14uaa0p");
-    			add_location(br, file$4, 173, 50, 5474);
+    			add_location(br, file$4, 173, 50, 5465);
     			attr_dev(button, "class", "btn outline back svelte-14uaa0p");
-    			add_location(button, file$4, 175, 8, 5537);
+    			add_location(button, file$4, 175, 8, 5528);
     			attr_dev(div, "class", "success svelte-14uaa0p");
-    			add_location(div, file$4, 172, 4, 5402);
+    			add_location(div, file$4, 172, 4, 5393);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9090,7 +9090,7 @@ var app = (function () {
     			append_dev(div, button);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*handleBack*/ ctx[4], false, false, false);
+    				dispose = listen_dev(button, "click", /*handleBack*/ ctx[5], false, false, false);
     				mounted = true;
     			}
     		},
@@ -9139,7 +9139,7 @@ var app = (function () {
     	let button;
     	let mounted;
     	let dispose;
-    	let if_block = /*foundError*/ ctx[1] && create_if_block_1(ctx);
+    	let if_block = /*foundError*/ ctx[2] && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
@@ -9205,9 +9205,9 @@ var app = (function () {
     			set_style(div3, "cursor", "pointer");
     			add_location(div3, file$4, 134, 8, 4068);
     			attr_dev(button, "class", "btn outline svelte-14uaa0p");
-    			add_location(button, file$4, 166, 12, 5244);
+    			add_location(button, file$4, 166, 12, 5235);
     			attr_dev(div4, "class", "email-form-button svelte-14uaa0p");
-    			add_location(div4, file$4, 165, 8, 5200);
+    			add_location(div4, file$4, 165, 8, 5191);
     			attr_dev(form, "class", "email svelte-14uaa0p");
     			add_location(form, file$4, 107, 4, 3163);
     		},
@@ -9242,12 +9242,12 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[6]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[7]),
-    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[8]),
-    					listen_dev(input3, "change", /*input3_change_handler*/ ctx[9]),
-    					listen_dev(button, "click", prevent_default(/*handleSubmit*/ ctx[3]), false, true, false),
-    					listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[5]), false, true, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[8]),
+    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[9]),
+    					listen_dev(input3, "change", /*input3_change_handler*/ ctx[10]),
+    					listen_dev(button, "click", prevent_default(/*handleSubmit*/ ctx[4]), false, true, false),
+    					listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[6]), false, true, false)
     				];
 
     				mounted = true;
@@ -9270,8 +9270,10 @@ var app = (function () {
     				input3.checked = /*fields*/ ctx[0].agreed;
     			}
 
-    			if (/*foundError*/ ctx[1]) {
-    				if (if_block) ; else {
+    			if (/*foundError*/ ctx[2]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
     					if_block = create_if_block_1(ctx);
     					if_block.c();
     					if_block.m(form, t10);
@@ -9303,19 +9305,119 @@ var app = (function () {
     // (146:8) {#if foundError}
     function create_if_block_1(ctx) {
     	let div;
+    	let t0;
+    	let t1;
+    	let t2;
+    	let t3;
+    	let t4;
+    	let if_block0 = /*errors*/ ctx[1].priceCalculated && create_if_block_6(ctx);
+    	let if_block1 = /*errors*/ ctx[1].firstname && create_if_block_5(ctx);
+    	let if_block2 = /*errors*/ ctx[1].lastname && create_if_block_4(ctx);
+    	let if_block3 = /*errors*/ ctx[1].email && create_if_block_3(ctx);
+    	let if_block4 = /*errors*/ ctx[1].agreed && create_if_block_2(ctx);
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			div.textContent = "Bitte fuellen Sie alle Felder vollstaendig aus.";
+    			t0 = text("Bitte fuellen Sie alle Felder vollstaendig aus.\n                ");
+    			if (if_block0) if_block0.c();
+    			t1 = space();
+    			if (if_block1) if_block1.c();
+    			t2 = space();
+    			if (if_block2) if_block2.c();
+    			t3 = space();
+    			if (if_block3) if_block3.c();
+    			t4 = space();
+    			if (if_block4) if_block4.c();
     			attr_dev(div, "class", "errors svelte-14uaa0p");
     			add_location(div, file$4, 146, 12, 4524);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			if (if_block0) if_block0.m(div, null);
+    			append_dev(div, t1);
+    			if (if_block1) if_block1.m(div, null);
+    			append_dev(div, t2);
+    			if (if_block2) if_block2.m(div, null);
+    			append_dev(div, t3);
+    			if (if_block3) if_block3.m(div, null);
+    			append_dev(div, t4);
+    			if (if_block4) if_block4.m(div, null);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*errors*/ ctx[1].priceCalculated) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    				} else {
+    					if_block0 = create_if_block_6(ctx);
+    					if_block0.c();
+    					if_block0.m(div, t1);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (/*errors*/ ctx[1].firstname) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block_5(ctx);
+    					if_block1.c();
+    					if_block1.m(div, t2);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			if (/*errors*/ ctx[1].lastname) {
+    				if (if_block2) {
+    					if_block2.p(ctx, dirty);
+    				} else {
+    					if_block2 = create_if_block_4(ctx);
+    					if_block2.c();
+    					if_block2.m(div, t3);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
+
+    			if (/*errors*/ ctx[1].email) {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+    				} else {
+    					if_block3 = create_if_block_3(ctx);
+    					if_block3.c();
+    					if_block3.m(div, t4);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
+    			}
+
+    			if (/*errors*/ ctx[1].agreed) {
+    				if (if_block4) {
+    					if_block4.p(ctx, dirty);
+    				} else {
+    					if_block4 = create_if_block_2(ctx);
+    					if_block4.c();
+    					if_block4.m(div, null);
+    				}
+    			} else if (if_block4) {
+    				if_block4.d(1);
+    				if_block4 = null;
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
+    			if (if_block4) if_block4.d();
     		}
     	};
 
@@ -9330,11 +9432,191 @@ var app = (function () {
     	return block;
     }
 
+    // (149:16) {#if errors.priceCalculated}
+    function create_if_block_6(ctx) {
+    	let li;
+    	let t_value = /*errors*/ ctx[1].priceCalculated + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			t = text(t_value);
+    			attr_dev(li, "class", "svelte-14uaa0p");
+    			add_location(li, file$4, 149, 20, 4674);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].priceCalculated + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_6.name,
+    		type: "if",
+    		source: "(149:16) {#if errors.priceCalculated}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (152:16) {#if errors.firstname}
+    function create_if_block_5(ctx) {
+    	let li;
+    	let t_value = /*errors*/ ctx[1].firstname + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			t = text(t_value);
+    			attr_dev(li, "class", "svelte-14uaa0p");
+    			add_location(li, file$4, 152, 20, 4789);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].firstname + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_5.name,
+    		type: "if",
+    		source: "(152:16) {#if errors.firstname}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (155:16) {#if errors.lastname}
+    function create_if_block_4(ctx) {
+    	let li;
+    	let t_value = /*errors*/ ctx[1].lastname + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			t = text(t_value);
+    			attr_dev(li, "class", "svelte-14uaa0p");
+    			add_location(li, file$4, 155, 20, 4897);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].lastname + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_4.name,
+    		type: "if",
+    		source: "(155:16) {#if errors.lastname}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (158:16) {#if errors.email}
+    function create_if_block_3(ctx) {
+    	let li;
+    	let t_value = /*errors*/ ctx[1].email + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			t = text(t_value);
+    			attr_dev(li, "class", "svelte-14uaa0p");
+    			add_location(li, file$4, 158, 20, 5001);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].email + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3.name,
+    		type: "if",
+    		source: "(158:16) {#if errors.email}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (161:16) {#if errors.agreed}
+    function create_if_block_2(ctx) {
+    	let li;
+    	let t_value = /*errors*/ ctx[1].agreed + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			t = text(t_value);
+    			attr_dev(li, "class", "svelte-14uaa0p");
+    			add_location(li, file$4, 161, 20, 5103);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*errors*/ 2 && t_value !== (t_value = /*errors*/ ctx[1].agreed + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(161:16) {#if errors.agreed}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment$4(ctx) {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (!/*formSuccessfullySubmitted*/ ctx[2]) return create_if_block;
+    		if (!/*formSuccessfullySubmitted*/ ctx[3]) return create_if_block;
     		return create_else_block;
     	}
 
@@ -9458,8 +9740,8 @@ var app = (function () {
     		const result = regSchema.validate(fields, { abortEarly: false });
 
     		result.then(res => {
-    			errors = {};
-    			$$invalidate(1, foundError = false);
+    			$$invalidate(1, errors = {});
+    			$$invalidate(2, foundError = false);
     			const price = `* ${$calculatedPrice} € - ${($calculatedPrice * $priceUpperBound).toFixed(2)} €`;
 
     			axios$1.post(`${frontendURL}/send/price`, {}, {
@@ -9479,16 +9761,16 @@ var app = (function () {
     				console.log(error);
     			});
 
-    			$$invalidate(2, formSuccessfullySubmitted = true);
+    			$$invalidate(3, formSuccessfullySubmitted = true);
     		}).catch(err => {
-    			errors = extractErrors(err);
-    			$$invalidate(1, foundError = true);
-    			$$invalidate(2, formSuccessfullySubmitted = false);
+    			$$invalidate(1, errors = extractErrors(err));
+    			$$invalidate(2, foundError = true);
+    			$$invalidate(3, formSuccessfullySubmitted = false);
     		});
     	};
 
     	const handleBack = () => {
-    		$$invalidate(2, formSuccessfullySubmitted = false);
+    		$$invalidate(3, formSuccessfullySubmitted = false);
     	};
 
     	const writable_props = [];
@@ -9546,9 +9828,9 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("errors" in $$props) errors = $$props.errors;
-    		if ("foundError" in $$props) $$invalidate(1, foundError = $$props.foundError);
-    		if ("formSuccessfullySubmitted" in $$props) $$invalidate(2, formSuccessfullySubmitted = $$props.formSuccessfullySubmitted);
+    		if ("errors" in $$props) $$invalidate(1, errors = $$props.errors);
+    		if ("foundError" in $$props) $$invalidate(2, foundError = $$props.foundError);
+    		if ("formSuccessfullySubmitted" in $$props) $$invalidate(3, formSuccessfullySubmitted = $$props.formSuccessfullySubmitted);
     		if ("typeOrTypes" in $$props) typeOrTypes = $$props.typeOrTypes;
     		if ("frontendURL" in $$props) frontendURL = $$props.frontendURL;
     	};
@@ -9559,6 +9841,7 @@ var app = (function () {
 
     	return [
     		fields,
+    		errors,
     		foundError,
     		formSuccessfullySubmitted,
     		handleSubmit,

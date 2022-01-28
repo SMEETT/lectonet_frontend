@@ -146,7 +146,7 @@
         {#if foundError}
             <div class="errors">
                 Bitte fuellen Sie alle Felder vollstaendig aus.
-                <!-- {#if errors.priceCalculated}
+                {#if errors.priceCalculated}
                     <li>{errors.priceCalculated}</li>
                 {/if}
                 {#if errors.firstname}
@@ -160,7 +160,7 @@
                 {/if}
                 {#if errors.agreed}
                     <li>{errors.agreed}</li>
-                {/if} -->
+                {/if}
             </div>
         {/if}
         <div class="email-form-button">
