@@ -3,10 +3,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <div></div>
         <title>Lectonet // <%= title %></title>
-        <% console.log("head.ejs: received NONCE:   ------>", nonce) %>
-        <script nonce="<%= nonce %>">
-          console.log("inline is bad!");
-        </script>
         <script nonce='<%= nonce %>' id="Cookiebot" src="https://consent.cookiebot.com/uc.js" 
           data-cbid="91f0f85a-a933-4c5e-870a-7b4138eb6e60" data-blockingmode="auto"
           type="text/javascript"></script>

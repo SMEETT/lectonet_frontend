@@ -235,6 +235,7 @@ app.get(["/wackwitz", "/referenzen"], (req, res) => {
 			image: data.attributes.foto_wackwitz.data.attributes,
 			image_text: md.renderInline(data.attributes.bildunterschrift_wackwitz),
 			strapiURL: strapiURL,
+			nonce: req.nonce,
 		});
 	});
 });
@@ -253,6 +254,7 @@ app.get("/faqs", (req, res) => {
 			navItems: res.locals.navItems,
 			title: "FAQs",
 			data: data,
+			nonce: req.nonce,
 		});
 	});
 });
@@ -268,6 +270,7 @@ app.get("/impressum", (req, res) => {
 			navItems: res.locals.navItems,
 			title: "Impressum",
 			copytext: md.render(data.attributes.copytext),
+			nonce: req.nonce,
 		});
 	});
 });
@@ -283,6 +286,7 @@ app.get("/datenschutz", (req, res) => {
 			navItems: res.locals.navItems,
 			title: data.title,
 			copytext: md.render(data.copytext),
+			nonce: req.nonce,
 		});
 	});
 });
@@ -299,6 +303,7 @@ app.get("/links", (req, res) => {
 			title: data.title,
 			subhead: data.subhead,
 			data: data.Link,
+			nonce: req.nonce,
 		});
 	});
 });
@@ -315,6 +320,7 @@ app.get("/kontakt", (req, res) => {
 			title: data.title,
 			subhead: data.subhead,
 			copytext: md.render(data.copytext),
+			nonce: req.nonce,
 		});
 	});
 });
