@@ -41,6 +41,5 @@ $(document).ready(function () {
 		],
 	});
 	const sliderThing = document.getElementsByClassName("slick-list").item(0);
-	console.log(sliderThing);
 	sliderThing.classList.add("mask");
 });

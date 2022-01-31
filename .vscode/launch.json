@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "name": "localhost:1339",
+      "request": "launch",
+      "url": "localhost:1339"
+    }
+  ]
+}

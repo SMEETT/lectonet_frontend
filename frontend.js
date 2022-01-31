@@ -1,9 +1,11 @@
 // imports
 const express = require("express");
+const morgan = require("morgan");
 const cors = require("cors");
+const helmet = require("helmet");
 const nodemailer = require("nodemailer");
-const { expressCspHeader, NONE, SELF, INLINE } = require("express-csp-header");
-
+const { expressCspHeader, NONE, SELF, INLINE, NONCE } = require("express-csp-header");
+const crypto = require("crypto");
 const slugify = require("slugify");
 const axios = require("axios");
 const path = require("path");
@@ -23,6 +25,8 @@ md.use(mila, {
 	},
 });
 
+let count = 0;
+
 const compression = require("compression");
 
 // environment variables
@@ -36,30 +40,56 @@ const frontendPORT = process.env.frontendPORT;
 // express init
 const app = express();
 
+// app.use(
+// 	helmet({
+// 		contentSecurityPolicy: false,
+// 		crossOriginResourcePolicy: { policy: "cross-origin" },
+// 	})
+// );
+
+app.use(morgan("dev"));
+
 // gZip compression
 app.use(compression());
+
+app.use(function (req, res, next) {
+	console.log("Before Express CSP");
+	next();
+});
 
 // CSP Header
 app.use(
 	expressCspHeader({
 		directives: {
-			"default-src": [SELF, strapiURL, "https://consentcdn.cookiebot.com"],
+			"default-src": [SELF, strapiURL],
 			"script-src": [
 				SELF,
-				INLINE,
+				[NONCE],
+				"strict-dynamic",
 				"http://localhost:35729",
 				"http://localhost:35730",
 				"https://ajax.googleapis.com",
 				"https://consent.cookiebot.com",
 				"https://consentcdn.cookiebot.com",
 				"https://www.googletagmanager.com",
+				"https://tagmanager.google.com",
 			],
-			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-			"img-src": [SELF, strapiURL, frontendURL, "https://consentcdn.cookiebot.com", "https://consent.cookiebot.com", "* data:"],
+			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://tagmanager.google.com"],
+			"img-src": [
+				SELF,
+				strapiURL,
+				frontendURL,
+				"https://consentcdn.cookiebot.com",
+				"https://consent.cookiebot.com",
+				"* data:",
+				"https://ssl.gstatic.com",
+				"https://www.gstatic.com",
+			],
 			"worker-src": [NONE],
 			"block-all-mixed-content": true,
-			"font-src": [SELF, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+			"font-src": [SELF, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "data:"],
 			"frame-ancestors": [NONE],
+			"frame-src": [SELF, "https://consentcdn.cookiebot.com"],
 			"connect-src": [
 				SELF,
 				strapiURL,
@@ -72,6 +102,11 @@ app.use(
 		},
 	})
 );
+
+app.use(function (req, res, next) {
+	console.log("-------------------------------------------> generated NONCE: ", req.nonce);
+	next();
+});
 
 app.use(cors());
 
@@ -155,7 +190,9 @@ app.use(function (req, res, next) {
 //////////////////////////////////
 // index route
 //////////////////////////////////
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+	console.log("app.get('/')");
+	console.log("passed NONCE to '/' route: ------> ", req.nonce);
 	axios.get(`${strapiAPI}/index?populate=*`).then((response) => {
 		const data = response.data.data;
 		// add slugs for cards / generate markdown
@@ -173,11 +210,10 @@ app.get("/", (req, res) => {
 			subheadline: md.renderInline(data.attributes.subheadline),
 			copytext: md.renderInline(data.attributes.copytext),
 			cards: data.attributes.card.sort((a, b) => a.position - b.position),
+			nonce: req.nonce,
 		});
 	});
 });
-
-//
 
 //////////////////////////////////
 // Referenzen und Wackwitz
@@ -286,8 +322,9 @@ app.get("/kontakt", (req, res) => {
 //////////////////////////////////
 // dynamic routing
 //////////////////////////////////
-app.get("/:path", (req, res) => {
+app.get("/whatever", (req, res) => {
 	axios.get(`${strapiAPI}/pages?populate=*`).then((response) => {
+		console.log("dynamic routing");
 		// look for page with a title that matches the requested route
 		const match = response.data.data.find((page) => {
 			return slugify(page.attributes.title, { lower: true }) === req.params.path;

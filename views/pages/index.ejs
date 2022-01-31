@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
 	<head>
-        <style>
-            @import url('../../static/css/layouts/index.css');
-        </style>
-        <meta name="keywords" content="<%= meta_keywords %>">
-        <meta name="description" content="<%= meta_description %>">
-        <%- include ("../partials/head.ejs") %>
-        <script src="../../static/index_slider.js" defer></script>
+    <%- include ("../partials/head.ejs", {nonce: nonce}) %>
+    <style>
+        @import url('../../static/css/layouts/index.css');
+    </style>
+    <meta name="keywords" content="<%= meta_keywords %>">
+    <meta name="description" content="<%= meta_description %>">
+    <script src="../../static/index_slider.js" defer></script>
 	</head>
 	<div id="preisrechner-hook"></div>
 	<body>
 		<div class="wrapper">
 			<header><%- include ("../partials/header.ejs") %></header>
 			<section class="text">
-				<h1><%- headline %></h1>
+        <h1><%- headline %></h1>
 				<h2><%- subheadline %></h2>
 				<p class="main-text-area"><%- copytext %></p>
 				<button id="btn-leistungen" class="btn outline">LEISTUNGEN</button>
 				<button id="btn-open-calculator" class="btn red">PREISRECHNER</button>
 			</section>
 			<section class="picture index">
-				<!-- <img id="photo-wackwitz" src="../../static/images/ruediger.webp"" alt="Foto Ruediger Wackwitz" /> -->
-                <picture id="photo-wackwitz">
-                    <source srcset="../../static/images/rw.webp" type="image/webp">
-                    <source srcset="../../static/images/rw.png" type="image/png">
-                    <img id="photo-wackwitz" src="../../static/images/rw.png" alt="Foto Ruediger Wackwitz">
-                </picture>
+        <!-- <img id="photo-wackwitz" src="../../static/images/ruediger.webp"" alt="Foto Ruediger Wackwitz" /> -->
+        <picture id="photo-wackwitz">
+          <source srcset="../../static/images/rw.webp" type="image/webp">
+          <source srcset="../../static/images/rw.png" type="image/png">
+          <img id="photo-wackwitz" src="../../static/images/rw.png" alt="Foto Ruediger Wackwitz">
+        </picture>
       </section>
 			<section id="cards" class="cards">
                 <div class="container-headlines">

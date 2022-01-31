@@ -1,20 +1,24 @@
         <meta charset="UTF-8" />
         <meta name="author" content="Rüdiger Wackwitz">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <div></div>
         <title>Lectonet // <%= title %></title>
-        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        <% console.log("head.ejs: received NONCE:   ------>", nonce) %>
+        <script nonce="<%= nonce %>">
+          console.log("inline is bad!");
+        </script>
+        <script nonce="<%= nonce %>" id="Cookiebot" src="https://consent.cookiebot.com/uc.js" 
           data-cbid="91f0f85a-a933-4c5e-870a-7b4138eb6e60" data-blockingmode="auto"
           type="text/javascript"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6NSR73YJ8"></script>
         <!-- Google Tag Manager -->
-        <script>(function (w, d, s, l, i) {
+        <script nonce="<%= nonce %>">(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
               'gtm.start':
                 new Date().getTime(), event: 'gtm.js'
             }); var f = d.getElementsByTagName(s)[0],
               j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; var n = d.querySelector('[nonce]');
+            n && j.setAttribute('nonce', n.nonce || n.getAttribute('nonce')); f.parentNode.insertBefore(j, f);
           })(window, document, 'script', 'dataLayer', 'GTM-M54J87M');</script>
         <!-- End Google Tag Manager -->
         <!-- favicon -->

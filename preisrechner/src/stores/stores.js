@@ -46,13 +46,11 @@ const fetchedCSVData = axios.get(
 
 fetchedCSVData
     .then((fetchedData) => {
-        console.log("fetched CSV data", fetchedData);
         const servicesTEMP = [];
         // initial API-Response, 'extractedData' contains
         // an array of objects {leistung, CSV}
         // CSV.url contains path to CSV-Data for 'leistung'
         const extractedData = fetchedData.data.data.attributes.Preis;
-        console.log("extracted data", extractedData);
         // get all "Leistungen"(Services) and add them to
         // TEMP array (later used to set() corresponding writable())
         extractedData.forEach((entry) => {
@@ -66,7 +64,6 @@ fetchedCSVData
         const CSVData_Promises = [];
         // fetch CSV-Data of all "services"
         extractedData.forEach((entry) => {
-            console.log("entry", entry);
             // fetch CSV-Data from URL's and push each returned promise
             // (from axios) into an array of promises;
             // prepend strapiURL to each URL

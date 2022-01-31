@@ -15,8 +15,6 @@
     // subscribe to the global price and wait for changes,
     // update the "displayedPrice"
     calculatedPrice.subscribe((price) => {
-        console.log("price updated", price);
-        console.log("upperBound", $priceUpperBound);
         if (price === "0.00") {
             displayedPrice = "* 0.00 €";
         } else {
