@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const nodemailer = require("nodemailer");
-const { expressCspHeader, NONE, SELF, INLINE, NONCE } = require("express-csp-header");
+const { expressCspHeader, NONE, SELF, INLINE, NONCE, STRICT_DYNAMIC } = require("express-csp-header");
 const crypto = require("crypto");
 const slugify = require("slugify");
 const axios = require("axios");
@@ -52,8 +52,11 @@ app.use(morgan("dev"));
 // gZip compression
 app.use(compression());
 
+// set up static folders
+app.use("/static", express.static(path.resolve(__dirname, "static")));
+
 app.use(function (req, res, next) {
-	console.log("Before Express CSP");
+	console.log("Before Express CSP Header Middleware");
 	next();
 });
 
@@ -65,7 +68,6 @@ app.use(
 			"script-src": [
 				SELF,
 				[NONCE],
-				"strict-dynamic",
 				"http://localhost:35729",
 				"http://localhost:35730",
 				"https://ajax.googleapis.com",
@@ -73,6 +75,7 @@ app.use(
 				"https://consentcdn.cookiebot.com",
 				"https://www.googletagmanager.com",
 				"https://tagmanager.google.com",
+				STRICT_DYNAMIC,
 			],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://tagmanager.google.com"],
 			"img-src": [
@@ -112,9 +115,6 @@ app.use(cors());
 
 // use EJS as template engine
 app.set("view engine", "ejs");
-
-// set up static folders
-app.use("/static", express.static(path.resolve(__dirname, "static")));
 
 // function to find page-specific css-files
 const findSpecificCSS = (pageTitle) => {
@@ -322,7 +322,7 @@ app.get("/kontakt", (req, res) => {
 //////////////////////////////////
 // dynamic routing
 //////////////////////////////////
-app.get("/whatever", (req, res) => {
+app.get("/:path", (req, res) => {
 	axios.get(`${strapiAPI}/pages?populate=*`).then((response) => {
 		console.log("dynamic routing");
 		// look for page with a title that matches the requested route
@@ -348,6 +348,7 @@ app.get("/whatever", (req, res) => {
 					image: match.attributes.image.data.attributes,
 					strapiURL: strapiURL,
 					css: findSpecificCSS(slugify(match.attributes.title, { lower: true })),
+					nonce: req.nonce,
 				});
 			}
 
@@ -363,6 +364,7 @@ app.get("/whatever", (req, res) => {
 					image: match.attributes.image.data.attributes,
 					strapiURL: strapiURL,
 					css: findSpecificCSS(slugify(match.attributes.title, { lower: true })),
+					nonce: req.nonce,
 				});
 			}
 		}
