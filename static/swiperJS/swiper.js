@@ -10,19 +10,36 @@ const swiper = new Swiper(".swiper", {
 	},
 	// Optional parameters
 	// If we need pagination
-	slidesPerView: 4,
-	spaceBetween: 10,
+	// Responsive breakpoints
+	breakpoints: {
+		// when window width is >= 320px
+		320: {
+			slidesPerView: 1,
+		},
+		// when window width is >= 480px
+		600: {
+			slidesPerView: 2,
+			// spaceBetween: 100,
+		},
+		// when window width is >= 640px
+		960: {
+			slidesPerView: 3,
+			// spaceBetween: 120,
+		},
+		1280: {
+			slidesPerView: 4,
+			spaceBetween: 40,
+		},
+	},
 
 	pagination: {
 		el: ".swiper-pagination",
 	},
-
 	// Navigation arrows
 	navigation: {
 		nextEl: ".my-next",
 		prevEl: ".my-prev",
 	},
-
 	// And if we need scrollbar
 	// scrollbar: {
 	// 	el: ".swiper-scrollbar",
