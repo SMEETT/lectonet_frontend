@@ -54,6 +54,7 @@ section.cards {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 16px;
 }
 
 @keyframes fadeIn {
@@ -134,7 +135,7 @@ section.cards {
 }
 
 .swiper-button-disabled {
-	opacity: 0.4;
+	opacity: 0.2;
 	pointer-events: none;
 }
 
