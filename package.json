@@ -5,7 +5,8 @@
 	"main": "frontend.js",
 	"scripts": {
 		"dev": "nodemon -r dotenv/config",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"gulp": "gulp gulpfile.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -22,10 +23,18 @@
 		"markdown-it-link-attributes": "^4.0.0",
 		"morgan": "^1.10.0",
 		"nodemailer": "^6.7.2",
-		"slugify": "^1.4.6"
+		"slugify": "^1.4.6",
+		"swiper": "^8.0.1"
 	},
 	"devDependencies": {
+		"autoprefixer": "^10.4.2",
+		"cssnano": "^5.0.16",
 		"dotenv": "^8.2.0",
+		"gulp": "^4.0.2",
+		"gulp-concat": "^2.6.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-sourcemaps": "^3.0.0",
+		"gulp-terser": "^2.1.0",
 		"nodemon": "^2.0.6"
 	}
 }

@@ -101,6 +101,7 @@ section.cards {
 .wrapper-slider {
 	width: 100%;
 	position: relative;
+	max-height: 420px;
 	/* display: flex; */
 }
 
@@ -136,7 +137,7 @@ section.cards {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;
-	transition: all 0.2s;
+	transition: 0.2s;
 	transform: scale(0.98);
 	will-change: transform;
 	user-select: none;
@@ -196,7 +197,7 @@ section.cards {
 }
 
 .grow {
-	transition: all 0.1s ease-in-out;
+	/* transition: all 0.1s ease-in-out; */
 }
 .grow:hover {
 	transform: scale(1.03, 1.03);
@@ -240,6 +241,7 @@ p.cardcopy {
 }
 
 .btn.outline.card {
+	display: flex;
 	align-self: start;
 	width: 90px;
 	margin: 16px auto;
