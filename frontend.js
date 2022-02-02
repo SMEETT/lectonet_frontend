@@ -77,7 +77,7 @@ app.use(
 				"https://tagmanager.google.com",
 				STRICT_DYNAMIC,
 			],
-			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://tagmanager.google.com"],
+			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://tagmanager.google.com", "https://unpkg.com"],
 			"img-src": [
 				SELF,
 				strapiURL,

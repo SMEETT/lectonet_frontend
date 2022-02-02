@@ -2,17 +2,23 @@
 <html lang="de">
 	<head>
     <%- include ("../partials/head.ejs", {nonce: nonce}) %>
+<!--     
     <style>
         @import url('../../static/css/layouts/index.css');
-    </style>
+        @import url('../../static/swiperJS/swiper.css');
+    </style> -->
     <meta name="keywords" content="<%= meta_keywords %>">
     <meta name="description" content="<%= meta_description %>">
-    <script src="../../static/index_slider.js" defer></script>
     <!-- HEAD END -->
 	</head>
 	<div id="preisrechner-hook"></div>
 	<body>
+    <script>
+
+    </script>
     <!-- BODY START -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="../../static/swiperJS/swiper.js"></script>
 		<div class="wrapper">
 			<header><%- include ("../partials/header.ejs") %></header>
 			<section class="text">
@@ -31,47 +37,59 @@
         </picture>
       </section>
 			<section id="cards" class="cards">
-                <div class="container-headlines">
-                  <h1 id="h1-leistungen">Leistungen</h1>
-                  <h2>Sie brauchen's, wir können's.</h2>
-                </div>
-                <div class="wrapper-slider">
-                    <div class="your-class">
-                    <% cards.forEach(card=> { %>
-                      <div class="card-wrapper">
-                          <a class="card-a" href=<%=card.slug %>>
-                            <div class="card grow">
-                              <div class="card-header">
-                                <%= card.title %>
-                              </div>
-                              <h1 class="cardheadline">
-                                <%= card.headline %>
-                              </h1>
-                              <p class="cardcopy">
-                                <%= card.teasertext %>
-                              </p>
-                              <button class="btn outline card">MEHR</button>
-                            </div>
-                          </a>
+        <div class="container-headlines">
+          <h1 id="h1-leistungen">Leistungen</h1>
+          <h2>Sie brauchen's, wir können's.</h2>
+        </div>
+        <div class="container-slider">
+          <div class="slider-loader" style="display: block">
+            <div class="lds-ripple">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="wrapper-slider" style="display: none">
+            <!-- Slider main container -->
+            <div class="swiper">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper">
+                <% cards.forEach(card=> { %>
+                  <div class="swiper-slide">
+                    <div class="card-wrapper">
+                      <a class="card-a" href=<%=card.slug %>>
+                        <div class="card grow">
+                          <div class="card-header">
+                            <%= card.title %>
                           </div>
-                          <% }) %>
-
+                          <h1 class="cardheadline">
+                            <%= card.headline %>
+                          </h1>
+                          <p class="cardcopy">
+                            <%= card.teasertext %>
+                          </p>
+                          <button class="btn outline card">MEHR</button>
+                        </div>
+                      </a>
                     </div>
-                    <div class="wrapper-slider-nav">
-                      <button class="my-prev">
-                        <img width=24 height=75 src="../../static/images/icon_slider_prev.svg" alt="">
-                      </button>
-                      <button class="my-next">
-                        <img width=24 height=75 src="../../static/images/icon_slider_next.svg" alt="">
-                      </button>
-                    </div>
-                    
-                                    </div>
+                  </div>
+                  <% }) %>
+              </div>
+              <!-- If we need pagination -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="wrapper-slider-nav">
+              <div class="my-prev">
+                <img width=24 height=75 src="../../static/images/icon_slider_prev.svg" alt="">
+              </div>
+              <div class="my-next">
+                <img width=24 height=75 src="../../static/images/icon_slider_next.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
 			</section>
-            <footer><%- include ("../partials/footer.ejs") %></footer>
-            <div class="gradient"></div>
+      <footer><%- include ("../partials/footer.ejs") %></footer>
+      <div class="gradient"></div>
 		</div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/slick/slick.min.js"></script>
 	</body>
 </html>
