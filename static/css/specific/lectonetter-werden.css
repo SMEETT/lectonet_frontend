@@ -1,0 +1,43 @@
+/* section.picture img {
+	border: 1px solid red;
+	width: 835px;
+	height: 914px;
+}
+
+.logo-footer {
+	width: 142px;
+	height: 26px;
+}
+
+* {
+	font-family: "Courier New", Courier, monospace;
+}
+
+p {
+	font-family: "Courier New", Courier, monospace;
+}
+
+.container-icons-social-media {
+	width: 92px;
+	height: 22px;
+} */
+/* 
+ul {
+	background-color: red;
+} */
+
+section > ul > li {
+	font-family: Merriweather;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 220%;
+	margin: 12px 0 0 0;
+	color: var(--default-grey);
+	white-space: pre-wrap;
+}
+
+@media only screen and (max-width: 599px) {
+	section > ul > li {
+		font-size: 12px;
+	}
+}
