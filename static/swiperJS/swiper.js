@@ -8,6 +8,8 @@ const swiper = new Swiper(".swiper", {
 			wrapperSlider.style.animation = "fadeIn 1s";
 		},
 	},
+	grabCursor: true,
+	preventClicks: true,
 	// Optional parameters
 	// If we need pagination
 	// Responsive breakpoints

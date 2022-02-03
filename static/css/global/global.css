@@ -303,6 +303,18 @@ p a {
 	}
 } */
 
+/* @media (min-height: 1600px) and (min-width: 2560px) {
+	html {
+		zoom: 1.1;
+	}
+}
+
+@media (min-height: 1900px) and (min-width: 3000px) {
+	html {
+		zoom: 1.2;
+	}
+} */
+
 /* ----------- 1280-WIDTH */
 @media only screen and (min-width: 1280px) {
 	.wrapper-hamburger {
