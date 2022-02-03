@@ -67,6 +67,15 @@ footer .icon-social-media {
 	justify-content: center;
 }
 
+footer .icon-social-media-inactive {
+	width: 48px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
 a.footer {
 	text-decoration: underline;
 	color: white;

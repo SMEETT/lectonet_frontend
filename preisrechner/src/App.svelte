@@ -13,6 +13,7 @@
         groups,
         types,
         selectedCategories,
+        formSuccessfullySubmitted,
     } from "./stores/stores.js";
 
     let selectedCategoriesTEMP;
@@ -63,50 +64,54 @@
         <span class="preisrechner-title">Preisrechner</span>
         <div class="icon-close-calculator" id="icon-close-calculator" />
     </div>
-    <form
-        style="border-bottom: 1px solid rgb(221, 221, 221)"
-        on:submit|preventDefault
-        on:change|preventDefault={handleDropdownChange}>
-        <div class="calculator-top">
-            <Dropdown
-                label={'Sie sind'}
-                options={dropdownDataGroups}
-                category={'group'}
-                id={'dropdown-group'}
-                initialDisableStatus="false" />
+    {#if !$formSuccessfullySubmitted}
+        <form
+            style="border-bottom: 1px solid rgb(221, 221, 221)"
+            on:submit|preventDefault
+            on:change|preventDefault={handleDropdownChange}>
+            <div class="calculator-top">
+                <Dropdown
+                    label={'Sie sind'}
+                    options={dropdownDataGroups}
+                    category={'group'}
+                    id={'dropdown-group'}
+                    initialDisableStatus="false" />
 
-            <Dropdown
-                label={'Sie benötigen'}
-                options={dropdownDataServices}
-                category={'service'}
-                id={'dropdown-service'}
-                initialDisableStatus="true" />
-        </div>
-        <!-- div rendered when anything but "Bewerbung" was selected -->
-        <div class="calculator-mid-regular" id="calculator-mid-regular">
-            <Dropdown
-                label={'Art der Arbeit'}
-                options={dropdownDataTypes}
-                category={'type'}
-                id={'dropdown-type'}
-                initialDisableStatus="true" />
-            <TextfieldQuantity />
-        </div>
-        <!-- div rendered when "Bewerbung" was selected -->
-        <div class="calculator-mid-bewerbung" id="calculator-mid-bewerbung">
-            <BewerbungenCheckboxes
-                bind:this={BewerbungenCheckboxesInstance}
-                dropdownDataTypes={dropdownDataTypes} />
-        </div>
-        <div class="wrapper-price-display">
-            <PriceDisplay />
-        </div>
-    </form>
+                <Dropdown
+                    label={'Sie benötigen'}
+                    options={dropdownDataServices}
+                    category={'service'}
+                    id={'dropdown-service'}
+                    initialDisableStatus="true" />
+            </div>
+            <!-- div rendered when anything but "Bewerbung" was selected -->
+            <div class="calculator-mid-regular" id="calculator-mid-regular">
+                <Dropdown
+                    label={'Art der Arbeit'}
+                    options={dropdownDataTypes}
+                    category={'type'}
+                    id={'dropdown-type'}
+                    initialDisableStatus="true" />
+                <TextfieldQuantity />
+            </div>
+            <!-- div rendered when "Bewerbung" was selected -->
+            <div class="calculator-mid-bewerbung" id="calculator-mid-bewerbung">
+                <BewerbungenCheckboxes
+                    bind:this={BewerbungenCheckboxesInstance}
+                    dropdownDataTypes={dropdownDataTypes} />
+            </div>
+            <div class="wrapper-price-display">
+                <PriceDisplay />
+            </div>
+        </form>
+    {/if}
     <div class="calculator-bottom">
         <MailForm />
-        <div class="price-disclaimer">
-            <p>* Unverbindliche Preisauskunft</p>
-        </div>
+        {#if !$formSuccessfullySubmitted}
+            <div class="price-disclaimer">
+                <p>* unverbindliche Preisauskunft</p>
+            </div>
+        {/if}
     </div>
 </div>
 
@@ -224,6 +229,19 @@
         background-size: contain;
     }
 
+    /* .preisrechner-wrapper {
+        width: 700px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 30;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.25);
+        border-radius: 25px;
+        overflow: hidden;
+    } */
+
     .preisrechner-wrapper {
         width: 700px;
         height: auto;
@@ -254,8 +272,6 @@
         .preisrechner-wrapper {
             width: 512px;
             height: auto;
-            margin: auto;
-            margin-top: 40px;
         }
 
         .price-disclaimer {
@@ -299,8 +315,6 @@
         .preisrechner-wrapper {
             width: 300px;
             height: auto;
-            margin: auto;
-            margin-top: 10px;
         }
 
         .preisrechner-title-wrapper {

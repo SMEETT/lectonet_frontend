@@ -61,6 +61,16 @@ nav .icon-social-media {
 	transition: 0.2s ease;
 }
 
+nav .icon-social-media-inactive {
+	width: 48px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.2s ease;
+	pointer-events: none;
+}
+
 nav .icon-social-media:hover {
 	filter: brightness(3);
 }

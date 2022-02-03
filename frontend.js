@@ -446,7 +446,7 @@ app.post("/send/price", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
-		// bcc: "info@texte-wackwitz.de",
+		// bcc: "info@lectonet.de",
 		subject: subject,
 		html: html,
 		attachments: [

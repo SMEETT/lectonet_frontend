@@ -9,6 +9,7 @@
         quantity,
         bewerbungenSelectedTypes,
         priceUpperBound,
+        formSuccessfullySubmitted,
     } from "../stores/stores.js";
 
     const fields = {
@@ -20,7 +21,6 @@
     };
     let errors = {};
     let foundError = false;
-    let formSuccessfullySubmitted = false;
 
     const extractErrors = ({ inner }) => {
         return inner.reduce((acc, err) => {
@@ -90,21 +90,25 @@
                     .catch((error) => {
                         console.log(error);
                     });
-                formSuccessfullySubmitted = true;
+                $formSuccessfullySubmitted = true;
             })
             .catch((err) => {
                 errors = extractErrors(err);
                 foundError = true;
-                formSuccessfullySubmitted = false;
+                $formSuccessfullySubmitted = false;
             });
     };
 
-    const handleBack = () => {
-        formSuccessfullySubmitted = false;
+    const handleClose = () => {
+        $formSuccessfullySubmitted = false;
+        const calculatorHook = document.getElementById("preisrechner-hook");
+        calculatorHook.style.display = "none";
     };
+
+    const toggleOverlayCalculator = (e) => {};
 </script>
 
-{#if !formSuccessfullySubmitted}
+{#if !$formSuccessfullySubmitted}
     <form class="email" on:submit|preventDefault>
         <div class="email-form-desc">
             Unschlüssig? Dann fordern Sie hier ein unverbindliches,
@@ -139,8 +143,8 @@
                 class="checkbox"
                 style="cursor: pointer"
                 name="checkbox" />
-            <label for="checkbox">Mit
-                <a href="/datenschutz">Datenschutzerklärung</a>
+            <label for="checkbox">mit
+                <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>
                 einverstanden</label>
         </div>
         {#if foundError}
@@ -173,7 +177,10 @@
     <div class="success">
         Gut, dass Sie uns vertrauen – vielen Dank!<br />
         Wir setzen uns mit Ihnen in Verbindung.
-        <button class="btn outline back" on:click={handleBack}>Zurück</button>
+        <button
+            id="btnCloseAfterSubmit"
+            class="btn outline back"
+            on:click={handleClose}>OK</button>
     </div>
 {/if}
 
@@ -185,6 +192,10 @@
         transition: 0.15s;
         font-family: Montserrat;
         font-style: normal;
+    }
+
+    .hide {
+        display: none;
     }
 
     li {
@@ -351,6 +362,11 @@
         }
         form.email {
             padding: 0 10px 10px 10px;
+        }
+
+        .success {
+            text-align: center;
+            font-size: 12px;
         }
 
         .errors {

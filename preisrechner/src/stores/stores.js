@@ -26,6 +26,8 @@ export const price = writable("* 0.00");
 export const calculatedPrice = writable("* 0.00");
 export const priceUpperBound = readable(1.2);
 
+export const formSuccessfullySubmitted = writable(false);
+
 export const priceDisableStatus = writable(true);
 
 export const selectedCategories = writable({

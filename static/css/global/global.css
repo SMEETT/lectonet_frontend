@@ -91,7 +91,6 @@ section.picture img {
 	animation: fadein 0.5s;
 	transition: 0s;
 	padding: 0;
-	padding-left: 12px;
 	overflow: hidden;
 	overflow-y: scroll;
 }
@@ -294,6 +293,15 @@ p strong {
 p a {
 	text-decoration: underline;
 }
+
+/* reposition price-calculator when height > 1280px */
+/* ----------- 1280-HEIGHT */
+/* @media only screen and (min-height: 1280px) {
+	#preisrechner-hook {
+		align-items: flex-start;
+		padding-top: 128px;
+	}
+} */
 
 /* ----------- 1280-WIDTH */
 @media only screen and (min-width: 1280px) {

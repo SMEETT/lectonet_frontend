@@ -11,17 +11,22 @@ window.addEventListener("DOMContentLoaded", () => {
 	const calculatorHook = document.getElementById("preisrechner-hook");
 
 	const toggleOverlayCalculator = (e) => {
-		e.stopPropagation();
-		if (calculatorIsOpen) {
-			if (e.srcElement.id === "preisrechner-hook" || e.srcElement.id === "icon-close-calculator") {
-				tagBody.classList.remove("overflow");
-				calculatorHook.style.display = "none";
-				calculatorIsOpen = false;
-			}
+		if (calculatorHook.style.display === "none" && e.srcElement.id === "btnCloseAfterSubmit") {
+			calculatorIsOpen = false;
+			tagBody.classList.remove("overflow");
 		} else {
-			tagBody.classList.add("overflow");
-			calculatorHook.style.display = "flex";
-			calculatorIsOpen = true;
+			e.stopPropagation();
+			if (calculatorIsOpen) {
+				if (e.srcElement.id === "preisrechner-hook" || e.srcElement.id === "icon-close-calculator") {
+					tagBody.classList.remove("overflow");
+					calculatorHook.style.display = "none";
+					calculatorIsOpen = false;
+				}
+			} else {
+				tagBody.classList.add("overflow");
+				calculatorHook.style.display = "flex";
+				calculatorIsOpen = true;
+			}
 		}
 	};
 
