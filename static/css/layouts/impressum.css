@@ -14,7 +14,7 @@ section.imprint {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding-top: 16px;
+	padding-top: 10px;
 	padding-bottom: 16px;
 	padding-left: 64px;
 	padding-right: 256px;
@@ -48,9 +48,8 @@ br {
 @media only screen and (max-width: 959px) {
 	section.imprint {
 		padding: 0 32px;
-		padding-top: 64px;
 		justify-content: center;
-		text-align: center;
+		/* text-align: center; */
 		hyphens: auto;
 	}
 	p {
@@ -59,11 +58,14 @@ br {
 	section.imprint h1 {
 		margin-top: 16px;
 	}
+	.wrapper {
+		grid-template-rows: 80px auto auto;
+	}
 }
 
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
-	section.imprint {
-		padding-top: 48px;
+	.wrapper {
+		grid-template-rows: 60px auto auto;
 	}
 }

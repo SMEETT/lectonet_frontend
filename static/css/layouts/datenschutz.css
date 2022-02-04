@@ -14,7 +14,7 @@ section.datenschutz {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding-top: 16px;
+	padding-top: 10px;
 	padding-bottom: 16px;
 	padding-left: 64px;
 	padding-right: 256px;
@@ -67,21 +67,20 @@ br {
 /* ----------- 600-WIDTH */
 @media only screen and (max-width: 959px) {
 	section.datenschutz {
-		padding: 32px;
-		padding-top: 64px;
+		/* padding-top: 64px; */
 		justify-content: center;
-		text-align: center;
+		/* text-align: center; */
 		hyphens: auto;
+	}
+
+	.wrapper {
+		grid-template-rows: 80px auto auto;
 	}
 
 	section.datenschutz ul {
 		margin-left: 64px;
 		margin-bottom: 16px;
 		text-align: left;
-	}
-
-	section.datenschutz h1 {
-		margin-top: 16px;
 	}
 
 	p {
@@ -95,8 +94,8 @@ br {
 
 /* ----------- 320-WIDTH */
 @media only screen and (max-width: 599px) {
-	section.datenschutz {
-		padding-top: 48px;
+	.wrapper {
+		grid-template-rows: 60px auto auto;
 	}
 
 	section.datenschutz ul {

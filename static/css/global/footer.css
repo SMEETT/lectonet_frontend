@@ -74,6 +74,7 @@ footer .icon-social-media-inactive {
 	align-items: center;
 	justify-content: center;
 	pointer-events: none;
+	display: none;
 }
 
 a.footer {
@@ -142,8 +143,8 @@ footer .icon-social-media:hover {
 
 	footer .container-icons-social-media {
 		grid-area: social-media;
-		align-self: center;
-		justify-self: center;
+		/* align-self: center; */
+		/* justify-self: center; */
 		margin-top: 16px;
 		margin-bottom: 16px;
 	}

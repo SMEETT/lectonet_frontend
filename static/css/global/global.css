@@ -386,9 +386,9 @@ p a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		text-align: justify;
+		/* text-align: justify;
 		text-align: -moz-center;
-		text-align: -webkit-center;
+		text-align: -webkit-center; */
 		hyphens: auto;
 		padding: 0px 32px;
 		padding-top: 16px;

@@ -15,6 +15,7 @@ section.wackwitz {
 	grid-area: wackwitz;
 	margin: 16px 0;
 	animation: fadein 1s;
+	padding: 0 32px;
 }
 
 section.wackwitz p {
@@ -50,8 +51,8 @@ section.wackwitz p {
 
 	section.wackwitz {
 		justify-content: center;
-		align-items: center;
-		text-align: center;
+		/* align-items: center; */
+		/* text-align: center; */
 		flex-direction: column;
 		display: flex;
 	}

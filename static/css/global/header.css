@@ -48,14 +48,15 @@ nav .wrapper-nav-elements {
 
 nav .container-icons-social-media-navi {
 	display: flex;
-	width: 144px;
-	margin-right: 96px;
+	/* width: 144px; */
+	/* margin-right: 96px; */
 }
 
 nav .icon-social-media {
 	width: 48px;
 	height: 32px;
 	display: flex;
+	margin-left: 12px;
 	align-items: center;
 	justify-content: center;
 	transition: 0.2s ease;
@@ -69,6 +70,7 @@ nav .icon-social-media-inactive {
 	justify-content: center;
 	transition: 0.2s ease;
 	pointer-events: none;
+	display: none;
 }
 
 nav .icon-social-media:hover {
@@ -102,7 +104,7 @@ nav #link-leistungen {
 nav #link-ueber-uns {
 	width: 96px;
 	height: 32px;
-	margin-right: 128px;
+	margin-right: 327px;
 }
 
 nav #link-leistungen:hover,
@@ -219,7 +221,7 @@ nav .links-sub-ueber-uns {
 	}
 
 	nav #link-ueber-uns {
-		margin-right: 32px;
+		margin-right: 152px;
 	}
 
 	nav .links-sub-leistungen {

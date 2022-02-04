@@ -300,8 +300,11 @@ p.cardcopy {
 		width: 778px;
 		height: 680px;
 	}
-	#btn-open-calculator {
+	/* #btn-open-calculator {
 		margin-left: 16px;
+	} */
+	#btn-leistungen {
+		margin-right: 16px;
 	}
 }
 
