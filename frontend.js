@@ -465,4 +465,73 @@ app.post("/send/price", (req, res) => {
 	res.status(204).send("Ok");
 });
 
+//////////////////////////////////
+// send 'Contact Form'
+//////////////////////////////////
+
+app.post("/send/contactform", (req, res) => {
+	console.log("post contactform");
+	const receiver = req.query.email;
+	const firstname = req.query.firstname;
+	const lastname = req.query.lastname;
+	const msg = req.query.msg;
+
+	const subject = "Ihre Kontaktanfrage auf lectonet.de";
+	const html = `<b>Sehr geehrte(r) ${firstname} ${lastname}! </b><br>
+    <br>
+    Anbei finden Sie die von Ihnen gesendete Nachricht.<br>
+    Wir setzen uns schnellstmoeglich mit Ihnen in Verbindung.<br>
+    <br>
+    <b>${msg}<br>
+    <br>
+    <br>
+    Mit freundlichen Grüßen, <br>
+    R. Wackwitz, Geschäftsführer<br>
+    <br>
+    <img src="cid:unique@kreata.ee"/><br>
+    Rüdiger Wackwitz<br>
+    Eine Straße 17<br>
+    53215 Ort<br>
+    <br>
+    02214 / 4236231<br>
+    info@lectonet.de<br>
+    www.lectonet.de<br>
+    `;
+
+	// create reusable transporter object using the default SMTP transport
+	const transporter = nodemailer.createTransport({
+		port: 587,
+		host: priceCalcSMTP,
+		auth: {
+			user: "info@lectonet.de",
+			pass: priceCalcMailPW,
+		},
+		tls: {
+			ciphers: "SSLv3",
+		},
+		secureConnection: false,
+	});
+
+	const mailData = {
+		from: "info@lectonet.de", // sender address
+		to: receiver, // list of receivers
+		// bcc: "info@lectonet.de",
+		subject: subject,
+		html: html,
+		attachments: [
+			{
+				filename: "logo_grey.svg",
+				path: "./static/images/logo_grey_optimized.svg",
+				cid: "unique@kreata.ee", //same cid value as in the html img src
+			},
+		],
+	};
+
+	transporter.sendMail(mailData, function (err, info) {
+		if (err) console.log(err);
+		else console.log(info);
+	});
+	res.status(204).send("Ok");
+});
+
 app.listen(frontendPORT, () => console.log(`Server running on port ${frontendPORT}`));
