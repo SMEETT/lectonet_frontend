@@ -33,9 +33,9 @@
         'https://www.googletagmanager.com/gtm.js?id=' + i + dl; var n = d.querySelector('[nonce]');
     n && j.setAttribute('nonce', n.nonce || n.getAttribute('nonce')); f.parentNode.insertBefore(j, f);
   })(window, document, 'script', 'dataLayer', 'GTM-M54J87M');</script>
-<script src="../../static/script.js"></script>
+<script nonce='<%= nonce %>' src="../../static/script.js"></script>
 <!-- Svelte -->
-<script src="../../static/svelte/svelte-bundle.js"></script>
+<script nonce='<%= nonce %>' src="../../static/svelte/svelte-bundle.js"></script>
 <!-- End Google Tag Manager -->
 <!-- favicon -->
 <link rel="icon" type="image/png" href="../../static/images/favicon.png" />

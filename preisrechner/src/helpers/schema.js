@@ -1,14 +1,8 @@
 import * as yup from "yup";
 
 const regSchema = yup.object().shape({
-    lastname: yup
-        .string()
-        .required("Bitte geben Sie Ihren Namen ein")
-        .matches(/^[a-zA-Z-]*$/, "Name enthält unerlaubte(s) Zeichen"),
-    firstname: yup
-        .string()
-        .required("Bitte geben Sie Ihren Vornamen ein")
-        .matches(/^[a-zA-Z-]*$/, "Name enthält unerlaubte(s) Zeichen"),
+    lastname: yup.string().required("Bitte geben Sie Ihren Namen ein"),
+    firstname: yup.string().required("Bitte geben Sie Ihren Vornamen ein"),
     email: yup
         .string()
         .required("Bitte geben Sie Ihre E-Mail Adresse ein")

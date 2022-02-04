@@ -8,12 +8,9 @@
 	</head>
 	<div id="preisrechner-hook"></div>
 	<body>
-    <script>
-
-    </script>
     <!-- BODY START -->
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="../../static/swiperJS/swiper.js"></script>
+    <script nonce='<%= nonce %>' src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script nonce='<%= nonce %>' src="../../static/swiperJS/swiper.js"></script>
 		<div class="wrapper">
 			<header><%- include ("../partials/header.ejs") %></header>
 			<section class="text">
@@ -37,13 +34,13 @@
           <h2>Sie brauchen's, wir können's.</h2>
         </div>
         <div class="container-slider">
-          <div class="slider-loader" style="display: none">
+          <div class="slider-loader" style="display: block">
             <div class="lds-ripple">
               <div></div>
               <div></div>
             </div>
           </div>
-          <div class="wrapper-slider" style="display: block">
+          <div class="wrapper-slider" style="display: none">
             <!-- Slider main container -->
             <div class="swiper">
               <!-- Additional required wrapper -->

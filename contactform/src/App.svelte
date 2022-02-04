@@ -1,7 +1,5 @@
 <script>
 	import { regSchema } from "./helpers/schema";
-	import axios from "axios";
-
 	const fields = {
 		firstname: "",
 		lastname: "",
@@ -27,37 +25,39 @@
 	let foundError = false;
 	let formSuccessfullySubmitted = false;
 
-	const handleSubmit = () => {
+	async function postData(url, data) {
+		console.log("stringified", JSON.stringify(data));
+		const res = await fetch(url, {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		});
+		return res.json();
+	}
+
+	const handleSubmit2 = () => {
 		console.log(fields);
 		const result = regSchema.validate(fields, { abortEarly: false });
 		result
 			.then((res) => {
 				errors = {};
 				foundError = false;
-				axios
-					.post(
-						`${frontendURL}/send/contactform`,
-						{},
-						{
-							params: {
-								firstname: fields.firstname,
-								lastname: fields.lastname,
-								email: fields.email,
-							},
-						}
-					)
-					.then((response) => {
-						console.log("response:", response);
+				postData(`${frontendURL}/send/contactform`, fields)
+					.then((res) => {
+						console.log("post req res", res);
+						formSuccessfullySubmitted = true;
 					})
-					.catch((error) => {
-						console.log("error", error);
+					.catch((err) => {
+						console.log("post failed", err);
 					});
-				formSuccessfullySubmitted = true;
 			})
 			.catch((err) => {
 				console.log(frontendURL);
-				console.log(err);
-				// errors = extractErrors(err);
+				// console.log(err);
+				errors = extractErrors(err);
 				foundError = true;
 				formSuccessfullySubmitted = false;
 			});
@@ -93,13 +93,10 @@
 				>
 			</div>
 			{#if errors.agreed}
-				<p class="error">{errors.agreed}</p>
+				<p style="padding-left: 32px" class="error">{errors.agreed}</p>
 			{/if}
-			<!-- {#if foundError}
-				<div class="errors">Bitte fuellen Sie alle Felder vollstaendig aus.</div>
-			{/if} -->
 			<div class="email-form-button">
-				<button on:click|preventDefault={handleSubmit} class="btn outline">Abschicken</button>
+				<button on:click|preventDefault={handleSubmit2} class="btn outline">Abschicken</button>
 			</div>
 		</form>
 	{:else}
@@ -110,6 +107,12 @@
 </div>
 
 <style>
+	.success {
+		display: flex;
+		margin-top: 32px;
+		border: 1px solid red;
+	}
+
 	.wrapper-contactform {
 		/* border: 1px solid red; */
 		display: flex;
@@ -139,15 +142,6 @@
 		margin-top: 4px;
 	}
 
-	.success {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		margin-top: 32px;
-		padding: 0 10px;
-	}
-
 	p {
 		font-weight: 500;
 	}
@@ -170,6 +164,7 @@
 	form.email {
 		display: flex;
 		flex-direction: column;
+		margin: 16px 0;
 		/* column-gap: 20px; */
 		/* row-gap: 16px; */
 		/* grid-auto-flow: column; */
@@ -219,8 +214,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		margin-top: 32px;
-		border: 1px solid red;
+		margin-top: 16px;
 	}
 
 	label {

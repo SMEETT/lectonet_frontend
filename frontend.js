@@ -1,5 +1,6 @@
 // imports
 const express = require("express");
+const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -47,6 +48,8 @@ const app = express();
 // 	})
 // );
 
+app.use(bodyParser.json());
+
 app.use(morgan("dev"));
 
 // gZip compression
@@ -68,15 +71,23 @@ app.use(
 			"script-src": [
 				SELF,
 				[NONCE],
-				"http://localhost:35729",
-				"http://localhost:35730",
-				"https://ajax.googleapis.com",
-				"https://consent.cookiebot.com",
-				"https://consentcdn.cookiebot.com",
-				"https://www.googletagmanager.com",
-				"https://tagmanager.google.com",
 				STRICT_DYNAMIC,
+				// STRICT_DYNAMIC,
 			],
+			// "script-src": [
+			// 	,
+			// 	STRICT_DYNAMIC,
+			// 	INLINE,
+			// 	"https:",
+			// 	"http://localhost:35729",
+			// 	"http://localhost:35730",
+			// 	"https://ajax.googleapis.com",
+			// 	"https://consent.cookiebot.com",
+			// 	"https://consentcdn.cookiebot.com",
+			// 	"https://www.googletagmanager.com",
+			// 	"https://tagmanager.google.com",
+			// 	"https://unpkg.com",
+			// ],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://tagmanager.google.com", "https://unpkg.com"],
 			"img-src": [
 				SELF,
@@ -471,10 +482,11 @@ app.post("/send/price", (req, res) => {
 
 app.post("/send/contactform", (req, res) => {
 	console.log("post contactform");
-	const receiver = req.query.email;
-	const firstname = req.query.firstname;
-	const lastname = req.query.lastname;
-	const msg = req.query.msg;
+	console.log("req", req.headers);
+	const receiver = req.body.email;
+	const firstname = req.body.firstname;
+	const lastname = req.body.lastname;
+	const msg = req.body.msg;
 
 	const subject = "Ihre Kontaktanfrage auf lectonet.de";
 	const html = `<b>Sehr geehrte(r) ${firstname} ${lastname}! </b><br>
@@ -531,7 +543,8 @@ app.post("/send/contactform", (req, res) => {
 		if (err) console.log(err);
 		else console.log(info);
 	});
-	res.status(204).send("Ok");
+	res.json("204: OK / Mail sent");
+	// res.status(204).send("Ok");
 });
 
 app.listen(frontendPORT, () => console.log(`Server running on port ${frontendPORT}`));
