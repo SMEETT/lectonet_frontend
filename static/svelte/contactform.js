@@ -39,6 +39,9 @@ var app = (function () {
     function element(name) {
         return document.createElement(name);
     }
+    function svg_element(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
     function text(data) {
         return document.createTextNode(data);
     }
@@ -6193,23 +6196,48 @@ var app = (function () {
     // (101:1) {:else}
     function create_else_block(ctx) {
     	let div;
-    	let t;
-    	let br;
+    	let svg;
+    	let path0;
+    	let path1;
+    	let t0;
+    	let p;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			t = text("Vielen Dank! Ihre Kontaktanfrage wurde erfolgreich versendet.");
-    			br = element("br");
-    			attr_dev(br, "class", "svelte-abr5n1");
-    			add_location(br, file, 102, 64, 2899);
-    			attr_dev(div, "class", "success svelte-abr5n1");
+    			svg = svg_element("svg");
+    			path0 = svg_element("path");
+    			path1 = svg_element("path");
+    			t0 = space();
+    			p = element("p");
+    			p.textContent = "Vielen Dank! Ihre Kontaktanfrage wurde erfolgreich versendet.";
+    			attr_dev(path0, "d", "M98.331 119.081C95.9144 116.67 92.6369 115.316 89.2193 115.316C85.8018 115.316 82.5242 116.67 80.1077 119.081C77.6911 121.491 76.3335 124.76 76.3335 128.169C76.3335 131.577 77.6911 134.846 80.1077 137.257L118.608 175.657C119.807 176.843 121.229 177.782 122.793 178.419C124.356 179.056 126.03 179.378 127.719 179.369C129.476 179.313 131.203 178.898 132.792 178.15C134.382 177.401 135.8 176.335 136.959 175.017L226.793 72.6168C228.867 70.0481 229.867 66.7801 229.585 63.494C229.302 60.2079 227.759 57.1573 225.276 54.9785C222.794 52.7996 219.564 51.6606 216.26 51.7989C212.956 51.9372 209.833 53.3421 207.543 55.7208L127.719 147.881L98.331 119.081Z");
+    			attr_dev(path0, "fill", "var(--default-grey)");
+    			attr_dev(path0, "class", "svelte-1weww1g");
+    			add_location(path0, file, 103, 4, 2968);
+    			attr_dev(path1, "d", "M243.221 115.369C239.817 115.369 236.553 116.718 234.146 119.118C231.74 121.518 230.388 124.774 230.388 128.169C230.388 155.327 219.571 181.373 200.317 200.577C181.063 219.78 154.95 230.569 127.721 230.569C107.445 230.56 87.6265 224.563 70.7635 213.334C53.9005 202.106 40.7484 186.149 32.9657 167.475C25.1831 148.801 23.1183 128.247 27.0317 108.404C30.9452 88.5618 40.6616 70.3192 54.9559 55.9769C64.4616 46.3691 75.7931 38.7487 88.2874 33.5618C100.782 28.3748 114.188 25.7256 127.721 25.7689C135.927 25.8202 144.103 26.7644 152.104 28.5849C153.779 29.1015 155.541 29.2705 157.284 29.0816C159.026 28.8926 160.711 28.3498 162.235 27.4864C163.759 26.6231 165.089 25.4576 166.144 24.0617C167.199 22.6659 167.956 21.0693 168.369 19.3704C168.782 17.6715 168.841 15.9063 168.544 14.1837C168.246 12.461 167.598 10.8174 166.639 9.35412C165.68 7.89086 164.431 6.63897 162.969 5.67565C161.506 4.71233 159.862 4.05798 158.136 3.75294C148.166 1.41365 137.963 0.21128 127.721 0.168945C102.367 0.300319 77.6194 7.91961 56.6024 22.0653C35.5853 36.211 19.2404 56.2491 9.6301 79.6509C0.0198383 103.053 -2.42502 128.77 2.60405 153.556C7.63313 178.342 19.9108 201.087 37.8876 218.921C61.7151 242.697 94.0161 256.091 127.721 256.169C161.757 256.169 194.399 242.683 218.466 218.679C242.533 194.674 256.054 162.117 256.054 128.169C256.054 124.774 254.702 121.518 252.295 119.118C249.889 116.718 246.624 115.369 243.221 115.369Z");
+    			attr_dev(path1, "fill", "var(--default-grey)");
+    			attr_dev(path1, "class", "svelte-1weww1g");
+    			add_location(path1, file, 107, 4, 3673);
+    			attr_dev(svg, "class", "success-checkmark svelte-1weww1g");
+    			attr_dev(svg, "width", "257");
+    			attr_dev(svg, "height", "257");
+    			attr_dev(svg, "viewBox", "0 0 257 257");
+    			attr_dev(svg, "fill", "none");
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			add_location(svg, file, 102, 3, 2838);
+    			attr_dev(p, "class", "success-message svelte-1weww1g");
+    			add_location(p, file, 112, 3, 5146);
+    			attr_dev(div, "class", "success svelte-1weww1g");
     			add_location(div, file, 101, 2, 2813);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, t);
-    			append_dev(div, br);
+    			append_dev(div, svg);
+    			append_dev(svg, path0);
+    			append_dev(svg, path1);
+    			append_dev(div, t0);
+    			append_dev(div, p);
     		},
     		p: noop,
     		d: function destroy(detaching) {
@@ -6295,44 +6323,44 @@ var app = (function () {
     			div1 = element("div");
     			button = element("button");
     			button.textContent = "Abschicken";
-    			attr_dev(input0, "class", "name mt-16 svelte-abr5n1");
+    			attr_dev(input0, "class", "name mt-16 svelte-1weww1g");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "name", "firstname");
     			attr_dev(input0, "placeholder", "Vorname");
     			add_location(input0, file, 69, 3, 1540);
-    			attr_dev(input1, "class", "name mt-16 svelte-abr5n1");
+    			attr_dev(input1, "class", "name mt-16 svelte-1weww1g");
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "name", "lastname");
     			attr_dev(input1, "placeholder", "Name");
     			add_location(input1, file, 73, 3, 1732);
-    			attr_dev(input2, "class", "email mt-16 svelte-abr5n1");
+    			attr_dev(input2, "class", "email mt-16 svelte-1weww1g");
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "name", "email");
     			attr_dev(input2, "placeholder", "E-Mail Adresse");
     			add_location(input2, file, 77, 3, 1917);
     			attr_dev(textarea, "placeholder", "Nachricht");
-    			attr_dev(textarea, "class", "svelte-abr5n1");
+    			attr_dev(textarea, "class", "svelte-1weww1g");
     			add_location(textarea, file, 81, 3, 2101);
-    			attr_dev(input3, "class", "checkbox svelte-abr5n1");
+    			attr_dev(input3, "class", "checkbox svelte-1weww1g");
     			attr_dev(input3, "type", "checkbox");
     			set_style(input3, "cursor", "pointer");
     			attr_dev(input3, "name", "checkbox");
     			add_location(input3, file, 86, 4, 2296);
     			attr_dev(a, "href", "/datenschutz");
     			attr_dev(a, "target", "_blank");
-    			attr_dev(a, "class", "svelte-abr5n1");
+    			attr_dev(a, "class", "svelte-1weww1g");
     			add_location(a, file, 89, 5, 2449);
     			attr_dev(label, "for", "checkbox");
-    			attr_dev(label, "class", "svelte-abr5n1");
+    			attr_dev(label, "class", "svelte-1weww1g");
     			add_location(label, file, 87, 4, 2412);
-    			attr_dev(div0, "class", "email-form-checkboxes svelte-abr5n1");
+    			attr_dev(div0, "class", "email-form-checkboxes svelte-1weww1g");
     			set_style(div0, "cursor", "pointer");
     			add_location(div0, file, 85, 3, 2232);
-    			attr_dev(button, "class", "btn outline svelte-abr5n1");
+    			attr_dev(button, "class", "btn outline svelte-1weww1g");
     			add_location(button, file, 97, 4, 2694);
-    			attr_dev(div1, "class", "email-form-button svelte-abr5n1");
+    			attr_dev(div1, "class", "email-form-button svelte-1weww1g");
     			add_location(div1, file, 96, 3, 2658);
-    			attr_dev(form, "class", "email svelte-abr5n1");
+    			attr_dev(form, "class", "email svelte-1weww1g");
     			add_location(form, file, 68, 2, 1491);
     		},
     		m: function mount(target, anchor) {
@@ -6504,7 +6532,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-abr5n1");
+    			attr_dev(p, "class", "error svelte-1weww1g");
     			add_location(p, file, 71, 4, 1680);
     		},
     		m: function mount(target, anchor) {
@@ -6540,7 +6568,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-abr5n1");
+    			attr_dev(p, "class", "error svelte-1weww1g");
     			add_location(p, file, 75, 4, 1866);
     		},
     		m: function mount(target, anchor) {
@@ -6576,7 +6604,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-abr5n1");
+    			attr_dev(p, "class", "error svelte-1weww1g");
     			add_location(p, file, 79, 4, 2053);
     		},
     		m: function mount(target, anchor) {
@@ -6612,7 +6640,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-abr5n1");
+    			attr_dev(p, "class", "error svelte-1weww1g");
     			add_location(p, file, 83, 4, 2186);
     		},
     		m: function mount(target, anchor) {
@@ -6649,7 +6677,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			set_style(p, "padding-left", "38px");
-    			attr_dev(p, "class", "error svelte-abr5n1");
+    			attr_dev(p, "class", "error svelte-1weww1g");
     			add_location(p, file, 94, 4, 2582);
     		},
     		m: function mount(target, anchor) {
@@ -6690,7 +6718,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			if_block.c();
-    			attr_dev(div, "class", "wrapper-contactform svelte-abr5n1");
+    			attr_dev(div, "class", "wrapper-contactform svelte-1weww1g");
     			add_location(div, file, 66, 0, 1421);
     		},
     		l: function claim(nodes) {

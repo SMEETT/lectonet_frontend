@@ -69,7 +69,6 @@ app.use(
 		directives: {
 			"default-src": [SELF, strapiURL],
 			"script-src": [
-				SELF,
 				[NONCE],
 				STRICT_DYNAMIC,
 				// STRICT_DYNAMIC,

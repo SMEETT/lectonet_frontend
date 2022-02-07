@@ -7,11 +7,14 @@
 		"footer footer";
 }
 section {
-	margin: 0 64px;
+	margin: 16px 64px;
+}
+
+section.main {
+	padding-bottom: 16px;
 }
 
 section.side {
-	padding-top: 52px;
 	padding-bottom: 16px;
 }
 
