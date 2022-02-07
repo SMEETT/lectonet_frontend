@@ -288,6 +288,12 @@ p {
 
 p strong {
 	font-weight: 700;
+	font-family: Merriweather;
+	font-size: 15px;
+	line-height: 220%;
+	margin: 16px 0 0 0;
+	color: var(--default-grey);
+	white-space: pre-wrap;
 }
 
 p a {
