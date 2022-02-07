@@ -429,7 +429,7 @@ app.post("/send/price", (req, res) => {
     Herzliche Grüße<br>
     Rüdiger Wackwitz<br>
     <br>
-    <img src="cid:unique@kreata.ee"/><br>
+    <img width=145 height=28 src="cid:unique@kreata.ee"/><br>
     Rüdiger Wackwitz<br>
     Mittelstraße 12<br>
     58256 Ennepetal<br>
@@ -499,7 +499,7 @@ app.post("/send/contactform", (req, res) => {
     Herzliche Grüße<br>
     Rüdiger Wackwitz<br>
     <br>
-    <img src="cid:unique@kreata.ee"/><br>
+    <img width=145 height=28 src="cid:unique@kreata.ee"/><br>
     Rüdiger Wackwitz<br>
     Mittelstraße 12<br>
     58256 Ennepetal<br>

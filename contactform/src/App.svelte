@@ -118,27 +118,28 @@
 <style>
 	.success {
 		display: flex;
-		padding: 32px 0;
+		padding: 16px 0;
 		width: 320px;
-		flex-direction: column;
 		/* margin-top: 20px; */
 		font-style: bold;
 		justify-content: center;
 		width: 50%;
 		align-items: center;
+		/* border: 1px solid red; */
 	}
 
 	.success-checkmark {
-		width: 150px;
-		height: 150px;
+		width: 40px;
+		height: 40px;
 		/* border: 1px solid red; */
 	}
 
 	.success-message {
-		margin-top: 16px;
-		line-height: 1.5;
-		width: 70%;
-		text-align: center;
+		/* margin-top: 16px; */
+		margin-left: 16px;
+		line-height: 1.3;
+		width: 100%;
+		/* text-align: center; */
 	}
 
 	.wrapper-contactform {
