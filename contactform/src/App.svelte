@@ -92,7 +92,7 @@
 				>
 			</div>
 			{#if errors.agreed}
-				<p style="padding-left: 32px" class="error">{errors.agreed}</p>
+				<p style="padding-left: 38px" class="error">{errors.agreed}</p>
 			{/if}
 			<div class="email-form-button">
 				<button on:click|preventDefault={handleSubmit2} class="btn outline">Abschicken</button>
@@ -100,7 +100,7 @@
 		</form>
 	{:else}
 		<div class="success">
-			Vielen Dank! Wir setzen uns mit Ihnen in Verbindung.<br />
+			Vielen Dank! Ihre Kontaktanfrage wurde erfolgreich versendet.<br />
 		</div>
 	{/if}
 </div>
@@ -108,8 +108,8 @@
 <style>
 	.success {
 		display: flex;
-		margin-top: 32px;
-		border: 1px solid red;
+		margin-top: 20px;
+		font-style: bold;
 	}
 
 	.wrapper-contactform {

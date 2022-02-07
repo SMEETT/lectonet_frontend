@@ -6199,11 +6199,11 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			t = text("Vielen Dank! Wir setzen uns mit Ihnen in Verbindung.");
+    			t = text("Vielen Dank! Ihre Kontaktanfrage wurde erfolgreich versendet.");
     			br = element("br");
-    			attr_dev(br, "class", "svelte-suoaet");
-    			add_location(br, file, 102, 55, 2890);
-    			attr_dev(div, "class", "success svelte-suoaet");
+    			attr_dev(br, "class", "svelte-abr5n1");
+    			add_location(br, file, 102, 64, 2899);
+    			attr_dev(div, "class", "success svelte-abr5n1");
     			add_location(div, file, 101, 2, 2813);
     		},
     		m: function mount(target, anchor) {
@@ -6295,44 +6295,44 @@ var app = (function () {
     			div1 = element("div");
     			button = element("button");
     			button.textContent = "Abschicken";
-    			attr_dev(input0, "class", "name mt-16 svelte-suoaet");
+    			attr_dev(input0, "class", "name mt-16 svelte-abr5n1");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "name", "firstname");
     			attr_dev(input0, "placeholder", "Vorname");
     			add_location(input0, file, 69, 3, 1540);
-    			attr_dev(input1, "class", "name mt-16 svelte-suoaet");
+    			attr_dev(input1, "class", "name mt-16 svelte-abr5n1");
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "name", "lastname");
     			attr_dev(input1, "placeholder", "Name");
     			add_location(input1, file, 73, 3, 1732);
-    			attr_dev(input2, "class", "email mt-16 svelte-suoaet");
+    			attr_dev(input2, "class", "email mt-16 svelte-abr5n1");
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "name", "email");
     			attr_dev(input2, "placeholder", "E-Mail Adresse");
     			add_location(input2, file, 77, 3, 1917);
     			attr_dev(textarea, "placeholder", "Nachricht");
-    			attr_dev(textarea, "class", "svelte-suoaet");
+    			attr_dev(textarea, "class", "svelte-abr5n1");
     			add_location(textarea, file, 81, 3, 2101);
-    			attr_dev(input3, "class", "checkbox svelte-suoaet");
+    			attr_dev(input3, "class", "checkbox svelte-abr5n1");
     			attr_dev(input3, "type", "checkbox");
     			set_style(input3, "cursor", "pointer");
     			attr_dev(input3, "name", "checkbox");
     			add_location(input3, file, 86, 4, 2296);
     			attr_dev(a, "href", "/datenschutz");
     			attr_dev(a, "target", "_blank");
-    			attr_dev(a, "class", "svelte-suoaet");
+    			attr_dev(a, "class", "svelte-abr5n1");
     			add_location(a, file, 89, 5, 2449);
     			attr_dev(label, "for", "checkbox");
-    			attr_dev(label, "class", "svelte-suoaet");
+    			attr_dev(label, "class", "svelte-abr5n1");
     			add_location(label, file, 87, 4, 2412);
-    			attr_dev(div0, "class", "email-form-checkboxes svelte-suoaet");
+    			attr_dev(div0, "class", "email-form-checkboxes svelte-abr5n1");
     			set_style(div0, "cursor", "pointer");
     			add_location(div0, file, 85, 3, 2232);
-    			attr_dev(button, "class", "btn outline svelte-suoaet");
+    			attr_dev(button, "class", "btn outline svelte-abr5n1");
     			add_location(button, file, 97, 4, 2694);
-    			attr_dev(div1, "class", "email-form-button svelte-suoaet");
+    			attr_dev(div1, "class", "email-form-button svelte-abr5n1");
     			add_location(div1, file, 96, 3, 2658);
-    			attr_dev(form, "class", "email svelte-suoaet");
+    			attr_dev(form, "class", "email svelte-abr5n1");
     			add_location(form, file, 68, 2, 1491);
     		},
     		m: function mount(target, anchor) {
@@ -6504,7 +6504,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-suoaet");
+    			attr_dev(p, "class", "error svelte-abr5n1");
     			add_location(p, file, 71, 4, 1680);
     		},
     		m: function mount(target, anchor) {
@@ -6540,7 +6540,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-suoaet");
+    			attr_dev(p, "class", "error svelte-abr5n1");
     			add_location(p, file, 75, 4, 1866);
     		},
     		m: function mount(target, anchor) {
@@ -6576,7 +6576,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-suoaet");
+    			attr_dev(p, "class", "error svelte-abr5n1");
     			add_location(p, file, 79, 4, 2053);
     		},
     		m: function mount(target, anchor) {
@@ -6612,7 +6612,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-suoaet");
+    			attr_dev(p, "class", "error svelte-abr5n1");
     			add_location(p, file, 83, 4, 2186);
     		},
     		m: function mount(target, anchor) {
@@ -6648,8 +6648,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			set_style(p, "padding-left", "32px");
-    			attr_dev(p, "class", "error svelte-suoaet");
+    			set_style(p, "padding-left", "38px");
+    			attr_dev(p, "class", "error svelte-abr5n1");
     			add_location(p, file, 94, 4, 2582);
     		},
     		m: function mount(target, anchor) {
@@ -6690,7 +6690,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			if_block.c();
-    			attr_dev(div, "class", "wrapper-contactform svelte-suoaet");
+    			attr_dev(div, "class", "wrapper-contactform svelte-abr5n1");
     			add_location(div, file, 66, 0, 1421);
     		},
     		l: function claim(nodes) {

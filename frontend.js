@@ -415,27 +415,27 @@ app.post("/send/price", (req, res) => {
         `;
 	}
 
-	const subject = "Ihre Preisanfrage auf Lectonet.de";
+	const subject = "Ihre Preisanfrage auf lectonet.de";
 	const html = `<b>Sehr geehrte(r) ${firstname} ${lastname}! </b><br>
     <br>
-    Anbei finden Sie den von Ihnen berechneten Preis:<br>
+    Anbei finden Sie den nach Ihren Angaben kalkulierten lectonet-Preis:<br>
     <br>
     <b>Sie sind: </b>${group}<br>
     <b>Sie benötigen: </b>${service}<br>
     ${interchangeableBit}
-    <b>Preis: </b>${price} (* unverbindliche Preisauskunft)<br>
+    <b>ca.-Preis: </b>${price} (* unverbindliche Preisauskunft)<br>
     <br>
-    Bei weiteren Fragen stehen wir Ihnen gerne zur Verfügung.<br/>
+    Interessant für Sie? Dann setzen Sie sich bitte für ein detailliertes verbindliches Angebot und gerne auch bei weiteren Fragen mit uns in Verbindung!<br/>
     <br>
-    Mit freundlichen Grüßen, <br>
-    R. Wackwitz, Geschäftsführer<br>
+    Herzliche Grüße<br>
+    Rüdiger Wackwitz<br>
     <br>
     <img src="cid:unique@kreata.ee"/><br>
     Rüdiger Wackwitz<br>
-    Eine Straße 17<br>
-    53215 Ort<br>
+    Mittelstraße 12<br>
+    58256 Ennepetal<br>
     <br>
-    02214 / 4236231<br>
+    02333 688 660 -0<br>
     info@lectonet.de<br>
     www.lectonet.de<br>
     `;
@@ -494,18 +494,18 @@ app.post("/send/contactform", (req, res) => {
     Anbei finden Sie die von Ihnen gesendete Nachricht.<br>
     Wir setzen uns schnellstmoeglich mit Ihnen in Verbindung.<br>
     <br>
-    <b>${msg}<br>
+    <br>${msg}<br>
     <br>
     <br>
-    Mit freundlichen Grüßen, <br>
-    R. Wackwitz, Geschäftsführer<br>
+    Herzliche Grüße<br>
+    Rüdiger Wackwitz<br>
     <br>
     <img src="cid:unique@kreata.ee"/><br>
     Rüdiger Wackwitz<br>
-    Eine Straße 17<br>
-    53215 Ort<br>
+    Mittelstraße 12<br>
+    58256 Ennepetal<br>
     <br>
-    02214 / 4236231<br>
+    02333 688 660 -0<br>
     info@lectonet.de<br>
     www.lectonet.de<br>
     `;
