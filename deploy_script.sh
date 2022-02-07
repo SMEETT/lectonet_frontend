@@ -5,6 +5,9 @@ npm install
 cd /var/lib/pm2node/lectonet_frontend/preisrechner
 npm install --production=false
 npm run build
+cd /var/lib/pm2node/lectonet_frontend/contactform
+npm install --production=false
+npm run build
 cd /var/lib/pm2node/lectonet_frontend
 # git clean -f
 # git clean -d -f
