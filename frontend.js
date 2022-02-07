@@ -424,7 +424,7 @@ app.post("/send/price", (req, res) => {
     ${interchangeableBit}
     <b>ca.-Preis: </b>${price} (* unverbindliche Preisauskunft)<br>
     <br>
-    Interessant für Sie? Dann setzen Sie sich bitte für ein detailliertes verbindliches Angebot und gerne auch bei weiteren Fragen mit uns in Verbindung!<br/>
+    Interessant für Sie? Dann setzen Sie sich bitte für ein detailliertes, verbindliches Angebot und gerne auch bei weiteren Fragen mit uns in Verbindung!<br/>
     <br>
     Herzliche Grüße<br>
     Rüdiger Wackwitz<br>

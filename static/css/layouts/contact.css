@@ -40,8 +40,13 @@ section.side {
 			"txt"
 			"footer";
 	}
+	section.main {
+		padding-top: 0px;
+		margin-bottom: 0;
+	}
 	section.side {
 		padding-top: 0px;
+		margin-top: 0;
 	}
 }
 /* ----------- 320-WIDTH */
