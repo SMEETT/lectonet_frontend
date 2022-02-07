@@ -53,6 +53,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	btnOpenCalculatorNavi.addEventListener("click", toggleOverlayCalculator);
 	btnOpenCalculatorHamburger.addEventListener("click", toggleOverlayCalculator);
+	btnOpenCalculatorHamburger.addEventListener("click", closeMenuHamburger);
 	iconCloseCalculator.addEventListener("click", toggleOverlayCalculator);
 	calculatorHook.addEventListener("click", toggleOverlayCalculator);
 });

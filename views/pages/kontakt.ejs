@@ -3,7 +3,7 @@
 	<head>
         <%- include ("../partials/head.ejs") %>
         <style>
-            @import url('../../static/css/layouts/impressum.css');
+            @import url('../../static/css/layouts/contact.css');
         </style>
         <link rel="stylesheet" href="../../static/svelte/contactform.css">
         <script nonce='<%= nonce %>' src="../../static/svelte/contactform.js" defer></script>
@@ -16,12 +16,15 @@
     <div id="preisrechner-hook"></div>
 		<div class="wrapper">
 			<header><%- include ("../partials/header.ejs") %></header>
-			<section class="imprint">
+			<section class="main">
                 <h1><%- title %></h1>
                 <h2><%- subhead %></h2>
                 <%- copytext %>
-                <div style='min-height: 500px' id="contactform-hook"></div>
 			</section>
+      <section class="side">
+                <h2>Oder nutzen Sie unser Kontaktformular</h2>
+                <div style='min-height: 500px' id="contactform-hook"></div>
+      </section>
 			<footer><%- include ("../partials/footer.ejs") %></footer>
 		</div>
 	</body>

@@ -80,7 +80,6 @@
 				<p class="error">{errors.email}</p>
 			{/if}
 			<textarea bind:value={fields.msg} placeholder="Nachricht" />
-			{fields.msg}
 			{#if errors.msg}
 				<p class="error">{errors.msg}</p>
 			{/if}
@@ -117,7 +116,7 @@
 		/* border: 1px solid red; */
 		display: flex;
 		flex-direction: column;
-		width: 50%;
+		width: 100%;
 	}
 
 	* {
@@ -164,7 +163,7 @@
 	form.email {
 		display: flex;
 		flex-direction: column;
-		margin: 16px 0;
+		/* margin: 16px 0; */
 		/* column-gap: 20px; */
 		/* row-gap: 16px; */
 		/* grid-auto-flow: column; */
@@ -203,8 +202,7 @@
 
 	input.checkbox {
 		height: auto;
-		margin-right: 8px;
-		width: 3%;
+		width: 32px;
 	}
 
 	.email-form-checkboxes {
@@ -266,5 +264,26 @@
 		flex-direction: row;
 		align-items: flex-start;
 		width: 500px;
+	}
+
+	/* ----------- 1280-WIDTH */
+	@media only screen and (min-width: 1280px) {
+	}
+
+	/* ----------- 960-WIDTH */
+	@media (max-width: 1279px) {
+	}
+
+	/* ----------- 600-WIDTH */
+	@media only screen and (max-width: 959px) {
+	}
+	/* ----------- 320-WIDTH */
+	@media only screen and (max-width: 599px) {
+		input,
+		textarea,
+		.wrapper-contactform,
+		.btn {
+			font-size: 12px;
+		}
 	}
 </style>
