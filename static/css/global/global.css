@@ -428,7 +428,8 @@ p a {
 		font-size: 14px;
 	}
 
-	p {
+	p,
+	strong {
 		font-size: 12px;
 	}
 }

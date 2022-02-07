@@ -79,7 +79,9 @@
 			{#if errors.email}
 				<p class="error">{errors.email}</p>
 			{/if}
-			<textarea bind:value={fields.msg} placeholder="Nachricht" />
+			<div class="textarea">
+				<textarea bind:value={fields.msg} placeholder="Nachricht" />
+			</div>
 			{#if errors.msg}
 				<p class="error">{errors.msg}</p>
 			{/if}
@@ -216,18 +218,23 @@
 		border-radius: 24px;
 	}
 
+	.textarea {
+		border-radius: 18px;
+		border: 1px solid #595959;
+		overflow: hidden;
+		margin-top: 16px;
+	}
+
 	textarea {
 		font-size: 16px;
-		margin-top: 16px;
 		padding-left: 15px;
 		padding-top: 8px;
-
-		border: 1px solid #595959;
 		box-sizing: border-box;
-		border-radius: 18px;
 		width: 100%;
-		height: 200px;
+		height: 120px;
 		resize: none;
+		border: 0;
+		outline: none;
 	}
 
 	input.checkbox {
