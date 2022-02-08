@@ -26,7 +26,6 @@
 	let formSuccessfullySubmitted = false;
 
 	async function postData(url, data) {
-		console.log("stringified", JSON.stringify(data));
 		const res = await fetch(url, {
 			method: "POST",
 			mode: "cors",
@@ -38,7 +37,7 @@
 		return res.json();
 	}
 
-	const handleSubmit2 = () => {
+	const handleSubmit = () => {
 		console.log(fields);
 		const result = regSchema.validate(fields, { abortEarly: false });
 		result
@@ -97,7 +96,7 @@
 				<p style="padding-left: 38px" class="error">{errors.agreed}</p>
 			{/if}
 			<div class="email-form-button">
-				<button on:click|preventDefault={handleSubmit2} class="btn outline">Abschicken</button>
+				<button on:click|preventDefault={handleSubmit} class="btn outline">Abschicken</button>
 			</div>
 		</form>
 	{:else}

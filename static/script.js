@@ -35,6 +35,38 @@ window.addEventListener("DOMContentLoaded", () => {
 		btnOpenCalculator.addEventListener("click", toggleOverlayCalculator);
 	} catch {}
 
+	// open and close bewerbungsformular
+	try {
+		let bewerbungsformularIsOpen = false;
+		const bewerbungsformularHook = document.getElementById("bewerbungsformular-hook");
+		const closeBewerbungsform = document.getElementById("close-bewerbungsformular");
+		const btnOpenBewerbungsformular = document.getElementById("btn-open-bewerbungsformular");
+
+		const toggleBewerbungsFormularOverlay = (e) => {
+			if (bewerbungsformularHook.style.display === "none" && e.srcElement.id === "btnCloseAfterSubmit") {
+				bewerbungsformularIsOpen = false;
+				tagBody.classList.remove("overflow");
+			} else {
+				e.stopPropagation();
+				if (bewerbungsformularIsOpen) {
+					if (e.srcElement.id === "bewerbungsformular-hook" || e.srcElement.id === "close-bewerbungsformular") {
+						tagBody.classList.remove("overflow");
+						bewerbungsformularHook.style.display = "none";
+						bewerbungsformularIsOpen = false;
+					}
+				} else {
+					tagBody.classList.add("overflow");
+					bewerbungsformularHook.style.display = "block";
+					bewerbungsformularIsOpen = true;
+				}
+			}
+		};
+		closeBewerbungsform.addEventListener("click", toggleBewerbungsFormularOverlay);
+		btnOpenBewerbungsformular.addEventListener("click", toggleBewerbungsFormularOverlay);
+		bewerbungsformularHook.addEventListener("click", toggleBewerbungsFormularOverlay);
+		console.log("end");
+	} catch {}
+
 	// scroll 'Leistungen' into view (only on Index Page)
 	try {
 		const h1Leistungen = document.getElementById("h1-leistungen");
@@ -56,6 +88,8 @@ window.addEventListener("DOMContentLoaded", () => {
 	btnOpenCalculatorHamburger.addEventListener("click", closeMenuHamburger);
 	iconCloseCalculator.addEventListener("click", toggleOverlayCalculator);
 	calculatorHook.addEventListener("click", toggleOverlayCalculator);
+
+	// closeBewerbungsform.addEventListener("click", toggleOverlayBewerbungsform);
 });
 
 // #############################################
