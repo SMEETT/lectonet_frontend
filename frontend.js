@@ -40,13 +40,6 @@ const frontendPORT = process.env.frontendPORT;
 // express init
 const app = express();
 
-// app.use(
-// 	helmet({
-// 		contentSecurityPolicy: false,
-// 		crossOriginResourcePolicy: { policy: "cross-origin" },
-// 	})
-// );
-
 app.use(bodyParser.json());
 
 app.use(morgan("dev"));
@@ -506,6 +499,129 @@ app.post("/send/contactform", (req, res) => {
     02333 688 660 -0<br>
     info@lectonet.de<br>
     www.lectonet.de<br>
+    `;
+
+	// create reusable transporter object using the default SMTP transport
+	const transporter = nodemailer.createTransport({
+		port: 587,
+		host: priceCalcSMTP,
+		auth: {
+			user: "info@lectonet.de",
+			pass: priceCalcMailPW,
+		},
+		tls: {
+			ciphers: "SSLv3",
+		},
+		secureConnection: false,
+	});
+
+	const mailData = {
+		from: "info@lectonet.de", // sender address
+		to: receiver, // list of receivers
+		// bcc: "info@lectonet.de",
+		subject: subject,
+		html: html,
+		attachments: [
+			{
+				filename: "logo_grey.svg",
+				path: "./static/images/logo_grey_optimized.svg",
+				cid: "unique@kreata.ee", //same cid value as in the html img src
+			},
+		],
+	};
+
+	transporter.sendMail(mailData, function (err, info) {
+		if (err) console.log(err);
+		else console.log(info);
+	});
+	res.json("204: OK / Mail sent");
+	// res.status(204).send("Ok");
+});
+
+app.post("/send/bewerbungsformular", (req, res) => {
+	console.log("post bewerbungsformular");
+	console.log("req", req.headers);
+	const receiver = req.body.email;
+	const firstname = req.body.firstname;
+	const lastname = req.body.lastname;
+	const street = req.body.street;
+	const housenumber = req.body.housenumber;
+	const zip = req.body.zip;
+	const city = req.body.city;
+	const email = req.body.email;
+	const telephone = req.body.telephone;
+	const messages = req.body.messages;
+
+	const subject = "Ihre Bewerbungs als lectonetter";
+	const html = `<b>Sehr geehrte(r) ${firstname} ${lastname}! </b><br>
+    <br>
+    Anbei finden Sie die von Ihnen gesendete Bewerbung.<br>
+    Wir setzen uns schnellstmoeglich mit Ihnen in Verbindung.<br>
+    <br>
+    Herzliche Grüße<br>
+    Rüdiger Wackwitz<br>
+    <br>
+    <img width=145 height=28 src="cid:unique@kreata.ee"/><br>
+    Rüdiger Wackwitz<br>
+    Mittelstraße 12<br>
+    58256 Ennepetal<br>
+    <br>
+    02333 688 660 -0<br>
+    info@lectonet.de<br>
+    www.lectonet.de<br>
+    <br>
+    <br>
+    -----------------------------------------------------<br>
+    <strong>Name:</strong> ${lastname}<br>
+    <strong>Vorname:</strong> ${firstname}<br>
+    <strong>Strasse:</strong> ${street}<br>
+    <strong>Hausnummer:</strong> ${housenumber}<br>
+    <strong>PLZ:</strong> ${zip}<br>
+    <strong>Ort:</strong> ${city}<br>
+    <strong>E-Mail Adresse:</strong> ${email}<br>
+    <strong>Telefonnummer:</strong> ${telephone}<br>
+    <br>
+    <strong>
+      Ich bin tätig im/in Korrektorat/Lektorat/Redaktion seit:<br>
+    </strong>
+    ${messages[1].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Meine relevanten Qualifikationen:<br>
+    </strong>
+    ${messages[2].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Meine relevanten beruflichen Erfahrungen (bitte mit Dauer und Arbeit-/Auftraggeber):<br>
+    </strong>
+    ${messages[3].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Mein wissenschaftliches Fachgebiet (gerne auch mehrere):<br>
+    </strong>
+    ${messages[4].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Diese Art von Aufträgen entsprechen absolut meinem Stärken-und-Vorlieben-Profil:<br>
+    </strong>
+    ${messages[5].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Diese Art von Aufträgen kann ich übernehmen, aber nicht bevorzugt:<br>
+    </strong>
+    ${messages[6].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Diese Art von Aufträgen lehne ich strikt ab:<br>
+    </strong>
+    ${messages[7].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+    <strong>
+      Sonstiges:<br>
+    </strong>
+    ${messages[8].replace(/\n\r?/g, "<br />")}<br>
+    <br>
+
     `;
 
 	// create reusable transporter object using the default SMTP transport

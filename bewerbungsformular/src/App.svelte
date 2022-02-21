@@ -1,4 +1,110 @@
 <script>
+	import { regSchema } from "./helpers/schema";
+	const fields = {
+		firstname: "",
+		lastname: "",
+		street: "",
+		housenumber: "",
+		zip: "",
+		city: "",
+		telephone: "",
+		email: "",
+		messages: {
+			1: "",
+			2: "",
+			3: "",
+			4: "",
+			5: "",
+			6: "",
+			7: "",
+			8: "",
+		},
+		agreed: false,
+	};
+
+	// const fields = {
+	// 	firstname: "Bob",
+	// 	lastname: "Testing",
+	// 	street: "Teststrasse",
+	// 	housenumber: "1337",
+	// 	zip: "20044",
+	// 	city: "Testhausen",
+	// 	telephone: "1197 38919441",
+	// 	email: "tbr@tutamail.com",
+	// 	messages: {
+	// 		1: "text 1",
+	// 		2: "text 2",
+	// 		3: "text 3",
+	// 		4: "text 4",
+	// 		5: "text 5",
+	// 		6: "text 6",
+	// 		7: "text 7",
+	// 		8: "text 8",
+	// 	},
+	// 	agreed: true,
+	// };
+
+	const extractErrors = ({ inner }) => {
+		return inner.reduce((acc, err) => {
+			return { ...acc, [err.path]: err.message };
+		}, {});
+	};
+
+	let frontendURL;
+	if (isProduction) {
+		frontendURL = "https://frontend.lectonet.de";
+	} else {
+		frontendURL = "http://localhost:1339";
+	}
+
+	let errors = {};
+	let foundError = false;
+	let formSuccessfullySubmitted = false;
+
+	async function postData(url, data) {
+		const res = await fetch(url, {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		});
+		return res.json();
+	}
+
+	const handleSubmit = () => {
+		console.log(fields);
+		console.log(frontendURL);
+		const result = regSchema.validate(fields, { abortEarly: false });
+		result
+			.then((res) => {
+				errors = {};
+				foundError = false;
+				postData(`${frontendURL}/send/bewerbungsformular`, fields)
+					.then((res) => {
+						console.log("post req res", res);
+						formSuccessfullySubmitted = true;
+					})
+					.catch((err) => {
+						console.log("post failed", err);
+					});
+			})
+			.catch((err) => {
+				console.log(frontendURL);
+				// console.log(err);
+				errors = extractErrors(err);
+				foundError = true;
+				formSuccessfullySubmitted = false;
+				console.log(errors);
+			});
+	};
+
+	const handleClose = () => {
+		formSuccessfullySubmitted = false;
+		const hook = document.getElementById("bewerbungsformular-hook");
+		hook.style.display = "none";
+	};
 </script>
 
 <div class="wrapper">
@@ -8,97 +114,173 @@
 			<div class="icon-close" id="close-bewerbungsformular" />
 		</div>
 	</div>
-	<div class="wrapper-personal-info">
-		<input placeholder="Name" type="text" />
-		<input placeholder="Vorname" type="text" />
-		<input placeholder="Staße" type="text" />
-		<input placeholder="Hausnummer" type="text" />
-		<input placeholder="PLZ" type="text" />
-		<input placeholder="Ort" type="text" />
-		<input placeholder="E-Mail Adresse" type="text" />
-		<input placeholder="Telfonnummer" type="text" />
-	</div>
-	<div class="wrapper-textareas">
-		<div class="wrapper-textarea">
-			<span class="label">Ich bin tätig im/in Korrektorat/Lektorat/Redaktion seit:</span>
-			<div class="textarea">
-				<textarea />
+	{#if !formSuccessfullySubmitted}
+		<div class="wrapper-personal-info">
+			<div>
+				<input bind:value={fields.lastname} placeholder="Name" type="text" />
+				{#if errors.lastname}
+					<p class="error">{errors.lastname}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Meine relevanten Qualifikationen:</span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.firstname} placeholder="Vorname" type="text" />
+				{#if errors.firstname}
+					<p class="error">{errors.firstname}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Meine relevanten beruflichen Erfahrungen (bitte mit Dauer und Arbeit-/Auftraggeber): </span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.street} placeholder="Staße" type="text" />
+				{#if errors.street}
+					<p class="error">{errors.street}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Mein wissenschaftliches Fachgebiet (gerne auch mehrere):</span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.housenumber} placeholder="Hausnummer" type="text" />
+				{#if errors.housenumber}
+					<p class="error">{errors.housenumber}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Diese Art von Aufträgen entsprechen absolut meinem Stärken-und-Vorlieben-Profil:</span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.zip} placeholder="PLZ" type="text" />
+				{#if errors.zip}
+					<p class="error">{errors.zip}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Diese Art von Aufträgen kann ich übernehmen, aber nicht bevorzugt:</span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.city} placeholder="Ort" type="text" />
+				{#if errors.city}
+					<p class="error">{errors.city}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Diese Art von Aufträgen lehne ich strikt ab:</span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.email} placeholder="E-Mail Adresse" type="text" />
+				{#if errors.email}
+					<p class="error">{errors.email}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
-		</div>
-		<div class="wrapper-textarea">
-			<span class="label">Sonstiges:</span>
-			<div class="textarea">
-				<textarea />
+			<div>
+				<input bind:value={fields.telephone} placeholder="Telefonnummer" type="text" />
+				{#if errors.telephone}
+					<p class="error">{errors.telephone}</p>
+				{/if}
 			</div>
-			<div class="wrapper-char-limit">0/500 Zeichen</div>
 		</div>
-	</div>
-	<div class="wrapper-submit">
-		<div class="wrapper-checkbox">
-			<input type="checkbox" class="checkbox" style="cursor: pointer" name="checkbox" />
-			<span
-				>mit
-				<a href="/datenschutz" target="_blank">Datenschutzerklärung</a>
-				einverstanden</span
-			>
+		<div class="wrapper-textareas">
+			<div class="wrapper-textarea">
+				<span class="label">Ich bin tätig im/in Korrektorat/Lektorat/Redaktion seit:</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[1]} />
+				</div>
+				{#if errors["messages.1"]}
+					<p class="error">{errors["messages.1"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[1].length > 500}>{fields.messages[1].length}/500 Zeichen</div>
+				<!-- <div class="error">{errors.messages[1]}</div> -->
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Meine relevanten Qualifikationen:</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[2]} />
+				</div>
+				{#if errors["messages.2"]}
+					<p class="error">{errors["messages.2"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[2].length > 500}>{fields.messages[2].length}/500 Zeichen</div>
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Meine relevanten beruflichen Erfahrungen (bitte mit Dauer und Arbeit-/Auftraggeber): </span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[3]} />
+				</div>
+				{#if errors["messages.3"]}
+					<p class="error">{errors["messages.3"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[3].length > 500}>{fields.messages[3].length}/500 Zeichen</div>
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Mein wissenschaftliches Fachgebiet (gerne auch mehrere):</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[4]} />
+				</div>
+				{#if errors["messages.4"]}
+					<p class="error">{errors["messages.4"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[4].length > 500}>{fields.messages[4].length}/500 Zeichen</div>
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Diese Art von Aufträgen entsprechen absolut meinem Stärken-und-Vorlieben-Profil:</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[5]} />
+				</div>
+				{#if errors["messages.5"]}
+					<p class="error">{errors["messages.5"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[5].length > 500}>{fields.messages[5].length}/500 Zeichen</div>
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Diese Art von Aufträgen kann ich übernehmen, aber nicht bevorzugt:</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[6]} />
+				</div>
+				{#if errors["messages.6"]}
+					<p class="error">{errors["messages.6"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[6].length > 500}>{fields.messages[6].length}/500 Zeichen</div>
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Diese Art von Aufträgen lehne ich strikt ab:</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[7]} />
+				</div>
+				{#if errors["messages.7"]}
+					<p class="error">{errors["messages.7"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[7].length > 500}>{fields.messages[7].length}/500 Zeichen</div>
+			</div>
+			<div class="wrapper-textarea">
+				<span class="label">Sonstiges:</span>
+				<div class="textarea">
+					<textarea bind:value={fields.messages[8]} />
+				</div>
+				{#if errors["messages.8"]}
+					<p class="error">{errors["messages.8"]}</p>
+				{/if}
+				<div class="wrapper-char-limit" class:highlight-error={fields.messages[8].length > 500}>{fields.messages[8].length}/500 Zeichen</div>
+			</div>
 		</div>
-		<button class="btn outline">Absenden</button>
-	</div>
-	<div class="wrapper-disclaimer`">
-		<p class="disclaimer-text">
-			* Ihre gesamten Angaben werden absolut vertraulich behandelt und ausschließlich für die möglichst effiziente Weitergabe und Erfüllung von
-			Kundenaufträgen sowie für Abrechnungen verwendet. Eine Verwendung außerhalb dieser Zwecke ist ausgeschlossen, wenn der Netzwerkpartner dieser nicht
-			zuvor schriftlich (Email) zugestimmt hat. Der Austausch von Daten innerhalb des Netzwerkes – etwa von einem Netzwerkpartner zum anderen – ist ohne
-			schriftliche Zustimmung ebenfalls ausgeschlossen. Eine Weitergabe von Daten der Netzwerkpartner an externe Dritte (z.B. Kunden) ist auch mit
-			Zustimmung des Partners ausgeschlossen. Ausgenommen hiervon sind berechtigte bzw. berechtigt erscheinende behördliche Ersuchen. Aus der Bewerbung
-			für die freibe Mitarbeit bei lectonet entstehen für keine Seite rechtliche Ansprüche. Weder ist lectonet zur Auftragsweitergabe verpflichtet noch
-			besteht für einen Netzwerkpartner die Pflicht zur Auftragsannahme. Das Ausscheiden eines Partners aus dem lectonet-Netzwerk bedeutet die Löschung
-			der Daten nach sechs Monaten. Dieses Ausscheiden bedarf der Schriftform einer Seite.
-		</p>
-	</div>
+		<div class="wrapper-submit">
+			<div class="wrapper-checkbox">
+				<input bind:checked={fields.agreed} type="checkbox" class="checkbox" style="cursor: pointer" name="checkbox" />
+				<span
+					>mit
+					<a href="/datenschutz" target="_blank">Datenschutzerklärung</a>
+					einverstanden</span
+				>
+			</div>
+			{#if errors.agreed}
+				<p class="error" style="margin-top: -1rem; margin-bottom: 0.5rem">{errors.agreed}</p>
+			{/if}
+			<button on:click={handleSubmit} class="btn outline">Absenden</button>
+		</div>
+		<div class="wrapper-disclaimer`">
+			<p class="disclaimer-text">
+				* Ihre gesamten Angaben werden absolut vertraulich behandelt und ausschließlich für die möglichst effiziente Weitergabe und Erfüllung von
+				Kundenaufträgen sowie für Abrechnungen verwendet. Eine Verwendung außerhalb dieser Zwecke ist ausgeschlossen, wenn der Netzwerkpartner dieser
+				nicht zuvor schriftlich (Email) zugestimmt hat. Der Austausch von Daten innerhalb des Netzwerkes – etwa von einem Netzwerkpartner zum anderen –
+				ist ohne schriftliche Zustimmung ebenfalls ausgeschlossen. Eine Weitergabe von Daten der Netzwerkpartner an externe Dritte (z.B. Kunden) ist
+				auch mit Zustimmung des Partners ausgeschlossen. Ausgenommen hiervon sind berechtigte bzw. berechtigt erscheinende behördliche Ersuchen. Aus der
+				Bewerbung für die freibe Mitarbeit bei lectonet entstehen für keine Seite rechtliche Ansprüche. Weder ist lectonet zur Auftragsweitergabe
+				verpflichtet noch besteht für einen Netzwerkpartner die Pflicht zur Auftragsannahme. Das Ausscheiden eines Partners aus dem lectonet-Netzwerk
+				bedeutet die Löschung der Daten nach sechs Monaten. Dieses Ausscheiden bedarf der Schriftform einer Seite.
+			</p>
+		</div>
+	{:else}
+		<div class="success">
+			<p>Gut, dass Sie uns vertrauen – vielen Dank!</p>
+			<p>Wir setzen uns mit Ihnen in Verbindung.</p>
+			<button id="btnCloseAfterSubmit" class="btn outline" style="margin-top: 16px" on:click={handleClose}>OK</button>
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -194,6 +376,15 @@
 		width: 32px;
 	}
 
+	.error {
+		/* border: 1px solid red; */
+		color: red;
+		margin-top: 0.5rem;
+		/* margin-bottom: -0.5rem; */
+		padding-left: 15px;
+		line-height: 1;
+	}
+
 	.wrapper-textareas {
 		padding: 1rem;
 		display: grid;
@@ -240,11 +431,15 @@
 	}
 
 	.wrapper-char-limit {
-		padding-left: 12px;
+		padding-left: 15px;
 		font-size: 12px;
 		margin-top: 4px;
 		color: #787878;
 		/* border: 2px dotted gray; */
+	}
+
+	.highlight-error {
+		color: red;
 	}
 
 	.wrapper-submit {
@@ -296,6 +491,20 @@
 	.btn.outline:hover {
 		background: var(--default-grey);
 		color: white;
+	}
+
+	.success {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		padding: 16px;
+		background-color: white;
+	}
+
+	.success > p {
+		margin: 0;
 	}
 
 	@media (min-width: 600px) {
