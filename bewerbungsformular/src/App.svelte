@@ -112,6 +112,13 @@
 			// node.value = newValue;
 		}
 	};
+
+	const regExTelephoneNr = (number) => {
+		const pattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+		if (!pattern.test(number)) {
+			fields.telephone = number.slice(0, -1);
+		}
+	};
 </script>
 
 <div class="wrapper">
@@ -166,7 +173,7 @@
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.telephone} placeholder="Telefonnummer" type="text" />
+				<input bind:value={fields.telephone} on:input={regExTelephoneNr(fields.telephone)} placeholder="Telefonnummer" type="text" />
 				{#if errors.telephone}
 					<p class="error">{errors.telephone}</p>
 				{/if}
