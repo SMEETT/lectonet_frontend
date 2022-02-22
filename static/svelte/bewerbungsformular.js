@@ -55,9 +55,6 @@ var app = (function () {
         else if (node.getAttribute(attribute) !== value)
             node.setAttribute(attribute, value);
     }
-    function to_number(value) {
-        return value === '' ? null : +value;
-    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -6195,7 +6192,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src/App.svelte";
 
-    // (277:1) {:else}
+    // (284:1) {:else}
     function create_else_block(ctx) {
     	let div;
     	let p0;
@@ -6217,16 +6214,16 @@ var app = (function () {
     			t3 = space();
     			button = element("button");
     			button.textContent = "OK";
-    			attr_dev(p0, "class", "svelte-1dr0ru9");
-    			add_location(p0, file, 278, 3, 9320);
-    			attr_dev(p1, "class", "svelte-1dr0ru9");
-    			add_location(p1, file, 279, 3, 9373);
+    			attr_dev(p0, "class", "svelte-13m3v3u");
+    			add_location(p0, file, 285, 3, 9538);
+    			attr_dev(p1, "class", "svelte-13m3v3u");
+    			add_location(p1, file, 286, 3, 9591);
     			attr_dev(button, "id", "btnCloseAfterSubmit");
-    			attr_dev(button, "class", "btn outline svelte-1dr0ru9");
+    			attr_dev(button, "class", "btn outline svelte-13m3v3u");
     			set_style(button, "margin-top", "16px");
-    			add_location(button, file, 280, 3, 9423);
-    			attr_dev(div, "class", "success svelte-1dr0ru9");
-    			add_location(div, file, 277, 2, 9295);
+    			add_location(button, file, 287, 3, 9641);
+    			attr_dev(div, "class", "success svelte-13m3v3u");
+    			add_location(div, file, 284, 2, 9513);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6253,14 +6250,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(277:1) {:else}",
+    		source: "(284:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:1) {#if !formSuccessfullySubmitted}
+    // (124:1) {#if !formSuccessfullySubmitted}
     function create_if_block(ctx) {
     	let div8;
     	let div0;
@@ -6594,155 +6591,156 @@ var app = (function () {
     			p.textContent = "* Ihre gesamten Angaben werden absolut vertraulich behandelt und ausschließlich für die möglichst effiziente Weitergabe und Erfüllung von\n\t\t\t\tKundenaufträgen sowie für Abrechnungen verwendet. Eine Verwendung außerhalb dieser Zwecke ist ausgeschlossen, wenn der Netzwerkpartner dieser\n\t\t\t\tnicht zuvor schriftlich (Email) zugestimmt hat. Der Austausch von Daten innerhalb des Netzwerkes – etwa von einem Netzwerkpartner zum anderen –\n\t\t\t\tist ohne schriftliche Zustimmung ebenfalls ausgeschlossen. Eine Weitergabe von Daten der Netzwerkpartner an externe Dritte (z.B. Kunden) ist\n\t\t\t\tauch mit Zustimmung des Partners ausgeschlossen. Ausgenommen hiervon sind berechtigte bzw. berechtigt erscheinende behördliche Ersuchen. Aus der\n\t\t\t\tBewerbung für die freibe Mitarbeit bei lectonet entstehen für keine Seite rechtliche Ansprüche. Weder ist lectonet zur Auftragsweitergabe\n\t\t\t\tverpflichtet noch besteht für einen Netzwerkpartner die Pflicht zur Auftragsannahme. Das Ausscheiden eines Partners aus dem lectonet-Netzwerk\n\t\t\t\tbedeutet die Löschung der Daten nach sechs Monaten. Dieses Ausscheiden bedarf der Schriftform einer Seite.";
     			attr_dev(input0, "placeholder", "Name");
     			attr_dev(input0, "type", "text");
-    			attr_dev(input0, "class", "svelte-1dr0ru9");
-    			add_location(input0, file, 119, 4, 2503);
-    			add_location(div0, file, 118, 3, 2493);
+    			attr_dev(input0, "class", "svelte-13m3v3u");
+    			add_location(input0, file, 126, 4, 2670);
+    			add_location(div0, file, 125, 3, 2660);
     			attr_dev(input1, "placeholder", "Vorname");
     			attr_dev(input1, "type", "text");
-    			attr_dev(input1, "class", "svelte-1dr0ru9");
-    			add_location(input1, file, 125, 4, 2676);
-    			add_location(div1, file, 124, 3, 2666);
+    			attr_dev(input1, "class", "svelte-13m3v3u");
+    			add_location(input1, file, 132, 4, 2843);
+    			add_location(div1, file, 131, 3, 2833);
     			attr_dev(input2, "placeholder", "Straße");
     			attr_dev(input2, "type", "text");
-    			attr_dev(input2, "class", "svelte-1dr0ru9");
-    			add_location(input2, file, 131, 4, 2855);
-    			add_location(div2, file, 130, 3, 2845);
+    			attr_dev(input2, "class", "svelte-13m3v3u");
+    			add_location(input2, file, 138, 4, 3022);
+    			add_location(div2, file, 137, 3, 3012);
     			attr_dev(input3, "placeholder", "Hausnummer");
     			attr_dev(input3, "type", "text");
-    			attr_dev(input3, "class", "svelte-1dr0ru9");
-    			add_location(input3, file, 137, 4, 3024);
-    			add_location(div3, file, 136, 3, 3014);
+    			attr_dev(input3, "class", "svelte-13m3v3u");
+    			add_location(input3, file, 144, 4, 3191);
+    			add_location(div3, file, 143, 3, 3181);
     			attr_dev(input4, "placeholder", "PLZ");
-    			attr_dev(input4, "type", "number");
-    			attr_dev(input4, "class", "svelte-1dr0ru9");
-    			add_location(input4, file, 143, 4, 3212);
-    			add_location(div4, file, 142, 3, 3202);
+    			attr_dev(input4, "type", "text");
+    			attr_dev(input4, "min", "1");
+    			attr_dev(input4, "class", "svelte-13m3v3u");
+    			add_location(input4, file, 150, 4, 3379);
+    			add_location(div4, file, 149, 3, 3369);
     			attr_dev(input5, "placeholder", "Ort");
     			attr_dev(input5, "type", "text");
-    			attr_dev(input5, "class", "svelte-1dr0ru9");
-    			add_location(input5, file, 149, 4, 3371);
-    			add_location(div5, file, 148, 3, 3361);
+    			attr_dev(input5, "class", "svelte-13m3v3u");
+    			add_location(input5, file, 156, 4, 3591);
+    			add_location(div5, file, 155, 3, 3581);
     			attr_dev(input6, "placeholder", "E-Mail-Adresse");
     			attr_dev(input6, "type", "text");
-    			attr_dev(input6, "class", "svelte-1dr0ru9");
-    			add_location(input6, file, 155, 4, 3531);
-    			add_location(div6, file, 154, 3, 3521);
+    			attr_dev(input6, "class", "svelte-13m3v3u");
+    			add_location(input6, file, 162, 4, 3751);
+    			add_location(div6, file, 161, 3, 3741);
     			attr_dev(input7, "placeholder", "Telefonnummer");
-    			attr_dev(input7, "type", "number");
-    			attr_dev(input7, "class", "svelte-1dr0ru9");
-    			add_location(input7, file, 161, 4, 3705);
-    			add_location(div7, file, 160, 3, 3695);
-    			attr_dev(div8, "class", "wrapper-personal-info svelte-1dr0ru9");
-    			add_location(div8, file, 117, 2, 2454);
-    			attr_dev(span0, "class", "label svelte-1dr0ru9");
-    			add_location(span0, file, 169, 4, 3960);
-    			attr_dev(textarea0, "class", "svelte-1dr0ru9");
-    			add_location(textarea0, file, 171, 5, 4076);
-    			attr_dev(div9, "class", "textarea svelte-1dr0ru9");
-    			add_location(div9, file, 170, 4, 4048);
-    			attr_dev(div10, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			attr_dev(input7, "type", "text");
+    			attr_dev(input7, "class", "svelte-13m3v3u");
+    			add_location(input7, file, 168, 4, 3925);
+    			add_location(div7, file, 167, 3, 3915);
+    			attr_dev(div8, "class", "wrapper-personal-info svelte-13m3v3u");
+    			add_location(div8, file, 124, 2, 2621);
+    			attr_dev(span0, "class", "label svelte-13m3v3u");
+    			add_location(span0, file, 176, 4, 4178);
+    			attr_dev(textarea0, "class", "svelte-13m3v3u");
+    			add_location(textarea0, file, 178, 5, 4294);
+    			attr_dev(div9, "class", "textarea svelte-13m3v3u");
+    			add_location(div9, file, 177, 4, 4266);
+    			attr_dev(div10, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div10, "highlight-error", /*fields*/ ctx[0].messages[1].length > 500);
-    			add_location(div10, file, 176, 4, 4226);
-    			attr_dev(div11, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div11, file, 168, 3, 3925);
-    			attr_dev(span1, "class", "label svelte-1dr0ru9");
-    			add_location(span1, file, 180, 4, 4467);
-    			attr_dev(textarea1, "class", "svelte-1dr0ru9");
-    			add_location(textarea1, file, 182, 5, 4560);
-    			attr_dev(div12, "class", "textarea svelte-1dr0ru9");
-    			add_location(div12, file, 181, 4, 4532);
-    			attr_dev(div13, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div10, file, 183, 4, 4444);
+    			attr_dev(div11, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div11, file, 175, 3, 4143);
+    			attr_dev(span1, "class", "label svelte-13m3v3u");
+    			add_location(span1, file, 187, 4, 4685);
+    			attr_dev(textarea1, "class", "svelte-13m3v3u");
+    			add_location(textarea1, file, 189, 5, 4778);
+    			attr_dev(div12, "class", "textarea svelte-13m3v3u");
+    			add_location(div12, file, 188, 4, 4750);
+    			attr_dev(div13, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div13, "highlight-error", /*fields*/ ctx[0].messages[2].length > 500);
-    			add_location(div13, file, 187, 4, 4710);
-    			attr_dev(div14, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div14, file, 179, 3, 4432);
-    			attr_dev(span2, "class", "label svelte-1dr0ru9");
-    			add_location(span2, file, 190, 4, 4892);
-    			attr_dev(textarea2, "class", "svelte-1dr0ru9");
-    			add_location(textarea2, file, 192, 5, 5037);
-    			attr_dev(div15, "class", "textarea svelte-1dr0ru9");
-    			add_location(div15, file, 191, 4, 5009);
-    			attr_dev(div16, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div13, file, 194, 4, 4928);
+    			attr_dev(div14, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div14, file, 186, 3, 4650);
+    			attr_dev(span2, "class", "label svelte-13m3v3u");
+    			add_location(span2, file, 197, 4, 5110);
+    			attr_dev(textarea2, "class", "svelte-13m3v3u");
+    			add_location(textarea2, file, 199, 5, 5255);
+    			attr_dev(div15, "class", "textarea svelte-13m3v3u");
+    			add_location(div15, file, 198, 4, 5227);
+    			attr_dev(div16, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div16, "highlight-error", /*fields*/ ctx[0].messages[3].length > 500);
-    			add_location(div16, file, 197, 4, 5187);
-    			attr_dev(div17, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div17, file, 189, 3, 4857);
-    			attr_dev(span3, "class", "label svelte-1dr0ru9");
-    			add_location(span3, file, 200, 4, 5369);
-    			attr_dev(textarea3, "class", "svelte-1dr0ru9");
-    			add_location(textarea3, file, 202, 5, 5485);
-    			attr_dev(div18, "class", "textarea svelte-1dr0ru9");
-    			add_location(div18, file, 201, 4, 5457);
-    			attr_dev(div19, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div16, file, 204, 4, 5405);
+    			attr_dev(div17, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div17, file, 196, 3, 5075);
+    			attr_dev(span3, "class", "label svelte-13m3v3u");
+    			add_location(span3, file, 207, 4, 5587);
+    			attr_dev(textarea3, "class", "svelte-13m3v3u");
+    			add_location(textarea3, file, 209, 5, 5703);
+    			attr_dev(div18, "class", "textarea svelte-13m3v3u");
+    			add_location(div18, file, 208, 4, 5675);
+    			attr_dev(div19, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div19, "highlight-error", /*fields*/ ctx[0].messages[4].length > 500);
-    			add_location(div19, file, 207, 4, 5635);
-    			attr_dev(div20, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div20, file, 199, 3, 5334);
-    			attr_dev(span4, "class", "label svelte-1dr0ru9");
-    			add_location(span4, file, 210, 4, 5817);
-    			attr_dev(textarea4, "class", "svelte-1dr0ru9");
-    			add_location(textarea4, file, 212, 5, 5957);
-    			attr_dev(div21, "class", "textarea svelte-1dr0ru9");
-    			add_location(div21, file, 211, 4, 5929);
-    			attr_dev(div22, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div19, file, 214, 4, 5853);
+    			attr_dev(div20, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div20, file, 206, 3, 5552);
+    			attr_dev(span4, "class", "label svelte-13m3v3u");
+    			add_location(span4, file, 217, 4, 6035);
+    			attr_dev(textarea4, "class", "svelte-13m3v3u");
+    			add_location(textarea4, file, 219, 5, 6175);
+    			attr_dev(div21, "class", "textarea svelte-13m3v3u");
+    			add_location(div21, file, 218, 4, 6147);
+    			attr_dev(div22, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div22, "highlight-error", /*fields*/ ctx[0].messages[5].length > 500);
-    			add_location(div22, file, 217, 4, 6107);
-    			attr_dev(div23, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div23, file, 209, 3, 5782);
-    			attr_dev(span5, "class", "label svelte-1dr0ru9");
-    			add_location(span5, file, 220, 4, 6289);
-    			attr_dev(textarea5, "class", "svelte-1dr0ru9");
-    			add_location(textarea5, file, 222, 5, 6415);
-    			attr_dev(div24, "class", "textarea svelte-1dr0ru9");
-    			add_location(div24, file, 221, 4, 6387);
-    			attr_dev(div25, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div22, file, 224, 4, 6325);
+    			attr_dev(div23, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div23, file, 216, 3, 6000);
+    			attr_dev(span5, "class", "label svelte-13m3v3u");
+    			add_location(span5, file, 227, 4, 6507);
+    			attr_dev(textarea5, "class", "svelte-13m3v3u");
+    			add_location(textarea5, file, 229, 5, 6633);
+    			attr_dev(div24, "class", "textarea svelte-13m3v3u");
+    			add_location(div24, file, 228, 4, 6605);
+    			attr_dev(div25, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div25, "highlight-error", /*fields*/ ctx[0].messages[6].length > 500);
-    			add_location(div25, file, 227, 4, 6565);
-    			attr_dev(div26, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div26, file, 219, 3, 6254);
-    			attr_dev(span6, "class", "label svelte-1dr0ru9");
-    			add_location(span6, file, 230, 4, 6747);
-    			attr_dev(textarea6, "class", "svelte-1dr0ru9");
-    			add_location(textarea6, file, 232, 5, 6851);
-    			attr_dev(div27, "class", "textarea svelte-1dr0ru9");
-    			add_location(div27, file, 231, 4, 6823);
-    			attr_dev(div28, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div25, file, 234, 4, 6783);
+    			attr_dev(div26, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div26, file, 226, 3, 6472);
+    			attr_dev(span6, "class", "label svelte-13m3v3u");
+    			add_location(span6, file, 237, 4, 6965);
+    			attr_dev(textarea6, "class", "svelte-13m3v3u");
+    			add_location(textarea6, file, 239, 5, 7069);
+    			attr_dev(div27, "class", "textarea svelte-13m3v3u");
+    			add_location(div27, file, 238, 4, 7041);
+    			attr_dev(div28, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div28, "highlight-error", /*fields*/ ctx[0].messages[7].length > 500);
-    			add_location(div28, file, 237, 4, 7001);
-    			attr_dev(div29, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div29, file, 229, 3, 6712);
-    			attr_dev(span7, "class", "label svelte-1dr0ru9");
-    			add_location(span7, file, 240, 4, 7183);
-    			attr_dev(textarea7, "class", "svelte-1dr0ru9");
-    			add_location(textarea7, file, 242, 5, 7253);
-    			attr_dev(div30, "class", "textarea svelte-1dr0ru9");
-    			add_location(div30, file, 241, 4, 7225);
-    			attr_dev(div31, "class", "wrapper-char-limit svelte-1dr0ru9");
+    			add_location(div28, file, 244, 4, 7219);
+    			attr_dev(div29, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div29, file, 236, 3, 6930);
+    			attr_dev(span7, "class", "label svelte-13m3v3u");
+    			add_location(span7, file, 247, 4, 7401);
+    			attr_dev(textarea7, "class", "svelte-13m3v3u");
+    			add_location(textarea7, file, 249, 5, 7471);
+    			attr_dev(div30, "class", "textarea svelte-13m3v3u");
+    			add_location(div30, file, 248, 4, 7443);
+    			attr_dev(div31, "class", "wrapper-char-limit svelte-13m3v3u");
     			toggle_class(div31, "highlight-error", /*fields*/ ctx[0].messages[8].length > 500);
-    			add_location(div31, file, 247, 4, 7403);
-    			attr_dev(div32, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div32, file, 239, 3, 7148);
-    			attr_dev(div33, "class", "wrapper-textareas svelte-1dr0ru9");
-    			add_location(div33, file, 167, 2, 3890);
+    			add_location(div31, file, 254, 4, 7621);
+    			attr_dev(div32, "class", "wrapper-textarea svelte-13m3v3u");
+    			add_location(div32, file, 246, 3, 7366);
+    			attr_dev(div33, "class", "wrapper-textareas svelte-13m3v3u");
+    			add_location(div33, file, 174, 2, 4108);
     			attr_dev(input8, "type", "checkbox");
-    			attr_dev(input8, "class", "checkbox svelte-1dr0ru9");
+    			attr_dev(input8, "class", "checkbox svelte-13m3v3u");
     			set_style(input8, "cursor", "pointer");
     			attr_dev(input8, "name", "checkbox");
-    			add_location(input8, file, 252, 4, 7625);
+    			add_location(input8, file, 259, 4, 7843);
     			attr_dev(a, "href", "/datenschutz");
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file, 255, 5, 7762);
-    			add_location(span8, file, 253, 4, 7741);
-    			attr_dev(div34, "class", "wrapper-checkbox svelte-1dr0ru9");
-    			add_location(div34, file, 251, 3, 7590);
-    			attr_dev(button, "class", "btn outline svelte-1dr0ru9");
-    			add_location(button, file, 262, 3, 7992);
-    			attr_dev(div35, "class", "wrapper-submit svelte-1dr0ru9");
-    			add_location(div35, file, 250, 2, 7558);
-    			attr_dev(p, "class", "disclaimer-text svelte-1dr0ru9");
-    			add_location(p, file, 265, 3, 8110);
+    			add_location(a, file, 262, 5, 7980);
+    			add_location(span8, file, 260, 4, 7959);
+    			attr_dev(div34, "class", "wrapper-checkbox svelte-13m3v3u");
+    			add_location(div34, file, 258, 3, 7808);
+    			attr_dev(button, "class", "btn outline svelte-13m3v3u");
+    			add_location(button, file, 269, 3, 8210);
+    			attr_dev(div35, "class", "wrapper-submit svelte-13m3v3u");
+    			add_location(div35, file, 257, 2, 7776);
+    			attr_dev(p, "class", "disclaimer-text svelte-13m3v3u");
+    			add_location(p, file, 272, 3, 8328);
     			attr_dev(div36, "class", "wrapper-disclaimer`");
-    			add_location(div36, file, 264, 2, 8073);
+    			add_location(div36, file, 271, 2, 8291);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div8, anchor);
@@ -6918,30 +6916,42 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[5]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[6]),
-    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[7]),
-    					listen_dev(input3, "input", /*input3_input_handler*/ ctx[8]),
-    					listen_dev(input4, "input", /*input4_input_handler*/ ctx[9]),
-    					listen_dev(input5, "input", /*input5_input_handler*/ ctx[10]),
-    					listen_dev(input6, "input", /*input6_input_handler*/ ctx[11]),
-    					listen_dev(input7, "input", /*input7_input_handler*/ ctx[12]),
-    					listen_dev(textarea0, "input", /*textarea0_input_handler*/ ctx[13]),
-    					listen_dev(textarea1, "input", /*textarea1_input_handler*/ ctx[14]),
-    					listen_dev(textarea2, "input", /*textarea2_input_handler*/ ctx[15]),
-    					listen_dev(textarea3, "input", /*textarea3_input_handler*/ ctx[16]),
-    					listen_dev(textarea4, "input", /*textarea4_input_handler*/ ctx[17]),
-    					listen_dev(textarea5, "input", /*textarea5_input_handler*/ ctx[18]),
-    					listen_dev(textarea6, "input", /*textarea6_input_handler*/ ctx[19]),
-    					listen_dev(textarea7, "input", /*textarea7_input_handler*/ ctx[20]),
-    					listen_dev(input8, "change", /*input8_change_handler*/ ctx[21]),
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[6]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[7]),
+    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[8]),
+    					listen_dev(input3, "input", /*input3_input_handler*/ ctx[9]),
+    					listen_dev(input4, "input", /*input4_input_handler*/ ctx[10]),
+    					listen_dev(
+    						input4,
+    						"input",
+    						function () {
+    							if (is_function(/*makeSureIsNumber*/ ctx[5](/*fields*/ ctx[0].zip, "zip"))) /*makeSureIsNumber*/ ctx[5](/*fields*/ ctx[0].zip, "zip").apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					),
+    					listen_dev(input5, "input", /*input5_input_handler*/ ctx[11]),
+    					listen_dev(input6, "input", /*input6_input_handler*/ ctx[12]),
+    					listen_dev(input7, "input", /*input7_input_handler*/ ctx[13]),
+    					listen_dev(textarea0, "input", /*textarea0_input_handler*/ ctx[14]),
+    					listen_dev(textarea1, "input", /*textarea1_input_handler*/ ctx[15]),
+    					listen_dev(textarea2, "input", /*textarea2_input_handler*/ ctx[16]),
+    					listen_dev(textarea3, "input", /*textarea3_input_handler*/ ctx[17]),
+    					listen_dev(textarea4, "input", /*textarea4_input_handler*/ ctx[18]),
+    					listen_dev(textarea5, "input", /*textarea5_input_handler*/ ctx[19]),
+    					listen_dev(textarea6, "input", /*textarea6_input_handler*/ ctx[20]),
+    					listen_dev(textarea7, "input", /*textarea7_input_handler*/ ctx[21]),
+    					listen_dev(input8, "change", /*input8_change_handler*/ ctx[22]),
     					listen_dev(button, "click", /*handleSubmit*/ ctx[3], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, dirty) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
     			if (dirty & /*fields*/ 1 && input0.value !== /*fields*/ ctx[0].lastname) {
     				set_input_value(input0, /*fields*/ ctx[0].lastname);
     			}
@@ -7010,7 +7020,7 @@ var app = (function () {
     				if_block3 = null;
     			}
 
-    			if (dirty & /*fields*/ 1 && to_number(input4.value) !== /*fields*/ ctx[0].zip) {
+    			if (dirty & /*fields*/ 1 && input4.value !== /*fields*/ ctx[0].zip) {
     				set_input_value(input4, /*fields*/ ctx[0].zip);
     			}
 
@@ -7061,7 +7071,7 @@ var app = (function () {
     				if_block6 = null;
     			}
 
-    			if (dirty & /*fields*/ 1 && to_number(input7.value) !== /*fields*/ ctx[0].telephone) {
+    			if (dirty & /*fields*/ 1 && input7.value !== /*fields*/ ctx[0].telephone) {
     				set_input_value(input7, /*fields*/ ctx[0].telephone);
     			}
 
@@ -7313,14 +7323,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(117:1) {#if !formSuccessfullySubmitted}",
+    		source: "(124:1) {#if !formSuccessfullySubmitted}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (121:4) {#if errors.lastname}
+    // (128:4) {#if errors.lastname}
     function create_if_block_17(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].lastname + "";
@@ -7330,8 +7340,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 121, 5, 2604);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 128, 5, 2771);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7349,14 +7359,14 @@ var app = (function () {
     		block,
     		id: create_if_block_17.name,
     		type: "if",
-    		source: "(121:4) {#if errors.lastname}",
+    		source: "(128:4) {#if errors.lastname}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (127:4) {#if errors.firstname}
+    // (134:4) {#if errors.firstname}
     function create_if_block_16(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].firstname + "";
@@ -7366,8 +7376,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 127, 5, 2782);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 134, 5, 2949);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7385,14 +7395,14 @@ var app = (function () {
     		block,
     		id: create_if_block_16.name,
     		type: "if",
-    		source: "(127:4) {#if errors.firstname}",
+    		source: "(134:4) {#if errors.firstname}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (133:4) {#if errors.street}
+    // (140:4) {#if errors.street}
     function create_if_block_15(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].street + "";
@@ -7402,8 +7412,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 133, 5, 2954);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 140, 5, 3121);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7421,14 +7431,14 @@ var app = (function () {
     		block,
     		id: create_if_block_15.name,
     		type: "if",
-    		source: "(133:4) {#if errors.street}",
+    		source: "(140:4) {#if errors.street}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (139:4) {#if errors.housenumber}
+    // (146:4) {#if errors.housenumber}
     function create_if_block_14(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].housenumber + "";
@@ -7438,8 +7448,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 139, 5, 3137);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 146, 5, 3304);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7457,14 +7467,14 @@ var app = (function () {
     		block,
     		id: create_if_block_14.name,
     		type: "if",
-    		source: "(139:4) {#if errors.housenumber}",
+    		source: "(146:4) {#if errors.housenumber}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (145:4) {#if errors.zip}
+    // (152:4) {#if errors.zip}
     function create_if_block_13(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].zip + "";
@@ -7474,8 +7484,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 145, 5, 3304);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 152, 5, 3524);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7493,14 +7503,14 @@ var app = (function () {
     		block,
     		id: create_if_block_13.name,
     		type: "if",
-    		source: "(145:4) {#if errors.zip}",
+    		source: "(152:4) {#if errors.zip}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (151:4) {#if errors.city}
+    // (158:4) {#if errors.city}
     function create_if_block_12(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].city + "";
@@ -7510,8 +7520,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 151, 5, 3463);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 158, 5, 3683);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7529,14 +7539,14 @@ var app = (function () {
     		block,
     		id: create_if_block_12.name,
     		type: "if",
-    		source: "(151:4) {#if errors.city}",
+    		source: "(158:4) {#if errors.city}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (157:4) {#if errors.email}
+    // (164:4) {#if errors.email}
     function create_if_block_11(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].email + "";
@@ -7546,8 +7556,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 157, 5, 3636);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 164, 5, 3856);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7565,14 +7575,14 @@ var app = (function () {
     		block,
     		id: create_if_block_11.name,
     		type: "if",
-    		source: "(157:4) {#if errors.email}",
+    		source: "(164:4) {#if errors.email}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (163:4) {#if errors.telephone}
+    // (170:4) {#if errors.telephone}
     function create_if_block_10(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].telephone + "";
@@ -7582,8 +7592,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 163, 5, 3819);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 170, 5, 4037);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7601,14 +7611,14 @@ var app = (function () {
     		block,
     		id: create_if_block_10.name,
     		type: "if",
-    		source: "(163:4) {#if errors.telephone}",
+    		source: "(170:4) {#if errors.telephone}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (174:4) {#if errors["messages.1"]}
+    // (181:4) {#if errors["messages.1"]}
     function create_if_block_9(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.1"] + "";
@@ -7618,8 +7628,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 174, 5, 4168);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 181, 5, 4386);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7637,14 +7647,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9.name,
     		type: "if",
-    		source: "(174:4) {#if errors[\\\"messages.1\\\"]}",
+    		source: "(181:4) {#if errors[\\\"messages.1\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (185:4) {#if errors["messages.2"]}
+    // (192:4) {#if errors["messages.2"]}
     function create_if_block_8(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.2"] + "";
@@ -7654,8 +7664,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 185, 5, 4652);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 192, 5, 4870);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7673,14 +7683,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(185:4) {#if errors[\\\"messages.2\\\"]}",
+    		source: "(192:4) {#if errors[\\\"messages.2\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:4) {#if errors["messages.3"]}
+    // (202:4) {#if errors["messages.3"]}
     function create_if_block_7(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.3"] + "";
@@ -7690,8 +7700,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 195, 5, 5129);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 202, 5, 5347);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7709,14 +7719,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(195:4) {#if errors[\\\"messages.3\\\"]}",
+    		source: "(202:4) {#if errors[\\\"messages.3\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (205:4) {#if errors["messages.4"]}
+    // (212:4) {#if errors["messages.4"]}
     function create_if_block_6(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.4"] + "";
@@ -7726,8 +7736,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 205, 5, 5577);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 212, 5, 5795);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7745,14 +7755,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(205:4) {#if errors[\\\"messages.4\\\"]}",
+    		source: "(212:4) {#if errors[\\\"messages.4\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (215:4) {#if errors["messages.5"]}
+    // (222:4) {#if errors["messages.5"]}
     function create_if_block_5(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.5"] + "";
@@ -7762,8 +7772,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 215, 5, 6049);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 222, 5, 6267);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7781,14 +7791,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(215:4) {#if errors[\\\"messages.5\\\"]}",
+    		source: "(222:4) {#if errors[\\\"messages.5\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (225:4) {#if errors["messages.6"]}
+    // (232:4) {#if errors["messages.6"]}
     function create_if_block_4(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.6"] + "";
@@ -7798,8 +7808,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 225, 5, 6507);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 232, 5, 6725);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7817,14 +7827,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(225:4) {#if errors[\\\"messages.6\\\"]}",
+    		source: "(232:4) {#if errors[\\\"messages.6\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (235:4) {#if errors["messages.7"]}
+    // (242:4) {#if errors["messages.7"]}
     function create_if_block_3(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.7"] + "";
@@ -7834,8 +7844,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 235, 5, 6943);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 242, 5, 7161);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7853,14 +7863,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(235:4) {#if errors[\\\"messages.7\\\"]}",
+    		source: "(242:4) {#if errors[\\\"messages.7\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (245:4) {#if errors["messages.8"]}
+    // (252:4) {#if errors["messages.8"]}
     function create_if_block_2(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1]["messages.8"] + "";
@@ -7870,8 +7880,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 245, 5, 7345);
+    			attr_dev(p, "class", "error svelte-13m3v3u");
+    			add_location(p, file, 252, 5, 7563);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7889,14 +7899,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(245:4) {#if errors[\\\"messages.8\\\"]}",
+    		source: "(252:4) {#if errors[\\\"messages.8\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (260:3) {#if errors.agreed}
+    // (267:3) {#if errors.agreed}
     function create_if_block_1(ctx) {
     	let p;
     	let t_value = /*errors*/ ctx[1].agreed + "";
@@ -7906,10 +7916,10 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "error svelte-1dr0ru9");
+    			attr_dev(p, "class", "error svelte-13m3v3u");
     			set_style(p, "margin-top", "-1rem");
     			set_style(p, "margin-bottom", "0.5rem");
-    			add_location(p, file, 260, 4, 7894);
+    			add_location(p, file, 267, 4, 8112);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7927,7 +7937,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(260:3) {#if errors.agreed}",
+    		source: "(267:3) {#if errors.agreed}",
     		ctx
     	});
 
@@ -7962,17 +7972,17 @@ var app = (function () {
     			div1 = element("div");
     			t2 = space();
     			if_block.c();
-    			attr_dev(div0, "class", "wrapper-header-title svelte-1dr0ru9");
-    			add_location(div0, file, 111, 2, 2249);
-    			attr_dev(div1, "class", "icon-close svelte-1dr0ru9");
+    			attr_dev(div0, "class", "wrapper-header-title svelte-13m3v3u");
+    			add_location(div0, file, 118, 2, 2416);
+    			attr_dev(div1, "class", "icon-close svelte-13m3v3u");
     			attr_dev(div1, "id", "close-bewerbungsformular");
-    			add_location(div1, file, 113, 3, 2344);
-    			attr_dev(div2, "class", "wrapper-header-x svelte-1dr0ru9");
-    			add_location(div2, file, 112, 2, 2310);
-    			attr_dev(div3, "class", "wrapper-header svelte-1dr0ru9");
-    			add_location(div3, file, 110, 1, 2218);
-    			attr_dev(div4, "class", "wrapper svelte-1dr0ru9");
-    			add_location(div4, file, 109, 0, 2195);
+    			add_location(div1, file, 120, 3, 2511);
+    			attr_dev(div2, "class", "wrapper-header-x svelte-13m3v3u");
+    			add_location(div2, file, 119, 2, 2477);
+    			attr_dev(div3, "class", "wrapper-header svelte-13m3v3u");
+    			add_location(div3, file, 117, 1, 2385);
+    			attr_dev(div4, "class", "wrapper svelte-13m3v3u");
+    			add_location(div4, file, 116, 0, 2362);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -8129,6 +8139,12 @@ var app = (function () {
     		hook.style.display = "none";
     	};
 
+    	const makeSureIsNumber = (value, caller) => {
+    		if (isNaN(value) || value.length > 5) {
+    			$$invalidate(0, fields[caller] = value.slice(0, -1), fields);
+    		} // node.value = newValue;
+    	};
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -8156,7 +8172,7 @@ var app = (function () {
     	}
 
     	function input4_input_handler() {
-    		fields.zip = to_number(this.value);
+    		fields.zip = this.value;
     		$$invalidate(0, fields);
     	}
 
@@ -8171,7 +8187,7 @@ var app = (function () {
     	}
 
     	function input7_input_handler() {
-    		fields.telephone = to_number(this.value);
+    		fields.telephone = this.value;
     		$$invalidate(0, fields);
     	}
 
@@ -8230,7 +8246,8 @@ var app = (function () {
     		formSuccessfullySubmitted,
     		postData,
     		handleSubmit,
-    		handleClose
+    		handleClose,
+    		makeSureIsNumber
     	});
 
     	$$self.$inject_state = $$props => {
@@ -8250,6 +8267,7 @@ var app = (function () {
     		formSuccessfullySubmitted,
     		handleSubmit,
     		handleClose,
+    		makeSureIsNumber,
     		input0_input_handler,
     		input1_input_handler,
     		input2_input_handler,

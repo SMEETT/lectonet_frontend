@@ -105,6 +105,13 @@
 		const hook = document.getElementById("bewerbungsformular-hook");
 		hook.style.display = "none";
 	};
+
+	const makeSureIsNumber = (value, caller) => {
+		if (isNaN(value) || value.length > 5) {
+			fields[caller] = value.slice(0, -1);
+			// node.value = newValue;
+		}
+	};
 </script>
 
 <div class="wrapper">
@@ -141,7 +148,7 @@
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.zip} placeholder="PLZ" type="number" />
+				<input bind:value={fields.zip} on:input={makeSureIsNumber(fields.zip, "zip")} placeholder="PLZ" type="text" min="1" />
 				{#if errors.zip}
 					<p class="error">{errors.zip}</p>
 				{/if}
@@ -159,7 +166,7 @@
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.telephone} placeholder="Telefonnummer" type="number" />
+				<input bind:value={fields.telephone} placeholder="Telefonnummer" type="text" />
 				{#if errors.telephone}
 					<p class="error">{errors.telephone}</p>
 				{/if}
@@ -505,6 +512,18 @@
 
 	.success > p {
 		margin: 0;
+	}
+
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type="number"] {
+		-moz-appearance: textfield;
 	}
 
 	@media (min-width: 600px) {
