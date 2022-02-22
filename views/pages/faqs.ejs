@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 	<head>
-        <%- include ("../partials/head.ejs") %>
-        <script src="../../static/accordion.js" defer></script>
+        <%- include ("../partials/head.ejs"), {nonce: nonce} %>
+        <script nonce='<%= nonce %>' src="../../static/accordion.js" defer></script>
         <style>
             @import url('../../static/css/layouts/faqs.css');
         </style>
