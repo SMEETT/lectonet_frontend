@@ -55,6 +55,9 @@ var app = (function () {
         else if (node.getAttribute(attribute) !== value)
             node.setAttribute(attribute, value);
     }
+    function to_number(value) {
+        return value === '' ? null : +value;
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -6172,7 +6175,7 @@ var app = (function () {
     	housenumber: create$1().required("(Bitte geben Sie die Hausnummer an)"),
     	zip: create$1().required("(Bitte geben Sie die PLZ an)"),
     	city: create$1().required("(Bitte geben Sie den Ort an)"),
-    	telephone: create$1().required("(Bitte geben Sie Ihre Telefonnummer ein)"),
+    	telephone: create$1().required("(Bitte geben Sie Ihre Telefonnummer an)"),
     	email: create$1().email("(Die angebene E-Mail Adresse hat ein ungültiges Format)").required("(Bitte geben Sie Ihre E-Mail Adresse ein)"),
     	messages: create({
     		1: create$1().required("(Dieses Feld bitte ausfüllen)").max(maxChars, `(Maximal ${maxChars} Zeichen erlaubt)`),
@@ -6215,15 +6218,15 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "OK";
     			attr_dev(p0, "class", "svelte-1dr0ru9");
-    			add_location(p0, file, 278, 3, 9315);
+    			add_location(p0, file, 278, 3, 9320);
     			attr_dev(p1, "class", "svelte-1dr0ru9");
-    			add_location(p1, file, 279, 3, 9368);
+    			add_location(p1, file, 279, 3, 9373);
     			attr_dev(button, "id", "btnCloseAfterSubmit");
     			attr_dev(button, "class", "btn outline svelte-1dr0ru9");
     			set_style(button, "margin-top", "16px");
-    			add_location(button, file, 280, 3, 9418);
+    			add_location(button, file, 280, 3, 9423);
     			attr_dev(div, "class", "success svelte-1dr0ru9");
-    			add_location(div, file, 277, 2, 9290);
+    			add_location(div, file, 277, 2, 9295);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6599,7 +6602,7 @@ var app = (function () {
     			attr_dev(input1, "class", "svelte-1dr0ru9");
     			add_location(input1, file, 125, 4, 2676);
     			add_location(div1, file, 124, 3, 2666);
-    			attr_dev(input2, "placeholder", "Staße");
+    			attr_dev(input2, "placeholder", "Straße");
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "class", "svelte-1dr0ru9");
     			add_location(input2, file, 131, 4, 2855);
@@ -6607,139 +6610,139 @@ var app = (function () {
     			attr_dev(input3, "placeholder", "Hausnummer");
     			attr_dev(input3, "type", "text");
     			attr_dev(input3, "class", "svelte-1dr0ru9");
-    			add_location(input3, file, 137, 4, 3023);
-    			add_location(div3, file, 136, 3, 3013);
+    			add_location(input3, file, 137, 4, 3024);
+    			add_location(div3, file, 136, 3, 3014);
     			attr_dev(input4, "placeholder", "PLZ");
-    			attr_dev(input4, "type", "text");
+    			attr_dev(input4, "type", "number");
     			attr_dev(input4, "class", "svelte-1dr0ru9");
-    			add_location(input4, file, 143, 4, 3211);
-    			add_location(div4, file, 142, 3, 3201);
+    			add_location(input4, file, 143, 4, 3212);
+    			add_location(div4, file, 142, 3, 3202);
     			attr_dev(input5, "placeholder", "Ort");
     			attr_dev(input5, "type", "text");
     			attr_dev(input5, "class", "svelte-1dr0ru9");
-    			add_location(input5, file, 149, 4, 3368);
-    			add_location(div5, file, 148, 3, 3358);
-    			attr_dev(input6, "placeholder", "E-Mail Adresse");
+    			add_location(input5, file, 149, 4, 3371);
+    			add_location(div5, file, 148, 3, 3361);
+    			attr_dev(input6, "placeholder", "E-Mail-Adresse");
     			attr_dev(input6, "type", "text");
     			attr_dev(input6, "class", "svelte-1dr0ru9");
-    			add_location(input6, file, 155, 4, 3528);
-    			add_location(div6, file, 154, 3, 3518);
+    			add_location(input6, file, 155, 4, 3531);
+    			add_location(div6, file, 154, 3, 3521);
     			attr_dev(input7, "placeholder", "Telefonnummer");
-    			attr_dev(input7, "type", "text");
+    			attr_dev(input7, "type", "number");
     			attr_dev(input7, "class", "svelte-1dr0ru9");
-    			add_location(input7, file, 161, 4, 3702);
-    			add_location(div7, file, 160, 3, 3692);
+    			add_location(input7, file, 161, 4, 3705);
+    			add_location(div7, file, 160, 3, 3695);
     			attr_dev(div8, "class", "wrapper-personal-info svelte-1dr0ru9");
     			add_location(div8, file, 117, 2, 2454);
     			attr_dev(span0, "class", "label svelte-1dr0ru9");
-    			add_location(span0, file, 169, 4, 3955);
+    			add_location(span0, file, 169, 4, 3960);
     			attr_dev(textarea0, "class", "svelte-1dr0ru9");
-    			add_location(textarea0, file, 171, 5, 4071);
+    			add_location(textarea0, file, 171, 5, 4076);
     			attr_dev(div9, "class", "textarea svelte-1dr0ru9");
-    			add_location(div9, file, 170, 4, 4043);
+    			add_location(div9, file, 170, 4, 4048);
     			attr_dev(div10, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div10, "highlight-error", /*fields*/ ctx[0].messages[1].length > 500);
-    			add_location(div10, file, 176, 4, 4221);
+    			add_location(div10, file, 176, 4, 4226);
     			attr_dev(div11, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div11, file, 168, 3, 3920);
+    			add_location(div11, file, 168, 3, 3925);
     			attr_dev(span1, "class", "label svelte-1dr0ru9");
-    			add_location(span1, file, 180, 4, 4462);
+    			add_location(span1, file, 180, 4, 4467);
     			attr_dev(textarea1, "class", "svelte-1dr0ru9");
-    			add_location(textarea1, file, 182, 5, 4555);
+    			add_location(textarea1, file, 182, 5, 4560);
     			attr_dev(div12, "class", "textarea svelte-1dr0ru9");
-    			add_location(div12, file, 181, 4, 4527);
+    			add_location(div12, file, 181, 4, 4532);
     			attr_dev(div13, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div13, "highlight-error", /*fields*/ ctx[0].messages[2].length > 500);
-    			add_location(div13, file, 187, 4, 4705);
+    			add_location(div13, file, 187, 4, 4710);
     			attr_dev(div14, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div14, file, 179, 3, 4427);
+    			add_location(div14, file, 179, 3, 4432);
     			attr_dev(span2, "class", "label svelte-1dr0ru9");
-    			add_location(span2, file, 190, 4, 4887);
+    			add_location(span2, file, 190, 4, 4892);
     			attr_dev(textarea2, "class", "svelte-1dr0ru9");
-    			add_location(textarea2, file, 192, 5, 5032);
+    			add_location(textarea2, file, 192, 5, 5037);
     			attr_dev(div15, "class", "textarea svelte-1dr0ru9");
-    			add_location(div15, file, 191, 4, 5004);
+    			add_location(div15, file, 191, 4, 5009);
     			attr_dev(div16, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div16, "highlight-error", /*fields*/ ctx[0].messages[3].length > 500);
-    			add_location(div16, file, 197, 4, 5182);
+    			add_location(div16, file, 197, 4, 5187);
     			attr_dev(div17, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div17, file, 189, 3, 4852);
+    			add_location(div17, file, 189, 3, 4857);
     			attr_dev(span3, "class", "label svelte-1dr0ru9");
-    			add_location(span3, file, 200, 4, 5364);
+    			add_location(span3, file, 200, 4, 5369);
     			attr_dev(textarea3, "class", "svelte-1dr0ru9");
-    			add_location(textarea3, file, 202, 5, 5480);
+    			add_location(textarea3, file, 202, 5, 5485);
     			attr_dev(div18, "class", "textarea svelte-1dr0ru9");
-    			add_location(div18, file, 201, 4, 5452);
+    			add_location(div18, file, 201, 4, 5457);
     			attr_dev(div19, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div19, "highlight-error", /*fields*/ ctx[0].messages[4].length > 500);
-    			add_location(div19, file, 207, 4, 5630);
+    			add_location(div19, file, 207, 4, 5635);
     			attr_dev(div20, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div20, file, 199, 3, 5329);
+    			add_location(div20, file, 199, 3, 5334);
     			attr_dev(span4, "class", "label svelte-1dr0ru9");
-    			add_location(span4, file, 210, 4, 5812);
+    			add_location(span4, file, 210, 4, 5817);
     			attr_dev(textarea4, "class", "svelte-1dr0ru9");
-    			add_location(textarea4, file, 212, 5, 5952);
+    			add_location(textarea4, file, 212, 5, 5957);
     			attr_dev(div21, "class", "textarea svelte-1dr0ru9");
-    			add_location(div21, file, 211, 4, 5924);
+    			add_location(div21, file, 211, 4, 5929);
     			attr_dev(div22, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div22, "highlight-error", /*fields*/ ctx[0].messages[5].length > 500);
-    			add_location(div22, file, 217, 4, 6102);
+    			add_location(div22, file, 217, 4, 6107);
     			attr_dev(div23, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div23, file, 209, 3, 5777);
+    			add_location(div23, file, 209, 3, 5782);
     			attr_dev(span5, "class", "label svelte-1dr0ru9");
-    			add_location(span5, file, 220, 4, 6284);
+    			add_location(span5, file, 220, 4, 6289);
     			attr_dev(textarea5, "class", "svelte-1dr0ru9");
-    			add_location(textarea5, file, 222, 5, 6410);
+    			add_location(textarea5, file, 222, 5, 6415);
     			attr_dev(div24, "class", "textarea svelte-1dr0ru9");
-    			add_location(div24, file, 221, 4, 6382);
+    			add_location(div24, file, 221, 4, 6387);
     			attr_dev(div25, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div25, "highlight-error", /*fields*/ ctx[0].messages[6].length > 500);
-    			add_location(div25, file, 227, 4, 6560);
+    			add_location(div25, file, 227, 4, 6565);
     			attr_dev(div26, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div26, file, 219, 3, 6249);
+    			add_location(div26, file, 219, 3, 6254);
     			attr_dev(span6, "class", "label svelte-1dr0ru9");
-    			add_location(span6, file, 230, 4, 6742);
+    			add_location(span6, file, 230, 4, 6747);
     			attr_dev(textarea6, "class", "svelte-1dr0ru9");
-    			add_location(textarea6, file, 232, 5, 6846);
+    			add_location(textarea6, file, 232, 5, 6851);
     			attr_dev(div27, "class", "textarea svelte-1dr0ru9");
-    			add_location(div27, file, 231, 4, 6818);
+    			add_location(div27, file, 231, 4, 6823);
     			attr_dev(div28, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div28, "highlight-error", /*fields*/ ctx[0].messages[7].length > 500);
-    			add_location(div28, file, 237, 4, 6996);
+    			add_location(div28, file, 237, 4, 7001);
     			attr_dev(div29, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div29, file, 229, 3, 6707);
+    			add_location(div29, file, 229, 3, 6712);
     			attr_dev(span7, "class", "label svelte-1dr0ru9");
-    			add_location(span7, file, 240, 4, 7178);
+    			add_location(span7, file, 240, 4, 7183);
     			attr_dev(textarea7, "class", "svelte-1dr0ru9");
-    			add_location(textarea7, file, 242, 5, 7248);
+    			add_location(textarea7, file, 242, 5, 7253);
     			attr_dev(div30, "class", "textarea svelte-1dr0ru9");
-    			add_location(div30, file, 241, 4, 7220);
+    			add_location(div30, file, 241, 4, 7225);
     			attr_dev(div31, "class", "wrapper-char-limit svelte-1dr0ru9");
     			toggle_class(div31, "highlight-error", /*fields*/ ctx[0].messages[8].length > 500);
-    			add_location(div31, file, 247, 4, 7398);
+    			add_location(div31, file, 247, 4, 7403);
     			attr_dev(div32, "class", "wrapper-textarea svelte-1dr0ru9");
-    			add_location(div32, file, 239, 3, 7143);
+    			add_location(div32, file, 239, 3, 7148);
     			attr_dev(div33, "class", "wrapper-textareas svelte-1dr0ru9");
-    			add_location(div33, file, 167, 2, 3885);
+    			add_location(div33, file, 167, 2, 3890);
     			attr_dev(input8, "type", "checkbox");
     			attr_dev(input8, "class", "checkbox svelte-1dr0ru9");
     			set_style(input8, "cursor", "pointer");
     			attr_dev(input8, "name", "checkbox");
-    			add_location(input8, file, 252, 4, 7620);
+    			add_location(input8, file, 252, 4, 7625);
     			attr_dev(a, "href", "/datenschutz");
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file, 255, 5, 7757);
-    			add_location(span8, file, 253, 4, 7736);
+    			add_location(a, file, 255, 5, 7762);
+    			add_location(span8, file, 253, 4, 7741);
     			attr_dev(div34, "class", "wrapper-checkbox svelte-1dr0ru9");
-    			add_location(div34, file, 251, 3, 7585);
+    			add_location(div34, file, 251, 3, 7590);
     			attr_dev(button, "class", "btn outline svelte-1dr0ru9");
-    			add_location(button, file, 262, 3, 7987);
+    			add_location(button, file, 262, 3, 7992);
     			attr_dev(div35, "class", "wrapper-submit svelte-1dr0ru9");
-    			add_location(div35, file, 250, 2, 7553);
+    			add_location(div35, file, 250, 2, 7558);
     			attr_dev(p, "class", "disclaimer-text svelte-1dr0ru9");
-    			add_location(p, file, 265, 3, 8105);
+    			add_location(p, file, 265, 3, 8110);
     			attr_dev(div36, "class", "wrapper-disclaimer`");
-    			add_location(div36, file, 264, 2, 8068);
+    			add_location(div36, file, 264, 2, 8073);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div8, anchor);
@@ -7007,7 +7010,7 @@ var app = (function () {
     				if_block3 = null;
     			}
 
-    			if (dirty & /*fields*/ 1 && input4.value !== /*fields*/ ctx[0].zip) {
+    			if (dirty & /*fields*/ 1 && to_number(input4.value) !== /*fields*/ ctx[0].zip) {
     				set_input_value(input4, /*fields*/ ctx[0].zip);
     			}
 
@@ -7058,7 +7061,7 @@ var app = (function () {
     				if_block6 = null;
     			}
 
-    			if (dirty & /*fields*/ 1 && input7.value !== /*fields*/ ctx[0].telephone) {
+    			if (dirty & /*fields*/ 1 && to_number(input7.value) !== /*fields*/ ctx[0].telephone) {
     				set_input_value(input7, /*fields*/ ctx[0].telephone);
     			}
 
@@ -7400,7 +7403,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 133, 5, 2953);
+    			add_location(p, file, 133, 5, 2954);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7436,7 +7439,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 139, 5, 3136);
+    			add_location(p, file, 139, 5, 3137);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7472,7 +7475,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 145, 5, 3301);
+    			add_location(p, file, 145, 5, 3304);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7508,7 +7511,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 151, 5, 3460);
+    			add_location(p, file, 151, 5, 3463);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7544,7 +7547,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 157, 5, 3633);
+    			add_location(p, file, 157, 5, 3636);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7580,7 +7583,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 163, 5, 3814);
+    			add_location(p, file, 163, 5, 3819);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7616,7 +7619,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 174, 5, 4163);
+    			add_location(p, file, 174, 5, 4168);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7652,7 +7655,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 185, 5, 4647);
+    			add_location(p, file, 185, 5, 4652);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7688,7 +7691,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 195, 5, 5124);
+    			add_location(p, file, 195, 5, 5129);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7724,7 +7727,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 205, 5, 5572);
+    			add_location(p, file, 205, 5, 5577);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7760,7 +7763,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 215, 5, 6044);
+    			add_location(p, file, 215, 5, 6049);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7796,7 +7799,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 225, 5, 6502);
+    			add_location(p, file, 225, 5, 6507);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7832,7 +7835,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 235, 5, 6938);
+    			add_location(p, file, 235, 5, 6943);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7868,7 +7871,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "error svelte-1dr0ru9");
-    			add_location(p, file, 245, 5, 7340);
+    			add_location(p, file, 245, 5, 7345);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7906,7 +7909,7 @@ var app = (function () {
     			attr_dev(p, "class", "error svelte-1dr0ru9");
     			set_style(p, "margin-top", "-1rem");
     			set_style(p, "margin-bottom", "0.5rem");
-    			add_location(p, file, 260, 4, 7889);
+    			add_location(p, file, 260, 4, 7894);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -8153,7 +8156,7 @@ var app = (function () {
     	}
 
     	function input4_input_handler() {
-    		fields.zip = this.value;
+    		fields.zip = to_number(this.value);
     		$$invalidate(0, fields);
     	}
 
@@ -8168,7 +8171,7 @@ var app = (function () {
     	}
 
     	function input7_input_handler() {
-    		fields.telephone = this.value;
+    		fields.telephone = to_number(this.value);
     		$$invalidate(0, fields);
     	}
 

@@ -129,7 +129,7 @@
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.street} placeholder="Staße" type="text" />
+				<input bind:value={fields.street} placeholder="Straße" type="text" />
 				{#if errors.street}
 					<p class="error">{errors.street}</p>
 				{/if}
@@ -141,7 +141,7 @@
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.zip} placeholder="PLZ" type="text" />
+				<input bind:value={fields.zip} placeholder="PLZ" type="number" />
 				{#if errors.zip}
 					<p class="error">{errors.zip}</p>
 				{/if}
@@ -153,13 +153,13 @@
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.email} placeholder="E-Mail Adresse" type="text" />
+				<input bind:value={fields.email} placeholder="E-Mail-Adresse" type="text" />
 				{#if errors.email}
 					<p class="error">{errors.email}</p>
 				{/if}
 			</div>
 			<div>
-				<input bind:value={fields.telephone} placeholder="Telefonnummer" type="text" />
+				<input bind:value={fields.telephone} placeholder="Telefonnummer" type="number" />
 				{#if errors.telephone}
 					<p class="error">{errors.telephone}</p>
 				{/if}

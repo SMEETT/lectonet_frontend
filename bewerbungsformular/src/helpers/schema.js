@@ -9,7 +9,7 @@ const regSchema = yup.object().shape({
 	housenumber: yup.string().required("(Bitte geben Sie die Hausnummer an)"),
 	zip: yup.string().required("(Bitte geben Sie die PLZ an)"),
 	city: yup.string().required("(Bitte geben Sie den Ort an)"),
-	telephone: yup.string().required("(Bitte geben Sie Ihre Telefonnummer ein)"),
+	telephone: yup.string().required("(Bitte geben Sie Ihre Telefonnummer an)"),
 	email: yup.string().email("(Die angebene E-Mail Adresse hat ein ungültiges Format)").required("(Bitte geben Sie Ihre E-Mail Adresse ein)"),
 	messages: yup.object({
 		1: yup.string().required("(Dieses Feld bitte ausfüllen)").max(maxChars, `(Maximal ${maxChars} Zeichen erlaubt)`),
