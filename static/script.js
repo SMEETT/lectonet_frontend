@@ -110,9 +110,13 @@ const leistungen_sublinks = document.getElementsByClassName("links-sub-leistunge
 const ueberuns_link = document.getElementById("link-ueber-uns");
 const ueberuns_sublinks = document.getElementsByClassName("links-sub-ueber-uns")[0];
 const wrapperDropdown = document.getElementsByClassName("wrapper-dropdown")[0];
+const logoContainer = document.getElementsByClassName("logo-container")[0];
+const menuCloseArea = document.getElementById("menu-close-area");
+
+menuCloseArea.addEventListener("mouseleave", makeMouseOutFn, true);
 
 // eventListener to show the dropdown-menu background (wrapper)
-wrapperDropdown.addEventListener("mouseout", onMouseOutHandler, true);
+// wrapperDropdown.addEventListener("mouseleave", makeMouseOutFn, true);
 
 // eventListeners to show the hovered menu 1
 leistungen_link.addEventListener("mouseenter", () => {
@@ -121,6 +125,8 @@ leistungen_link.addEventListener("mouseenter", () => {
 	ueberuns_sublinks.style.display = "none";
 	wrapperDropdown.classList.add("heity");
 	wrapperDropdown.classList.remove("heity-out");
+	var computedStyle = window.getComputedStyle(wrapperDropdown);
+	console.log("HEIGHT", computedStyle.getPropertyValue("height"));
 });
 ueberuns_link.addEventListener("mouseenter", () => {
 	wrapperDropdown.style.display = "block";
@@ -130,22 +136,23 @@ ueberuns_link.addEventListener("mouseenter", () => {
 	wrapperDropdown.classList.remove("heity-out");
 });
 
-// check if the mouse is far enough away from the top of the page,
-// if it is, hide the dropdown-menu (wrapper)
-function onMouseOutHandler(event) {
-	if (event.pageY >= wrapperDropdown.offsetHeight + 10) {
-		// wrapperDropdown.style.display = "none";
-		// var computedStyle = window.getComputedStyle(wrapperDropdown);
-		// var max_hi = computedStyle.getPropertyValue("max-height");
-		// wrapperDropdown.style.maxHeight = max_hi;
-		wrapperDropdown.classList.remove("heity");
-		wrapperDropdown.classList.add("heity-out");
-	}
-}
 // hide dropdown menu on click
 wrapperDropdown.addEventListener("click", () => {
 	wrapperDropdown.style.display = "none";
 });
+
+function makeMouseOutFn(event) {
+	var e = event.toElement || event.relatedTarget;
+	while (e && e.parentNode && e.parentNode != window) {
+		if (e.parentNode == this || e == this) {
+			if (e.preventDefault) e.preventDefault();
+			return false;
+		}
+		e = e.parentNode;
+	}
+	wrapperDropdown.classList.remove("heity");
+	wrapperDropdown.classList.add("heity-out");
+}
 
 // #############################################
 // handling the hamburger menu
