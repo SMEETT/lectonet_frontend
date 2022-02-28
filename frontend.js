@@ -538,6 +538,10 @@ app.post("/send/contactform", (req, res) => {
 	// res.status(204).send("Ok");
 });
 
+//////////////////////////////////
+// send 'Bewerbungsformular'
+//////////////////////////////////
+
 app.post("/send/bewerbungsformular", (req, res) => {
 	console.log("post bewerbungsformular");
 	console.log("req", req.headers);
