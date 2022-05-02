@@ -64,7 +64,39 @@ window.addEventListener("DOMContentLoaded", () => {
 		closeBewerbungsform.addEventListener("click", toggleBewerbungsFormularOverlay);
 		btnOpenBewerbungsformular.addEventListener("click", toggleBewerbungsFormularOverlay);
 		bewerbungsformularHook.addEventListener("click", toggleBewerbungsFormularOverlay);
-		console.log("end");
+	} catch {}
+
+	// open and close bewerbungsformular (Seiteneinsteiger)
+	try {
+		let bewerbungsformularIsOpen_2 = false;
+		const bewerbungsformularHook_2 = document.getElementById("bewerbungsformular-hook-2");
+		const closeBewerbungsform_2 = document.getElementById("close-bewerbungsformular-2");
+		const btnOpenBewerbungsformular_2 = document.getElementById("btn-open-bewerbungsformular-2");
+
+		const toggleBewerbungsFormularOverlay_2 = (e) => {
+			console.log(bewerbungsformularIsOpen_2);
+			if (bewerbungsformularHook_2.style.display === "none" && e.srcElement.id === "btnCloseAfterSubmit-2") {
+				bewerbungsformularIsOpen_2 = false;
+				tagBody.classList.remove("overflow");
+			} else {
+				e.stopPropagation();
+				if (bewerbungsformularIsOpen_2) {
+					console.log(e.srcElement.id);
+					if (e.srcElement.id === "bewerbungsformular-hook-2" || e.srcElement.id === "close-bewerbungsformular-2") {
+						tagBody.classList.remove("overflow");
+						bewerbungsformularHook_2.style.display = "none";
+						bewerbungsformularIsOpen_2 = false;
+					}
+				} else {
+					tagBody.classList.add("overflow");
+					bewerbungsformularHook_2.style.display = "block";
+					bewerbungsformularIsOpen_2 = true;
+				}
+			}
+		};
+		closeBewerbungsform_2.addEventListener("click", toggleBewerbungsFormularOverlay_2);
+		btnOpenBewerbungsformular_2.addEventListener("click", toggleBewerbungsFormularOverlay_2);
+		bewerbungsformularHook_2.addEventListener("click", toggleBewerbungsFormularOverlay_2);
 	} catch {}
 
 	// scroll 'Leistungen' into view (only on Index Page)

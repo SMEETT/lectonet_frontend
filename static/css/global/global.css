@@ -111,6 +111,22 @@ section.picture img {
 	overflow-y: scroll;
 }
 
+#bewerbungsformular-hook-2 {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  display: none;
+  animation: fadein 0.5s;
+  transition: 0s;
+  padding: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;

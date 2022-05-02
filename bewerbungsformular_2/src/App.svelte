@@ -81,7 +81,7 @@
 			.then((res) => {
 				errors = {};
 				foundError = false;
-				postData(`${frontendURL}/send/bewerbungsformular`, fields)
+				postData(`${frontendURL}/send/bewerbungsformular_2`, fields)
 					.then((res) => {
 						console.log("post req res", res);
 						formSuccessfullySubmitted = true;
@@ -102,7 +102,7 @@
 
 	const handleClose = () => {
 		formSuccessfullySubmitted = false;
-		const hook = document.getElementById("bewerbungsformular-hook");
+		const hook = document.getElementById("bewerbungsformular-hook-2");
 		hook.style.display = "none";
 	};
 
@@ -123,9 +123,9 @@
 
 <div class="wrapper">
 	<div class="wrapper-header">
-		<div class="wrapper-header-title">Bewerbungsformular</div>
+		<div class="wrapper-header-title">Bewerbungsformular 2</div>
 		<div class="wrapper-header-x">
-			<div class="icon-close" id="close-bewerbungsformular" />
+			<div class="icon-close" id="close-bewerbungsformular-2" />
 		</div>
 	</div>
 	{#if !formSuccessfullySubmitted}
@@ -181,7 +181,7 @@
 		</div>
 		<div class="wrapper-textareas">
 			<div class="wrapper-textarea">
-				<span class="label">Ich bin tätig im/in Korrektorat/Lektorat/Redaktion seit:</span>
+				<span class="label">Derzeitige berufliche Tätigkeit:</span>
 				<div class="textarea">
 					<textarea bind:value={fields.messages[1]} />
 				</div>
@@ -192,7 +192,7 @@
 				<!-- <div class="error">{errors.messages[1]}</div> -->
 			</div>
 			<div class="wrapper-textarea">
-				<span class="label">Meine relevanten Qualifikationen:</span>
+				<span class="label">Meine Erfahrungen im Bereich Textbearbeitung:</span>
 				<div class="textarea">
 					<textarea bind:value={fields.messages[2]} />
 				</div>
@@ -202,7 +202,7 @@
 				<div class="wrapper-char-limit" class:highlight-error={fields.messages[2].length > 500}>{fields.messages[2].length}/500 Zeichen</div>
 			</div>
 			<div class="wrapper-textarea">
-				<span class="label">Meine relevanten beruflichen Erfahrungen (bitte mit Dauer und Arbeit-/Auftraggeber): </span>
+				<span class="label">Das zeichnet mich als Quereinsteiger aus:</span>
 				<div class="textarea">
 					<textarea bind:value={fields.messages[3]} />
 				</div>
@@ -212,7 +212,7 @@
 				<div class="wrapper-char-limit" class:highlight-error={fields.messages[3].length > 500}>{fields.messages[3].length}/500 Zeichen</div>
 			</div>
 			<div class="wrapper-textarea">
-				<span class="label">Mein wissenschaftliches Fachgebiet (gerne auch mehrere):</span>
+				<span class="label">Darum will ich lectonet-Partner werden:</span>
 				<div class="textarea">
 					<textarea bind:value={fields.messages[4]} />
 				</div>
@@ -222,7 +222,7 @@
 				<div class="wrapper-char-limit" class:highlight-error={fields.messages[4].length > 500}>{fields.messages[4].length}/500 Zeichen</div>
 			</div>
 			<div class="wrapper-textarea">
-				<span class="label">Diese Art von Aufträgen enspricht absolut meinem Stärken-und-Vorlieben-Profil:</span>
+				<span class="label">Diese Art von Aufträgen entspricht absolut meinem Stärken-und-Vorlieben-Profil:</span>
 				<div class="textarea">
 					<textarea bind:value={fields.messages[5]} />
 				</div>
@@ -292,7 +292,7 @@
 		<div class="success">
 			<p>Gut, dass Sie uns vertrauen – vielen Dank!</p>
 			<p>Wir setzen uns mit Ihnen in Verbindung.</p>
-			<button id="btnCloseAfterSubmit" class="btn outline" style="margin-top: 16px" on:click={handleClose}>OK</button>
+			<button id="btnCloseAfterSubmit-2" class="btn outline" style="margin-top: 16px" on:click={handleClose}>OK</button>
 		</div>
 	{/if}
 </div>

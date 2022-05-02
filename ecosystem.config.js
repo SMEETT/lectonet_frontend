@@ -24,7 +24,7 @@ module.exports = {
 		{
 			name: "lectonet_frontend",
 			script: "./frontend.js",
-			watch: true,
+			watch: false,
 			autorestart: true,
 			env: {
 				NODE_ENV: "production",
