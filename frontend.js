@@ -434,7 +434,7 @@ app.post("/send/price", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
-		// bcc: "info@lectonet.de",
+		bcc: "info@lectonet.de",
 		subject: subject,
 		html: html,
 		attachments: [
@@ -508,7 +508,7 @@ app.post("/send/contactform", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
-		// bcc: "info@lectonet.de",
+		bcc: "info@lectonet.de",
 		subject: subject,
 		html: html,
 		attachments: [
@@ -639,7 +639,7 @@ app.post("/send/bewerbungsformular_2", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
-		// bcc: "info@lectonet.de",
+		bcc: "info@lectonet.de",
 		subject: subject,
 		html: html,
 		attachments: [
@@ -770,7 +770,7 @@ app.post("/send/bewerbungsformular", (req, res) => {
 	const mailData = {
 		from: "info@lectonet.de", // sender address
 		to: receiver, // list of receivers
-		// bcc: "info@lectonet.de",
+		bcc: "info@lectonet.de",
 		subject: subject,
 		html: html,
 		attachments: [
