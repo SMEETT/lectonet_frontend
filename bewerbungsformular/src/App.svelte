@@ -52,7 +52,7 @@
 
 	let frontendURL;
 	if (isProduction) {
-		frontendURL = "https://frontend.lectonet.de";
+		frontendURL = "https://www.lectonet.de";
 	} else {
 		frontendURL = "http://localhost:1339";
 	}
@@ -123,7 +123,7 @@
 
 <div class="wrapper">
 	<div class="wrapper-header">
-		<div class="wrapper-header-title">Bewerbungsformular</div>
+		<div class="wrapper-header-title">Bewerbungsformular P</div>
 		<div class="wrapper-header-x">
 			<div class="icon-close" id="close-bewerbungsformular" />
 		</div>

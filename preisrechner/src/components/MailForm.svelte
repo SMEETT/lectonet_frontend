@@ -53,7 +53,7 @@
 
     let frontendURL;
     if (isProduction) {
-        frontendURL = "https://frontend.lectonet.de";
+        frontendURL = "https://www.lectonet.de";
     } else {
         frontendURL = "http://localhost:1339";
     }
@@ -120,13 +120,15 @@
                 type="text"
                 name="firstname"
                 class="name"
-                placeholder="Vorname" />
+                placeholder="Vorname"
+            />
             <input
                 bind:value={fields.lastname}
                 type="text"
                 name="lastname"
                 class="name"
-                placeholder="Name" />
+                placeholder="Name"
+            />
         </div>
         <div class="email-form-address">
             <input
@@ -134,7 +136,8 @@
                 class="email"
                 type="text"
                 name="email"
-                placeholder="E-Mail Adresse" />
+                placeholder="E-Mail Adresse"
+            />
         </div>
         <div class="email-form-checkboxes" style="cursor: pointer">
             <input
@@ -142,10 +145,13 @@
                 type="checkbox"
                 class="checkbox"
                 style="cursor: pointer"
-                name="checkbox" />
-            <label for="checkbox">mit
+                name="checkbox"
+            />
+            <label for="checkbox"
+                >mit
                 <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>
-                einverstanden</label>
+                einverstanden</label
+            >
         </div>
         {#if foundError}
             <div class="errors">
@@ -168,9 +174,9 @@
             </div>
         {/if}
         <div class="email-form-button">
-            <button
-                on:click|preventDefault={handleSubmit}
-                class="btn outline">Abschicken</button>
+            <button on:click|preventDefault={handleSubmit} class="btn outline"
+                >Abschicken</button
+            >
         </div>
     </form>
 {:else}
@@ -180,7 +186,8 @@
         <button
             id="btnCloseAfterSubmit"
             class="btn outline back"
-            on:click={handleClose}>OK</button>
+            on:click={handleClose}>OK</button
+        >
     </div>
 {/if}
 
