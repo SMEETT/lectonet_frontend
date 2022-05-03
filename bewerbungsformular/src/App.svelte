@@ -74,8 +74,8 @@
 	}
 
 	const handleSubmit = () => {
-		console.log(fields);
-		console.log(frontendURL);
+		// console.log(fields);
+		// console.log(frontendURL);
 		const result = regSchema.validate(fields, { abortEarly: false });
 		result
 			.then((res) => {

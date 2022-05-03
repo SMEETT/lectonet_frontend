@@ -85,10 +85,12 @@
                         }
                     )
                     .then((response) => {
-                        console.log(response);
+                        // console.log(response);
+                        console.log("OK");
                     })
                     .catch((error) => {
-                        console.log(error);
+                        // console.log(error);
+                        console.log("ERROR");
                     });
                 $formSuccessfullySubmitted = true;
             })

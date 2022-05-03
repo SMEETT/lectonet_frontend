@@ -447,8 +447,8 @@ app.post("/send/price", (req, res) => {
 	};
 
 	transporter.sendMail(mailData, function (err, info) {
-		if (err) console.log(err);
-		else console.log(info);
+		// if (err) console.log(err);
+		// else console.log(info);
 	});
 	res.status(204).send("Ok");
 });
@@ -652,8 +652,8 @@ app.post("/send/bewerbungsformular_2", (req, res) => {
 	};
 
 	transporter.sendMail(mailData, function (err, info) {
-		if (err) console.log(err);
-		else console.log(info);
+		// if (err) console.log(err);
+		// else console.log(info);
 	});
 	res.json("204: OK / Mail sent");
 	// res.status(204).send("Ok");
@@ -783,8 +783,8 @@ app.post("/send/bewerbungsformular", (req, res) => {
 	};
 
 	transporter.sendMail(mailData, function (err, info) {
-		if (err) console.log(err);
-		else console.log(info);
+		// if (err) console.log(err);
+		// else console.log(info);
 	});
 	res.json("204: OK / Mail sent");
 	// res.status(204).send("Ok");
