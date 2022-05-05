@@ -1,5 +1,5 @@
 
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -2952,9 +2952,9 @@ var app = (function () {
     			attr_dev(p, "class", "price svelte-hcxb7d");
     			attr_dev(p, "disabled", /*disabled*/ ctx[0]);
     			toggle_class(p, "inactive", /*disabled*/ ctx[0]);
-    			add_location(p, file$2, 30, 4, 835);
+    			add_location(p, file$2, 32, 4, 873);
     			attr_dev(div, "class", "wrapper-price svelte-hcxb7d");
-    			add_location(div, file$2, 29, 0, 803);
+    			add_location(div, file$2, 31, 0, 841);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3014,7 +3014,7 @@ var app = (function () {
     		if (price === "0.00") {
     			$$invalidate(1, displayedPrice = "* 0.00 €");
     		} else {
-    			const priceString = `* ${price} € - ${(price * $priceUpperBound).toFixed(2)} €`;
+    			const priceString = `* ${price} € - ${(price * $priceUpperBound * 1.1).toFixed(2)} €`;
     			$$invalidate(1, displayedPrice = priceString);
     		}
     	});
@@ -9064,7 +9064,7 @@ var app = (function () {
 
     const file$4 = "src/components/MailForm.svelte";
 
-    // (176:0) {:else}
+    // (184:0) {:else}
     function create_else_block(ctx) {
     	let div;
     	let t0;
@@ -9083,12 +9083,12 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "OK";
     			attr_dev(br, "class", "svelte-6eh7qr");
-    			add_location(br, file$4, 177, 50, 5650);
+    			add_location(br, file$4, 185, 50, 5808);
     			attr_dev(button, "id", "btnCloseAfterSubmit");
     			attr_dev(button, "class", "btn outline back svelte-6eh7qr");
-    			add_location(button, file$4, 179, 8, 5713);
+    			add_location(button, file$4, 187, 8, 5871);
     			attr_dev(div, "class", "success svelte-6eh7qr");
-    			add_location(div, file$4, 176, 4, 5578);
+    			add_location(div, file$4, 184, 4, 5736);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9114,14 +9114,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(176:0) {:else}",
+    		source: "(184:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (111:0) {#if !$formSuccessfullySubmitted}
+    // (113:0) {#if !$formSuccessfullySubmitted}
     function create_if_block(ctx) {
     	let form;
     	let div0;
@@ -9153,7 +9153,7 @@ var app = (function () {
     		c: function create() {
     			form = element("form");
     			div0 = element("div");
-    			div0.textContent = "Unschlüssig? Dann fordern Sie hier ein unverbindliches,\n            detailliertes Angebot an:";
+    			div0.textContent = "Unschlüssig? Fordern Sie hier unverbindlich ein detailliertes\n            Angebot an:";
     			t1 = space();
     			div1 = element("div");
     			input0 = element("input");
@@ -9178,47 +9178,47 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Abschicken";
     			attr_dev(div0, "class", "email-form-desc svelte-6eh7qr");
-    			add_location(div0, file$4, 112, 8, 3386);
+    			add_location(div0, file$4, 114, 8, 3476);
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "name", "firstname");
     			attr_dev(input0, "class", "name svelte-6eh7qr");
     			attr_dev(input0, "placeholder", "Vorname");
-    			add_location(input0, file$4, 117, 12, 3587);
+    			add_location(input0, file$4, 119, 12, 3669);
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "name", "lastname");
     			attr_dev(input1, "class", "name svelte-6eh7qr");
     			attr_dev(input1, "placeholder", "Name");
-    			add_location(input1, file$4, 123, 12, 3783);
+    			add_location(input1, file$4, 126, 12, 3877);
     			attr_dev(div1, "class", "email-form-name svelte-6eh7qr");
-    			add_location(div1, file$4, 116, 8, 3545);
+    			add_location(div1, file$4, 118, 8, 3627);
     			attr_dev(input2, "class", "email svelte-6eh7qr");
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "name", "email");
     			attr_dev(input2, "placeholder", "E-Mail Adresse");
-    			add_location(input2, file$4, 131, 12, 4030);
+    			add_location(input2, file$4, 135, 12, 4136);
     			attr_dev(div2, "class", "email-form-address svelte-6eh7qr");
-    			add_location(div2, file$4, 130, 8, 3985);
+    			add_location(div2, file$4, 134, 8, 4091);
     			attr_dev(input3, "type", "checkbox");
     			attr_dev(input3, "class", "checkbox svelte-6eh7qr");
     			set_style(input3, "cursor", "pointer");
     			attr_dev(input3, "name", "checkbox");
-    			add_location(input3, file$4, 139, 12, 4309);
+    			add_location(input3, file$4, 144, 12, 4427);
     			attr_dev(a, "href", "/datenschutz");
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "svelte-6eh7qr");
-    			add_location(a, file$4, 146, 16, 4555);
+    			add_location(a, file$4, 153, 16, 4702);
     			attr_dev(label, "for", "checkbox");
     			attr_dev(label, "class", "svelte-6eh7qr");
-    			add_location(label, file$4, 145, 12, 4513);
+    			add_location(label, file$4, 151, 12, 4643);
     			attr_dev(div3, "class", "email-form-checkboxes svelte-6eh7qr");
     			set_style(div3, "cursor", "pointer");
-    			add_location(div3, file$4, 138, 8, 4237);
+    			add_location(div3, file$4, 143, 8, 4355);
     			attr_dev(button, "class", "btn outline svelte-6eh7qr");
-    			add_location(button, file$4, 170, 12, 5420);
+    			add_location(button, file$4, 178, 12, 5580);
     			attr_dev(div4, "class", "email-form-button svelte-6eh7qr");
-    			add_location(div4, file$4, 169, 8, 5376);
+    			add_location(div4, file$4, 177, 8, 5536);
     			attr_dev(form, "class", "email svelte-6eh7qr");
-    			add_location(form, file$4, 111, 4, 3332);
+    			add_location(form, file$4, 113, 4, 3422);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, form, anchor);
@@ -9304,14 +9304,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(111:0) {#if !$formSuccessfullySubmitted}",
+    		source: "(113:0) {#if !$formSuccessfullySubmitted}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (150:8) {#if foundError}
+    // (158:8) {#if foundError}
     function create_if_block_1(ctx) {
     	let div;
     	let t0;
@@ -9339,7 +9339,7 @@ var app = (function () {
     			t4 = space();
     			if (if_block4) if_block4.c();
     			attr_dev(div, "class", "errors svelte-6eh7qr");
-    			add_location(div, file$4, 150, 12, 4709);
+    			add_location(div, file$4, 158, 12, 4869);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9434,14 +9434,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(150:8) {#if foundError}",
+    		source: "(158:8) {#if foundError}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:16) {#if errors.priceCalculated}
+    // (161:16) {#if errors.priceCalculated}
     function create_if_block_6(ctx) {
     	let li;
     	let t_value = /*errors*/ ctx[1].priceCalculated + "";
@@ -9452,7 +9452,7 @@ var app = (function () {
     			li = element("li");
     			t = text(t_value);
     			attr_dev(li, "class", "svelte-6eh7qr");
-    			add_location(li, file$4, 153, 20, 4859);
+    			add_location(li, file$4, 161, 20, 5019);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -9470,14 +9470,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(153:16) {#if errors.priceCalculated}",
+    		source: "(161:16) {#if errors.priceCalculated}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (156:16) {#if errors.firstname}
+    // (164:16) {#if errors.firstname}
     function create_if_block_5(ctx) {
     	let li;
     	let t_value = /*errors*/ ctx[1].firstname + "";
@@ -9488,7 +9488,7 @@ var app = (function () {
     			li = element("li");
     			t = text(t_value);
     			attr_dev(li, "class", "svelte-6eh7qr");
-    			add_location(li, file$4, 156, 20, 4974);
+    			add_location(li, file$4, 164, 20, 5134);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -9506,14 +9506,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(156:16) {#if errors.firstname}",
+    		source: "(164:16) {#if errors.firstname}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (159:16) {#if errors.lastname}
+    // (167:16) {#if errors.lastname}
     function create_if_block_4(ctx) {
     	let li;
     	let t_value = /*errors*/ ctx[1].lastname + "";
@@ -9524,7 +9524,7 @@ var app = (function () {
     			li = element("li");
     			t = text(t_value);
     			attr_dev(li, "class", "svelte-6eh7qr");
-    			add_location(li, file$4, 159, 20, 5082);
+    			add_location(li, file$4, 167, 20, 5242);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -9542,14 +9542,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(159:16) {#if errors.lastname}",
+    		source: "(167:16) {#if errors.lastname}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (162:16) {#if errors.email}
+    // (170:16) {#if errors.email}
     function create_if_block_3(ctx) {
     	let li;
     	let t_value = /*errors*/ ctx[1].email + "";
@@ -9560,7 +9560,7 @@ var app = (function () {
     			li = element("li");
     			t = text(t_value);
     			attr_dev(li, "class", "svelte-6eh7qr");
-    			add_location(li, file$4, 162, 20, 5186);
+    			add_location(li, file$4, 170, 20, 5346);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -9578,14 +9578,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(162:16) {#if errors.email}",
+    		source: "(170:16) {#if errors.email}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (165:16) {#if errors.agreed}
+    // (173:16) {#if errors.agreed}
     function create_if_block_2(ctx) {
     	let li;
     	let t_value = /*errors*/ ctx[1].agreed + "";
@@ -9596,7 +9596,7 @@ var app = (function () {
     			li = element("li");
     			t = text(t_value);
     			attr_dev(li, "class", "svelte-6eh7qr");
-    			add_location(li, file$4, 165, 20, 5288);
+    			add_location(li, file$4, 173, 20, 5448);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -9614,7 +9614,7 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(165:16) {#if errors.agreed}",
+    		source: "(173:16) {#if errors.agreed}",
     		ctx
     	});
 
@@ -9767,9 +9767,11 @@ var app = (function () {
     					quantity: $quantity
     				}
     			}).then(response => {
-    				console.log(response);
+    				// console.log(response);
+    				console.log("OK");
     			}).catch(error => {
-    				console.log(error);
+    				// console.log(error);
+    				console.log("ERROR");
     			});
 
     			set_store_value(formSuccessfullySubmitted, $formSuccessfullySubmitted = true, $formSuccessfullySubmitted);
@@ -9978,15 +9980,15 @@ var app = (function () {
     			div3 = element("div");
     			create_component(pricedisplay.$$.fragment);
     			attr_dev(div0, "class", "calculator-top svelte-p20761");
-    			add_location(div0, file$5, 71, 12, 2394);
+    			add_location(div0, file$5, 72, 12, 2403);
     			attr_dev(div1, "class", "calculator-mid-regular svelte-p20761");
     			attr_dev(div1, "id", "calculator-mid-regular");
-    			add_location(div1, file$5, 87, 12, 3036);
+    			add_location(div1, file$5, 90, 12, 3077);
     			attr_dev(div2, "class", "calculator-mid-bewerbung svelte-p20761");
     			attr_dev(div2, "id", "calculator-mid-bewerbung");
-    			add_location(div2, file$5, 97, 12, 3483);
+    			add_location(div2, file$5, 101, 12, 3540);
     			attr_dev(div3, "class", "wrapper-price-display svelte-p20761");
-    			add_location(div3, file$5, 102, 12, 3745);
+    			add_location(div3, file$5, 107, 12, 3818);
     			set_style(form, "border-bottom", "1px solid rgb(221, 221, 221)");
     			attr_dev(form, "class", "svelte-p20761");
     			add_location(form, file$5, 67, 8, 2214);
@@ -10077,7 +10079,7 @@ var app = (function () {
     	return block;
     }
 
-    // (110:8) {#if !$formSuccessfullySubmitted}
+    // (115:8) {#if !$formSuccessfullySubmitted}
     function create_if_block$1(ctx) {
     	let div;
     	let p;
@@ -10086,11 +10088,11 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			p = element("p");
-    			p.textContent = "* unverbindliche Preisauskunft";
+    			p.textContent = "* unverbindliche Preisauskunft inkl. MwSt.";
     			attr_dev(p, "class", "svelte-p20761");
-    			add_location(p, file$5, 111, 16, 4017);
+    			add_location(p, file$5, 116, 16, 4090);
     			attr_dev(div, "class", "price-disclaimer svelte-p20761");
-    			add_location(div, file$5, 110, 12, 3970);
+    			add_location(div, file$5, 115, 12, 4043);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10105,7 +10107,7 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(110:8) {#if !$formSuccessfullySubmitted}",
+    		source: "(115:8) {#if !$formSuccessfullySubmitted}",
     		ctx
     	});
 
@@ -10151,7 +10153,7 @@ var app = (function () {
     			attr_dev(div1, "class", "preisrechner-title-wrapper svelte-p20761");
     			add_location(div1, file$5, 62, 4, 1982);
     			attr_dev(div2, "class", "calculator-bottom svelte-p20761");
-    			add_location(div2, file$5, 107, 4, 3863);
+    			add_location(div2, file$5, 112, 4, 3936);
     			attr_dev(div3, "class", "preisrechner-wrapper svelte-p20761");
     			add_location(div3, file$5, 61, 0, 1943);
     		},

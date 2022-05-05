@@ -19,7 +19,9 @@
             displayedPrice = "* 0.00 €";
         } else {
             const priceString = `* ${price} € - ${(
-                price * $priceUpperBound
+                price *
+                $priceUpperBound *
+                1.1
             ).toFixed(2)} €`;
             displayedPrice = priceString;
         }

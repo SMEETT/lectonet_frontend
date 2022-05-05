@@ -113,8 +113,8 @@
 {#if !$formSuccessfullySubmitted}
     <form class="email" on:submit|preventDefault>
         <div class="email-form-desc">
-            Unschlüssig? Dann fordern Sie hier ein unverbindliches,
-            detailliertes Angebot an:
+            Unschlüssig? Fordern Sie hier unverbindlich ein detailliertes
+            Angebot an:
         </div>
         <div class="email-form-name">
             <input

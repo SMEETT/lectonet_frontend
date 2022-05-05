@@ -68,37 +68,42 @@
         <form
             style="border-bottom: 1px solid rgb(221, 221, 221)"
             on:submit|preventDefault
-            on:change|preventDefault={handleDropdownChange}>
+            on:change|preventDefault={handleDropdownChange}
+        >
             <div class="calculator-top">
                 <Dropdown
-                    label={'Sie sind'}
+                    label={"Sie sind"}
                     options={dropdownDataGroups}
-                    category={'group'}
-                    id={'dropdown-group'}
-                    initialDisableStatus="false" />
+                    category={"group"}
+                    id={"dropdown-group"}
+                    initialDisableStatus="false"
+                />
 
                 <Dropdown
-                    label={'Sie benötigen'}
+                    label={"Sie benötigen"}
                     options={dropdownDataServices}
-                    category={'service'}
-                    id={'dropdown-service'}
-                    initialDisableStatus="true" />
+                    category={"service"}
+                    id={"dropdown-service"}
+                    initialDisableStatus="true"
+                />
             </div>
             <!-- div rendered when anything but "Bewerbung" was selected -->
             <div class="calculator-mid-regular" id="calculator-mid-regular">
                 <Dropdown
-                    label={'Art der Arbeit'}
+                    label={"Art der Arbeit"}
                     options={dropdownDataTypes}
-                    category={'type'}
-                    id={'dropdown-type'}
-                    initialDisableStatus="true" />
+                    category={"type"}
+                    id={"dropdown-type"}
+                    initialDisableStatus="true"
+                />
                 <TextfieldQuantity />
             </div>
             <!-- div rendered when "Bewerbung" was selected -->
             <div class="calculator-mid-bewerbung" id="calculator-mid-bewerbung">
                 <BewerbungenCheckboxes
                     bind:this={BewerbungenCheckboxesInstance}
-                    dropdownDataTypes={dropdownDataTypes} />
+                    dropdownDataTypes={dropdownDataTypes}
+                />
             </div>
             <div class="wrapper-price-display">
                 <PriceDisplay />
@@ -109,7 +114,7 @@
         <MailForm />
         {#if !$formSuccessfullySubmitted}
             <div class="price-disclaimer">
-                <p>* unverbindliche Preisauskunft</p>
+                <p>* unverbindliche Preisauskunft inkl. MwSt.</p>
             </div>
         {/if}
     </div>
