@@ -2020,6 +2020,7 @@ var app = (function () {
 
     const quantity = writable(1);
     const price = writable("* 0.00");
+    const pricetiers = writable([]);
     const calculatedPrice = writable("* 0.00");
     const priceUpperBound = readable(1.2);
 
@@ -2043,15 +2044,48 @@ var app = (function () {
         `${strapiAPI}/preis?populate[Preis][populate][0]=CSV`
     );
 
+    function parsePricetiers(str) {
+        console.log(str);
+        // remove all whitespace from string
+        try {
+            const string = str.replace(/\s/g, "");
+            const regExp = new RegExp("[0-9]+[:][-][0-9]+[%]");
+            const split = string.split(",");
+            const result = [];
+            split.forEach((el) => {
+                if (regExp.test(el)) {
+                    let newElement = el.split(":");
+                    const obj = {
+                        start: parseInt(newElement[0], 10),
+                        reduction: parseInt(
+                            (newElement[1] = newElement[1].slice(1, -1)),
+                            10
+                        ),
+                    };
+                    result.push(obj);
+                } else {
+                    console.log("ERROR element doesn't match REGEXP");
+                    return;
+                }
+            });
+            console.log("result", result);
+            return result;
+        } catch {
+            console.log("ERROR while parsing pricetiers");
+        }
+    }
     fetchedCSVData
+        // extract SERVICES (Korrektur, Lektorate etc.)
         .then((fetchedData) => {
             const servicesTEMP = [];
             // initial API-Response, 'extractedData' contains
-            // an array of objects {leistung, CSV}
+            // an array of objects [leistung, CSV]
             // CSV.url contains path to CSV-Data for 'leistung'
             const extractedData = fetchedData.data.data.attributes.Preis;
             // get all "Leistungen"(Services) and add them to
             // TEMP array (later used to set() corresponding writable())
+            console.log("extractedDATA", extractedData);
+            // 'entry' is coming directly from CMS and contains {leistung(name), CSV}
             extractedData.forEach((entry) => {
                 servicesTEMP.push(entry.leistung);
             });
@@ -2059,6 +2093,7 @@ var app = (function () {
             // pass on extractedData
             return extractedData;
         })
+        // fetch and transform CSV Data
         .then((extractedData) => {
             const CSVData_Promises = [];
             // fetch CSV-Data of all "services"
@@ -2077,6 +2112,7 @@ var app = (function () {
             // the index of the iteration to find the service's name
             let bigPromise = Promise.all(CSVData_Promises).then((CSVData_Array) => {
                 const AllCSVDataObjects = [];
+                console.log("CSVData_Array", CSVData_Array);
                 CSVData_Array.forEach((CSVString, index) => {
                     AllCSVDataObjects.push({
                         serviceName: get_store_value(services)[index],
@@ -2085,6 +2121,7 @@ var app = (function () {
                 });
                 // finished array of objects { serviceName, CSVString }
                 // returned to bigPromise
+                console.log("AllCSVDataObjects", AllCSVDataObjects);
                 return AllCSVDataObjects;
             });
             // Promise that all objects of nature { serviceName, CSVString }
@@ -2092,21 +2129,32 @@ var app = (function () {
             return bigPromise;
         })
         .then((bigPromise) => {
+            console.log("then bigPromise");
             const pricesTEMP = [];
+            // go over each CSV Data String
             bigPromise.forEach((CSVObject) => {
-                let service = CSVObject.serviceName;
+                let type = {
+                    name: null,
+                    pricetiers: null,
+                    price: null,
+                };
                 let parsedCSVString = papaparse_min.parse(CSVObject.CSVString, ppConfig).data;
                 parsedCSVString.forEach((line) => {
-                    let type;
                     for (const [key, value] of Object.entries(line)) {
-                        if (`${key}` === "") {
-                            type = `${value}`;
+                        // console.log("key / value", `${key}` + "/" + `${value}`);
+                        if (`${key}` === "Staffelung") {
+                            // console.log("Preisstaffelung", `${value}`);
+                            type.pricetiers = value;
+                            // console.log("value", value);
+                            // console.log("service object", service);
+                        } else if (`${key}` === "Art") {
+                            type.name = `${value}`;
                         } else {
                             const objectToPush = {
                                 group: `${key}`,
-                                service: service,
-                                type: type,
-                                price: `${value}`,
+                                // service object: {name, pricetiers, price}
+                                service: CSVObject.serviceName,
+                                type: { ...type, price: `${value}` },
                             };
                             pricesTEMP.push(objectToPush);
                         }
@@ -2114,16 +2162,24 @@ var app = (function () {
                 });
                 // filter out all elements that have no price
                 // and therefor are irrelevant
-                const filteredPrices = pricesTEMP.filter(
-                    (entry) => entry.price !== ""
+                // console.log("filtered Prices before removing empties", pricesTEMP);
+                const filteredPrices = pricesTEMP.filter((entry) => {
+                    // console.log("ENTRY", entry.type.price);
+                    return entry.type.price !== "";
+                });
+                console.log(
+                    // "filtered Prices after removing empties",
+                    filteredPrices
                 );
                 prices.set(filteredPrices);
             });
             return pricesTEMP;
         })
         .then((pricesTEMP) => {
-            // object { group, service, type }
+            // array of: object { group, service {name, pricetiers}, type, price }
             selectedCategories.subscribe((object) => {
+                console.log("init object (after group selection))", object);
+                console.log("pricesTEMP!", pricesTEMP);
                 quantity.set(1);
                 calculatedPrice.set("0.00");
                 // construct a new set of distinct 'groups', sort them and
@@ -2140,35 +2196,48 @@ var app = (function () {
                 );
                 typesTEMP.sort();
                 types.set(typesTEMP);
+                console.log("types", typesTEMP);
 
-                // get the complete Array containing all price-objects
+                // get the complete Array containing all price-object
                 // { group, service, type, price }
                 let filteredPrices = get_store_value(prices);
+                console.log(
+                    "filteredPrices before group selection",
+                    filteredPrices
+                );
 
                 // only do something if a 'group' was chosen
                 if (object.group !== null) {
                     filteredPrices = filteredPrices.filter((entry) => {
                         return entry.group === object.group;
                     });
+                    console.log("filtered Prices", filteredPrices);
 
                     // repopulate the 'service' dropdown
                     const servicesTEMP = Array.from(
-                        new Set(filteredPrices.map((item) => item.service))
+                        new Set(
+                            filteredPrices.map((item) => {
+                                return item.service;
+                            })
+                        )
                     );
+
                     servicesTEMP.sort();
+                    console.log("servicesTEMP", servicesTEMP);
                     services.set(servicesTEMP);
                 }
 
                 // if 'group' and 'service' are both selected
                 // filter by 'service' and repopulate 'types'
                 if (object.group !== null && object.service !== null) {
+                    console.log("object", object);
                     filteredPrices = filteredPrices.filter((entry) => {
                         return entry.service === object.service;
                     });
 
                     // repopulate the "type" dropdown
                     const typesTEMP = Array.from(
-                        new Set(filteredPrices.map((item) => item.type))
+                        new Set(filteredPrices.map((item) => item.type.name))
                     );
                     typesTEMP.sort();
                     types.set(typesTEMP);
@@ -2181,23 +2250,33 @@ var app = (function () {
                     object.service !== null &&
                     object.type !== null
                 ) {
+                    console.log("OBJECT FINAL", object);
                     filteredPrices = filteredPrices.filter((entry) => {
                         return entry.group === object.group;
                     });
                     filteredPrices = filteredPrices.filter((entry) => {
                         return entry.service === object.service;
                     });
+                    console.log(
+                        "filteredPrices after DISTINCT selection",
+                        filteredPrices
+                    );
 
                     // for 'Bewerbungen' set 'price' to whole object
                     // including all prices for all 'types'
                     if (object.service !== "Bewerbung") {
                         filteredPrices = filteredPrices.filter((entry) => {
-                            return entry.type === object.type;
+                            return entry.type.name === object.type;
                         });
+                        console.log("final filtered price", filteredPrices);
                         // set price to 0 before assigning the real value to make
                         // sure the subscription gets triggered
                         price.set(0);
-                        price.set(filteredPrices[0].price);
+                        price.set(filteredPrices[0].type.price);
+                        const pricetiersParsed = parsePricetiers(
+                            filteredPrices[0].type.pricetiers
+                        );
+                        pricetiers.set(pricetiersParsed);
                     } else {
                         price.set(0);
                         price.set(filteredPrices);
@@ -2715,33 +2794,33 @@ var app = (function () {
     			button1 = element("button");
     			attr_dev(label, "for", "quantity");
     			attr_dev(label, "class", "svelte-1j3ezkz");
-    			add_location(label, file$1, 48, 4, 1179);
+    			add_location(label, file$1, 59, 4, 1473);
     			attr_dev(input, "name", "quantity");
     			input.disabled = /*disabled*/ ctx[0];
     			attr_dev(input, "type", "number");
     			attr_dev(input, "min", "1");
     			attr_dev(input, "class", "svelte-1j3ezkz");
     			toggle_class(input, "inactive", /*disabled*/ ctx[0]);
-    			add_location(input, file$1, 50, 8, 1252);
+    			add_location(input, file$1, 61, 8, 1546);
     			attr_dev(span, "class", "svelte-1j3ezkz");
     			toggle_class(span, "inactive", /*disabled*/ ctx[0]);
-    			add_location(span, file$1, 59, 8, 1579);
+    			add_location(span, file$1, 70, 8, 1873);
     			attr_dev(button0, "alt", "up");
     			attr_dev(button0, "class", "up svelte-1j3ezkz");
     			button0.disabled = /*disabled*/ ctx[0];
     			toggle_class(button0, "inactive", /*disabled*/ ctx[0]);
-    			add_location(button0, file$1, 62, 12, 1715);
+    			add_location(button0, file$1, 73, 12, 2009);
     			attr_dev(button1, "alt", "down");
     			attr_dev(button1, "class", "down svelte-1j3ezkz");
     			button1.disabled = /*disabled*/ ctx[0];
     			toggle_class(button1, "inactive", /*disabled*/ ctx[0]);
-    			add_location(button1, file$1, 68, 12, 1904);
+    			add_location(button1, file$1, 79, 12, 2198);
     			attr_dev(div0, "class", "plus-minus svelte-1j3ezkz");
-    			add_location(div0, file$1, 61, 8, 1678);
+    			add_location(div0, file$1, 72, 8, 1972);
     			attr_dev(div1, "class", "lower-row svelte-1j3ezkz");
-    			add_location(div1, file$1, 49, 4, 1220);
+    			add_location(div1, file$1, 60, 4, 1514);
     			attr_dev(div2, "class", "wrapper-quantity svelte-1j3ezkz");
-    			add_location(div2, file$1, 47, 0, 1144);
+    			add_location(div2, file$1, 58, 0, 1438);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2829,6 +2908,9 @@ var app = (function () {
     }
 
     function instance$1($$self, $$props, $$invalidate) {
+    	let $pricetiers;
+    	validate_store(pricetiers, "pricetiers");
+    	component_subscribe($$self, pricetiers, $$value => $$invalidate(7, $pricetiers = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("TextfieldQuantity", slots, []);
     	let disabled;
@@ -2865,7 +2947,15 @@ var app = (function () {
     	};
 
     	const calculatePrice = event => {
-    		let calculatedPriceTEMP = (quantityTEMP * priceTEMP).toFixed(2);
+    		let appliedReduction = 0;
+
+    		$pricetiers.forEach(tier => {
+    			if (quantityTEMP >= tier.start) {
+    				appliedReduction = tier.reduction;
+    			}
+    		});
+
+    		let calculatedPriceTEMP = (quantityTEMP * priceTEMP * (1 - appliedReduction / 100)).toFixed(2);
 
     		if (calculatedPriceTEMP == "NaN") {
     			calculatedPriceTEMP = "0.00";
@@ -2890,13 +2980,15 @@ var app = (function () {
     		priceDisableStatus,
     		calculatedPrice,
     		price,
+    		pricetiers,
     		quantity,
     		disabled,
     		quantityTEMP,
     		priceTEMP,
     		increase,
     		decrease,
-    		calculatePrice
+    		calculatePrice,
+    		$pricetiers
     	});
 
     	$$self.$inject_state = $$props => {
@@ -3097,13 +3189,13 @@ var app = (function () {
     			attr_dev(input, "type", "checkbox");
     			attr_dev(input, "name", "checkbox");
     			attr_dev(input, "id", input_id_value = /*index*/ ctx[8]);
-    			add_location(input, file$3, 108, 12, 3539);
+    			add_location(input, file$3, 108, 12, 3544);
     			attr_dev(a, "name", "a-handler");
     			attr_dev(a, "id", a_id_value = /*index*/ ctx[8]);
     			attr_dev(a, "class", "svelte-4x5tgs");
-    			add_location(a, file$3, 113, 12, 3709);
+    			add_location(a, file$3, 113, 12, 3714);
     			attr_dev(div, "class", "checkbox-wrapper svelte-4x5tgs");
-    			add_location(div, file$3, 107, 8, 3496);
+    			add_location(div, file$3, 107, 8, 3501);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3162,7 +3254,7 @@ var app = (function () {
     			}
 
     			attr_dev(div, "class", "checkboxes-wrapper svelte-4x5tgs");
-    			add_location(div, file$3, 105, 0, 3406);
+    			add_location(div, file$3, 105, 0, 3411);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3234,7 +3326,7 @@ var app = (function () {
     	price.subscribe(p => {
     		try {
     			p.forEach((object, index) => {
-    				pricesBewerbungen[index] = parseFloat(object.price);
+    				pricesBewerbungen[index] = parseFloat(object.type.price);
     			});
     		} catch {
     			

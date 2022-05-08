@@ -23,6 +23,7 @@ export const types = writable([]);
 
 export const quantity = writable(1);
 export const price = writable("* 0.00");
+export const pricetiers = writable([]);
 export const calculatedPrice = writable("* 0.00");
 export const priceUpperBound = readable(1.2);
 
@@ -46,15 +47,48 @@ const fetchedCSVData = axios.get(
     `${strapiAPI}/preis?populate[Preis][populate][0]=CSV`
 );
 
+function parsePricetiers(str) {
+    console.log(str);
+    // remove all whitespace from string
+    try {
+        const string = str.replace(/\s/g, "");
+        const regExp = new RegExp("[0-9]+[:][-][0-9]+[%]");
+        const split = string.split(",");
+        const result = [];
+        split.forEach((el) => {
+            if (regExp.test(el)) {
+                let newElement = el.split(":");
+                const obj = {
+                    start: parseInt(newElement[0], 10),
+                    reduction: parseInt(
+                        (newElement[1] = newElement[1].slice(1, -1)),
+                        10
+                    ),
+                };
+                result.push(obj);
+            } else {
+                console.log("ERROR element doesn't match REGEXP");
+                return;
+            }
+        });
+        console.log("result", result);
+        return result;
+    } catch {
+        console.log("ERROR while parsing pricetiers");
+    }
+}
 fetchedCSVData
+    // extract SERVICES (Korrektur, Lektorate etc.)
     .then((fetchedData) => {
         const servicesTEMP = [];
         // initial API-Response, 'extractedData' contains
-        // an array of objects {leistung, CSV}
+        // an array of objects [leistung, CSV]
         // CSV.url contains path to CSV-Data for 'leistung'
         const extractedData = fetchedData.data.data.attributes.Preis;
         // get all "Leistungen"(Services) and add them to
         // TEMP array (later used to set() corresponding writable())
+        console.log("extractedDATA", extractedData);
+        // 'entry' is coming directly from CMS and contains {leistung(name), CSV}
         extractedData.forEach((entry) => {
             servicesTEMP.push(entry.leistung);
         });
@@ -62,6 +96,7 @@ fetchedCSVData
         // pass on extractedData
         return extractedData;
     })
+    // fetch and transform CSV Data
     .then((extractedData) => {
         const CSVData_Promises = [];
         // fetch CSV-Data of all "services"
@@ -80,6 +115,7 @@ fetchedCSVData
         // the index of the iteration to find the service's name
         let bigPromise = Promise.all(CSVData_Promises).then((CSVData_Array) => {
             const AllCSVDataObjects = [];
+            console.log("CSVData_Array", CSVData_Array);
             CSVData_Array.forEach((CSVString, index) => {
                 AllCSVDataObjects.push({
                     serviceName: get(services)[index],
@@ -88,6 +124,7 @@ fetchedCSVData
             });
             // finished array of objects { serviceName, CSVString }
             // returned to bigPromise
+            console.log("AllCSVDataObjects", AllCSVDataObjects);
             return AllCSVDataObjects;
         });
         // Promise that all objects of nature { serviceName, CSVString }
@@ -95,21 +132,32 @@ fetchedCSVData
         return bigPromise;
     })
     .then((bigPromise) => {
+        console.log("then bigPromise");
         const pricesTEMP = [];
+        // go over each CSV Data String
         bigPromise.forEach((CSVObject) => {
-            let service = CSVObject.serviceName;
+            let type = {
+                name: null,
+                pricetiers: null,
+                price: null,
+            };
             let parsedCSVString = pp.parse(CSVObject.CSVString, ppConfig).data;
             parsedCSVString.forEach((line) => {
-                let type;
                 for (const [key, value] of Object.entries(line)) {
-                    if (`${key}` === "") {
-                        type = `${value}`;
+                    // console.log("key / value", `${key}` + "/" + `${value}`);
+                    if (`${key}` === "Staffelung") {
+                        // console.log("Preisstaffelung", `${value}`);
+                        type.pricetiers = value;
+                        // console.log("value", value);
+                        // console.log("service object", service);
+                    } else if (`${key}` === "Art") {
+                        type.name = `${value}`;
                     } else {
                         const objectToPush = {
                             group: `${key}`,
-                            service: service,
-                            type: type,
-                            price: `${value}`,
+                            // service object: {name, pricetiers, price}
+                            service: CSVObject.serviceName,
+                            type: { ...type, price: `${value}` },
                         };
                         pricesTEMP.push(objectToPush);
                     }
@@ -117,16 +165,24 @@ fetchedCSVData
             });
             // filter out all elements that have no price
             // and therefor are irrelevant
-            const filteredPrices = pricesTEMP.filter(
-                (entry) => entry.price !== ""
+            // console.log("filtered Prices before removing empties", pricesTEMP);
+            const filteredPrices = pricesTEMP.filter((entry) => {
+                // console.log("ENTRY", entry.type.price);
+                return entry.type.price !== "";
+            });
+            console.log(
+                // "filtered Prices after removing empties",
+                filteredPrices
             );
             prices.set(filteredPrices);
         });
         return pricesTEMP;
     })
     .then((pricesTEMP) => {
-        // object { group, service, type }
+        // array of: object { group, service {name, pricetiers}, type, price }
         selectedCategories.subscribe((object) => {
+            console.log("init object (after group selection))", object);
+            console.log("pricesTEMP!", pricesTEMP);
             quantity.set(1);
             calculatedPrice.set("0.00");
             // construct a new set of distinct 'groups', sort them and
@@ -143,35 +199,48 @@ fetchedCSVData
             );
             typesTEMP.sort();
             types.set(typesTEMP);
+            console.log("types", typesTEMP);
 
-            // get the complete Array containing all price-objects
+            // get the complete Array containing all price-object
             // { group, service, type, price }
             let filteredPrices = get(prices);
+            console.log(
+                "filteredPrices before group selection",
+                filteredPrices
+            );
 
             // only do something if a 'group' was chosen
             if (object.group !== null) {
                 filteredPrices = filteredPrices.filter((entry) => {
                     return entry.group === object.group;
                 });
+                console.log("filtered Prices", filteredPrices);
 
                 // repopulate the 'service' dropdown
                 const servicesTEMP = Array.from(
-                    new Set(filteredPrices.map((item) => item.service))
+                    new Set(
+                        filteredPrices.map((item) => {
+                            return item.service;
+                        })
+                    )
                 );
+
                 servicesTEMP.sort();
+                console.log("servicesTEMP", servicesTEMP);
                 services.set(servicesTEMP);
             }
 
             // if 'group' and 'service' are both selected
             // filter by 'service' and repopulate 'types'
             if (object.group !== null && object.service !== null) {
+                console.log("object", object);
                 filteredPrices = filteredPrices.filter((entry) => {
                     return entry.service === object.service;
                 });
 
                 // repopulate the "type" dropdown
                 const typesTEMP = Array.from(
-                    new Set(filteredPrices.map((item) => item.type))
+                    new Set(filteredPrices.map((item) => item.type.name))
                 );
                 typesTEMP.sort();
                 types.set(typesTEMP);
@@ -184,23 +253,33 @@ fetchedCSVData
                 object.service !== null &&
                 object.type !== null
             ) {
+                console.log("OBJECT FINAL", object);
                 filteredPrices = filteredPrices.filter((entry) => {
                     return entry.group === object.group;
                 });
                 filteredPrices = filteredPrices.filter((entry) => {
                     return entry.service === object.service;
                 });
+                console.log(
+                    "filteredPrices after DISTINCT selection",
+                    filteredPrices
+                );
 
                 // for 'Bewerbungen' set 'price' to whole object
                 // including all prices for all 'types'
                 if (object.service !== "Bewerbung") {
                     filteredPrices = filteredPrices.filter((entry) => {
-                        return entry.type === object.type;
+                        return entry.type.name === object.type;
                     });
+                    console.log("final filtered price", filteredPrices);
                     // set price to 0 before assigning the real value to make
                     // sure the subscription gets triggered
                     price.set(0);
-                    price.set(filteredPrices[0].price);
+                    price.set(filteredPrices[0].type.price);
+                    const pricetiersParsed = parsePricetiers(
+                        filteredPrices[0].type.pricetiers
+                    );
+                    pricetiers.set(pricetiersParsed);
                 } else {
                     price.set(0);
                     price.set(filteredPrices);

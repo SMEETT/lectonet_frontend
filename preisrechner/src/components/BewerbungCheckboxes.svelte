@@ -24,7 +24,7 @@
     price.subscribe((p) => {
         try {
             p.forEach((object, index) => {
-                pricesBewerbungen[index] = parseFloat(object.price);
+                pricesBewerbungen[index] = parseFloat(object.type.price);
             });
         } catch {}
     });
