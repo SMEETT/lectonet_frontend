@@ -23,7 +23,10 @@ export const types = writable([]);
 
 export const quantity = writable(1);
 export const price = writable("* 0.00");
+export const priceReduced = writable();
 export const pricetiers = writable([]);
+export const appliedReduction = writable(0);
+
 export const calculatedPrice = writable("* 0.00");
 export const priceUpperBound = readable(1.2);
 

@@ -3,7 +3,9 @@
         calculatedPrice,
         priceDisableStatus,
         price,
+        appliedReduction,
         priceUpperBound,
+        quantity,
     } from "../stores/stores.js";
 
     let disabled;
@@ -11,13 +13,31 @@
         disabled = status;
     });
     // initially set the displayed price to "0.00"
-    let displayedPrice = "*0.00";
+    let displayedPrice = "* 0.00";
+    let displayedPriceReduced = null;
     // subscribe to the global price and wait for changes,
     // update the "displayedPrice"
     calculatedPrice.subscribe((price) => {
         if (price === "0.00") {
             displayedPrice = "* 0.00 €";
         } else {
+            let appliedReductionTEMP = 0;
+            if ($appliedReduction !== 0) {
+                console.log("appliedReduction:", $appliedReduction);
+                appliedReductionTEMP = 1 - $appliedReduction / 100;
+                const priceStringReduced = `* ${(
+                    price * appliedReductionTEMP
+                ).toFixed(2)} € - ${(
+                    price *
+                    $priceUpperBound *
+                    1.1 *
+                    appliedReductionTEMP
+                ).toFixed(2)} €`;
+                console.log("priceStringReduced________", priceStringReduced);
+                displayedPriceReduced = priceStringReduced;
+            } else {
+                displayedPriceReduced = null;
+            }
             const priceString = `* ${price} € - ${(
                 price *
                 $priceUpperBound *
@@ -30,9 +50,34 @@
 
 <!-- MARKUP ------------------------------ -->
 <div class="wrapper-price">
-    <p id="price" class="price" class:inactive={disabled} disabled={disabled}>
-        {`${displayedPrice}`}
-    </p>
+    {#if displayedPriceReduced !== null}
+        <div class="wrapper-price-old">
+            <p
+                id="price"
+                class="price oldPrice strikethrough-diagonal"
+                class:inactive={disabled}
+                disabled={disabled}>
+                {`${displayedPrice}`}
+            </p>
+            <div class="badge badge-amount">{$quantity}</div>
+            <div class="badge badge-reduction">-{$appliedReduction}%</div>
+        </div>
+        <p
+            id="price"
+            class="price"
+            class:inactive={disabled}
+            disabled={disabled}>
+            {`${displayedPriceReduced}`}
+        </p>
+    {:else}
+        <p
+            id="price"
+            class="price"
+            class:inactive={disabled}
+            disabled={disabled}>
+            {`${displayedPrice}`}
+        </p>
+    {/if}
 </div>
 
 <!-- STYLING ------------------------------ -->
@@ -42,6 +87,36 @@
         flex-direction: column;
         align-items: center;
         line-height: 100%;
+    }
+
+    .wrapper-price-old {
+        display: flex;
+        /* border: 1px dotted blue; */
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 12px 0;
+    }
+
+    .badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 30px;
+        padding: 7px 10px;
+        border-radius: 5px;
+        margin-right: 5px;
+        color: white;
+        font-weight: 700;
+    }
+
+    .badge-reduction {
+        background-color: #00b032;
+    }
+
+    .badge-amount {
+        background-color: #d3d3d3;
     }
 
     p {
@@ -59,7 +134,30 @@
         align-items: center;
         line-height: 100%;
         text-align: center;
-        margin: 16px 0;
+    }
+
+    .oldPrice {
+        font-size: 24px;
+        margin-right: 10px;
+        color: #e5e5e5;
+    }
+
+    .strikethrough-diagonal {
+        position: relative;
+        font-weight: bold;
+    }
+
+    .strikethrough-diagonal:before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 45%;
+        right: 0;
+        border-top: 2px solid;
+        border-color: inherit;
+        -webkit-transform: skewY(-3deg);
+        -moz-transform: skewY(-3deg);
+        transform: skewY(-3deg);
     }
 
     p.inactive {

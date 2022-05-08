@@ -3,6 +3,8 @@
         priceDisableStatus,
         calculatedPrice,
         price,
+        priceReduced,
+        appliedReduction,
         pricetiers,
         quantity,
     } from "../stores/stores.js";
@@ -36,17 +38,13 @@
     };
 
     const calculatePrice = (event) => {
-        let appliedReduction = 0;
+        $appliedReduction = 0;
         $pricetiers.forEach((tier) => {
             if (quantityTEMP >= tier.start) {
-                appliedReduction = tier.reduction;
+                $appliedReduction = tier.reduction;
             }
         });
-        let calculatedPriceTEMP = (
-            quantityTEMP *
-            priceTEMP *
-            (1 - appliedReduction / 100)
-        ).toFixed(2);
+        let calculatedPriceTEMP = (quantityTEMP * priceTEMP).toFixed(2);
         if (calculatedPriceTEMP == "NaN") {
             calculatedPriceTEMP = "0.00";
         }
