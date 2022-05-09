@@ -3056,10 +3056,10 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "id", "price");
-    			attr_dev(p, "class", "price svelte-8zi74d");
+    			attr_dev(p, "class", "price svelte-z87wry");
     			attr_dev(p, "disabled", /*disabled*/ ctx[0]);
     			toggle_class(p, "inactive", /*disabled*/ ctx[0]);
-    			add_location(p, file$2, 73, 8, 2443);
+    			add_location(p, file$2, 73, 8, 2437);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -3128,21 +3128,21 @@ var app = (function () {
     			p1 = element("p");
     			t8 = text(t8_value);
     			attr_dev(p0, "id", "price");
-    			attr_dev(p0, "class", "price oldPrice strikethrough-diagonal svelte-8zi74d");
+    			attr_dev(p0, "class", "oldPrice strikethrough-diagonal svelte-z87wry");
     			attr_dev(p0, "disabled", /*disabled*/ ctx[0]);
     			toggle_class(p0, "inactive", /*disabled*/ ctx[0]);
     			add_location(p0, file$2, 55, 12, 1860);
-    			attr_dev(div0, "class", "badge badge-amount svelte-8zi74d");
-    			add_location(div0, file$2, 62, 12, 2098);
-    			attr_dev(div1, "class", "badge badge-reduction svelte-8zi74d");
-    			add_location(div1, file$2, 63, 12, 2160);
-    			attr_dev(div2, "class", "wrapper-price-old svelte-8zi74d");
+    			attr_dev(div0, "class", "badge badge-amount svelte-z87wry");
+    			add_location(div0, file$2, 62, 12, 2092);
+    			attr_dev(div1, "class", "badge badge-reduction svelte-z87wry");
+    			add_location(div1, file$2, 63, 12, 2154);
+    			attr_dev(div2, "class", "wrapper-price-old svelte-z87wry");
     			add_location(div2, file$2, 54, 8, 1816);
     			attr_dev(p1, "id", "price");
-    			attr_dev(p1, "class", "price svelte-8zi74d");
+    			attr_dev(p1, "class", "price svelte-z87wry");
     			attr_dev(p1, "disabled", /*disabled*/ ctx[0]);
     			toggle_class(p1, "inactive", /*disabled*/ ctx[0]);
-    			add_location(p1, file$2, 65, 8, 2246);
+    			add_location(p1, file$2, 65, 8, 2240);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -3216,7 +3216,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			if_block.c();
-    			attr_dev(div, "class", "wrapper-price svelte-8zi74d");
+    			attr_dev(div, "class", "wrapper-price svelte-z87wry");
     			add_location(div, file$2, 52, 0, 1713);
     		},
     		l: function claim(nodes) {
@@ -10271,18 +10271,18 @@ var app = (function () {
     			t4 = space();
     			div3 = element("div");
     			create_component(pricedisplay.$$.fragment);
-    			attr_dev(div0, "class", "calculator-top svelte-p20761");
-    			add_location(div0, file$5, 72, 12, 2403);
-    			attr_dev(div1, "class", "calculator-mid-regular svelte-p20761");
+    			attr_dev(div0, "class", "calculator-top svelte-g69jfg");
+    			add_location(div0, file$5, 71, 12, 2394);
+    			attr_dev(div1, "class", "calculator-mid-regular svelte-g69jfg");
     			attr_dev(div1, "id", "calculator-mid-regular");
-    			add_location(div1, file$5, 90, 12, 3077);
-    			attr_dev(div2, "class", "calculator-mid-bewerbung svelte-p20761");
+    			add_location(div1, file$5, 87, 12, 3036);
+    			attr_dev(div2, "class", "calculator-mid-bewerbung svelte-g69jfg");
     			attr_dev(div2, "id", "calculator-mid-bewerbung");
-    			add_location(div2, file$5, 101, 12, 3540);
-    			attr_dev(div3, "class", "wrapper-price-display svelte-p20761");
-    			add_location(div3, file$5, 107, 12, 3818);
+    			add_location(div2, file$5, 97, 12, 3483);
+    			attr_dev(div3, "class", "wrapper-price-display svelte-g69jfg");
+    			add_location(div3, file$5, 102, 12, 3745);
     			set_style(form, "border-bottom", "1px solid rgb(221, 221, 221)");
-    			attr_dev(form, "class", "svelte-p20761");
+    			attr_dev(form, "class", "svelte-g69jfg");
     			add_location(form, file$5, 67, 8, 2214);
     		},
     		m: function mount(target, anchor) {
@@ -10371,7 +10371,7 @@ var app = (function () {
     	return block;
     }
 
-    // (115:8) {#if !$formSuccessfullySubmitted}
+    // (110:8) {#if !$formSuccessfullySubmitted}
     function create_if_block$2(ctx) {
     	let div;
     	let p;
@@ -10381,10 +10381,10 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			p.textContent = "* unverbindliche Preisauskunft inkl. MwSt.";
-    			attr_dev(p, "class", "svelte-p20761");
-    			add_location(p, file$5, 116, 16, 4090);
-    			attr_dev(div, "class", "price-disclaimer svelte-p20761");
-    			add_location(div, file$5, 115, 12, 4043);
+    			attr_dev(p, "class", "svelte-g69jfg");
+    			add_location(p, file$5, 111, 16, 4017);
+    			attr_dev(div, "class", "price-disclaimer svelte-g69jfg");
+    			add_location(div, file$5, 110, 12, 3970);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10399,7 +10399,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(115:8) {#if !$formSuccessfullySubmitted}",
+    		source: "(110:8) {#if !$formSuccessfullySubmitted}",
     		ctx
     	});
 
@@ -10437,16 +10437,16 @@ var app = (function () {
     			create_component(mailform.$$.fragment);
     			t4 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(span, "class", "preisrechner-title svelte-p20761");
+    			attr_dev(span, "class", "preisrechner-title svelte-g69jfg");
     			add_location(span, file$5, 63, 8, 2031);
-    			attr_dev(div0, "class", "icon-close-calculator svelte-p20761");
+    			attr_dev(div0, "class", "icon-close-calculator svelte-g69jfg");
     			attr_dev(div0, "id", "icon-close-calculator");
     			add_location(div0, file$5, 64, 8, 2092);
-    			attr_dev(div1, "class", "preisrechner-title-wrapper svelte-p20761");
+    			attr_dev(div1, "class", "preisrechner-title-wrapper svelte-g69jfg");
     			add_location(div1, file$5, 62, 4, 1982);
-    			attr_dev(div2, "class", "calculator-bottom svelte-p20761");
-    			add_location(div2, file$5, 112, 4, 3936);
-    			attr_dev(div3, "class", "preisrechner-wrapper svelte-p20761");
+    			attr_dev(div2, "class", "calculator-bottom svelte-g69jfg");
+    			add_location(div2, file$5, 107, 4, 3863);
+    			attr_dev(div3, "class", "preisrechner-wrapper svelte-g69jfg");
     			add_location(div3, file$5, 61, 0, 1943);
     		},
     		l: function claim(nodes) {

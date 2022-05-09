@@ -55,7 +55,7 @@
         <div class="wrapper-price-old">
             <p
                 id="price"
-                class="price oldPrice strikethrough-diagonal"
+                class="oldPrice strikethrough-diagonal"
                 class:inactive={disabled}
                 disabled={disabled}>
                 {`${displayedPrice}`}
@@ -104,12 +104,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 30px;
-        padding: 7px 10px;
+        min-width: 24px;
+        padding: 5px 8px;
         border-radius: 5px;
         margin-right: 5px;
         color: white;
         font-weight: 700;
+        font-size: 16px;
     }
 
     .badge-reduction {
@@ -138,7 +139,12 @@
     }
 
     .oldPrice {
-        font-size: 24px;
+        display: flex;
+        font-size: 26px;
+        justify-content: center;
+        align-items: center;
+        line-height: 100%;
+        text-align: center;
         margin-right: 10px;
         color: #e5e5e5;
     }
@@ -177,12 +183,29 @@
             text-align: center;
             font-size: 32px;
         }
+
+        .oldPrice {
+            font-size: 20px;
+        }
     }
     /* ----------- 320-WIDTH */
     @media (max-width: 599px) {
         .price {
             text-align: center;
             font-size: 22px;
+        }
+
+        .oldPrice {
+            font-size: 16px;
+        }
+
+        .badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 20px;
+            padding: 4px 7px;
+            font-size: 14px;
         }
     }
 </style>
