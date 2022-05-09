@@ -20,6 +20,7 @@
     calculatedPrice.subscribe((price) => {
         if (price === "0.00") {
             displayedPrice = "* 0.00 €";
+            displayedPriceReduced = null;
         } else {
             let appliedReductionTEMP = 0;
             if ($appliedReduction !== 0) {
@@ -50,7 +51,7 @@
 
 <!-- MARKUP ------------------------------ -->
 <div class="wrapper-price">
-    {#if displayedPriceReduced !== null}
+    {#if displayedPriceReduced !== null && appliedReduction !== 0}
         <div class="wrapper-price-old">
             <p
                 id="price"

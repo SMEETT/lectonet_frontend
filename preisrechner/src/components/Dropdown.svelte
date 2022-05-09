@@ -3,6 +3,7 @@
         selectedCategories,
         priceDisableStatus,
         price,
+        appliedReduction,
         quantity,
         calculatedPrice,
     } from "../stores/stores";
@@ -25,6 +26,8 @@
     let currentSelection;
 
     const handleChange = () => {
+        console.log("handleChange");
+        appliedReduction.set(0);
         const defaultOptionService = document.getElementById("reset-service");
         const dropdownService = document.getElementById("dropdown-service");
         const selectWrapperService = document.getElementById("wrapper-service");
