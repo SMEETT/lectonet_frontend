@@ -176,6 +176,20 @@ app.use(function (req, res, next) {
 });
 
 //////////////////////////////////
+// test api
+//////////////////////////////////
+
+app.get("/", function (req, res) {
+	res.json({
+		version: "1.0",
+		type: "rich",
+		width: 500,
+		height: 500,
+		html: "<script>console.log('test')</script>",
+	});
+});
+
+//////////////////////////////////
 // index route
 //////////////////////////////////
 app.get("/", async (req, res) => {

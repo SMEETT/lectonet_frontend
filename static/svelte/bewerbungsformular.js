@@ -8117,31 +8117,35 @@ var app = (function () {
     	let formSuccessfullySubmitted = false;
 
     	const handleSubmit = () => {
-    		console.log(fields);
-    		console.log(frontendURL);
-    		const result = regSchema.validate(fields, { abortEarly: false });
+			// console.log(fields);
+			// console.log(frontendURL);
+			const result = regSchema.validate(fields, { abortEarly: false });
 
-    		result.then(res => {
-    			$$invalidate(1, errors = {});
-    			foundError = false;
+			result
+				.then((res) => {
+					$$invalidate(1, (errors = {}));
+					foundError = false;
 
-    			postData(`${frontendURL}/send/bewerbungsformular`, fields).then(res => {
-    				console.log("post req res", res);
-    				$$invalidate(2, formSuccessfullySubmitted = true);
-    			}).catch(err => {
-    				console.log("post failed", err);
-    			});
-    		}).catch(err => {
-    			console.log(frontendURL);
+					postData(`${frontendURL}/send/bewerbungsformular`, fields)
+						.then((res) => {
+							// console.log("post req res", res);
+							$$invalidate(2, (formSuccessfullySubmitted = true));
+						})
+						.catch((err) => {
+							// console.log("post failed", err);
+						});
+				})
+				.catch((err) => {
+					// console.log(frontendURL);
 
-    			// console.log(err);
-    			$$invalidate(1, errors = extractErrors(err));
+					// console.log(err);
+					$$invalidate(1, (errors = extractErrors(err)));
 
-    			foundError = true;
-    			$$invalidate(2, formSuccessfullySubmitted = false);
-    			console.log(errors);
-    		});
-    	};
+					foundError = true;
+					$$invalidate(2, (formSuccessfullySubmitted = false));
+					// console.log(errors);
+				});
+		};
 
     	const handleClose = () => {
     		$$invalidate(2, formSuccessfullySubmitted = false);

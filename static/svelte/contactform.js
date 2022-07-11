@@ -6766,17 +6766,17 @@ var app = (function () {
     }
 
     async function postData(url, data) {
-    	console.log("stringified", JSON.stringify(data));
+		// console.log("stringified", JSON.stringify(data));
 
-    	const res = await fetch(url, {
-    		method: "POST",
-    		mode: "cors",
-    		headers: { "Content-Type": "application/json" },
-    		body: JSON.stringify(data)
-    	});
+		const res = await fetch(url, {
+			method: "POST",
+			mode: "cors",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+		});
 
-    	return res.json();
-    }
+		return res.json();
+	}
 
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -6810,29 +6810,33 @@ var app = (function () {
     	let formSuccessfullySubmitted = false;
 
     	const handleSubmit2 = () => {
-    		console.log(fields);
-    		const result = regSchema.validate(fields, { abortEarly: false });
+			// console.log(fields);
+			const result = regSchema.validate(fields, { abortEarly: false });
 
-    		result.then(res => {
-    			$$invalidate(1, errors = {});
-    			foundError = false;
+			result
+				.then((res) => {
+					$$invalidate(1, (errors = {}));
+					foundError = false;
 
-    			postData(`${frontendURL}/send/contactform`, fields).then(res => {
-    				console.log("post req res", res);
-    				$$invalidate(2, formSuccessfullySubmitted = true);
-    			}).catch(err => {
-    				console.log("post failed", err);
-    			});
-    		}).catch(err => {
-    			console.log(frontendURL);
+					postData(`${frontendURL}/send/contactform`, fields)
+						.then((res) => {
+							// console.log("post req res", res);
+							$$invalidate(2, (formSuccessfullySubmitted = true));
+						})
+						.catch((err) => {
+							// console.log("post failed", err);
+						});
+				})
+				.catch((err) => {
+					// console.log(frontendURL);
 
-    			// console.log(err);
-    			$$invalidate(1, errors = extractErrors(err));
+					// console.log(err);
+					$$invalidate(1, (errors = extractErrors(err)));
 
-    			foundError = true;
-    			$$invalidate(2, formSuccessfullySubmitted = false);
-    		});
-    	};
+					foundError = true;
+					$$invalidate(2, (formSuccessfullySubmitted = false));
+				});
+		};
 
     	const writable_props = [];
 

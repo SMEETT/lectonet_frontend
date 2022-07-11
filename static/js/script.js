@@ -74,14 +74,14 @@ window.addEventListener("DOMContentLoaded", () => {
 		const btnOpenBewerbungsformular_2 = document.getElementById("btn-open-bewerbungsformular-2");
 
 		const toggleBewerbungsFormularOverlay_2 = (e) => {
-			console.log(bewerbungsformularIsOpen_2);
+			// console.log(bewerbungsformularIsOpen_2);
 			if (bewerbungsformularHook_2.style.display === "none" && e.srcElement.id === "btnCloseAfterSubmit-2") {
 				bewerbungsformularIsOpen_2 = false;
 				tagBody.classList.remove("overflow");
 			} else {
 				e.stopPropagation();
 				if (bewerbungsformularIsOpen_2) {
-					console.log(e.srcElement.id);
+					// console.log(e.srcElement.id);
 					if (e.srcElement.id === "bewerbungsformular-hook-2" || e.srcElement.id === "close-bewerbungsformular-2") {
 						tagBody.classList.remove("overflow");
 						bewerbungsformularHook_2.style.display = "none";
@@ -158,7 +158,7 @@ leistungen_link.addEventListener("mouseenter", () => {
 	wrapperDropdown.classList.add("heity");
 	wrapperDropdown.classList.remove("heity-out");
 	var computedStyle = window.getComputedStyle(wrapperDropdown);
-	console.log("HEIGHT", computedStyle.getPropertyValue("height"));
+	// console.log("HEIGHT", computedStyle.getPropertyValue("height"));
 });
 ueberuns_link.addEventListener("mouseenter", () => {
 	wrapperDropdown.style.display = "block";

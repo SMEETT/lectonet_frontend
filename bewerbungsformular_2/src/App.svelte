@@ -74,8 +74,8 @@
 	}
 
 	const handleSubmit = () => {
-		console.log(fields);
-		console.log(frontendURL);
+		// console.log(fields);
+		// console.log(frontendURL);
 		const result = regSchema.validate(fields, { abortEarly: false });
 		result
 			.then((res) => {
@@ -83,20 +83,20 @@
 				foundError = false;
 				postData(`${frontendURL}/send/bewerbungsformular_2`, fields)
 					.then((res) => {
-						console.log("post req res", res);
+						// console.log("post req res", res);
 						formSuccessfullySubmitted = true;
 					})
 					.catch((err) => {
-						console.log("post failed", err);
+						// console.log("post failed", err);
 					});
 			})
 			.catch((err) => {
-				console.log(frontendURL);
+				// console.log(frontendURL);
 				// console.log(err);
 				errors = extractErrors(err);
 				foundError = true;
 				formSuccessfullySubmitted = false;
-				console.log(errors);
+				// console.log(errors);
 			});
 	};
 

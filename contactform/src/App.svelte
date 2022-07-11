@@ -38,7 +38,7 @@
 	}
 
 	const handleSubmit = () => {
-		console.log(fields);
+		// console.log(fields);
 		const result = regSchema.validate(fields, { abortEarly: false });
 		result
 			.then((res) => {
@@ -46,15 +46,15 @@
 				foundError = false;
 				postData(`${frontendURL}/send/contactform`, fields)
 					.then((res) => {
-						console.log("post req res", res);
+						// console.log("post req res", res);
 						formSuccessfullySubmitted = true;
 					})
 					.catch((err) => {
-						console.log("post failed", err);
+						// console.log("post failed", err);
 					});
 			})
 			.catch((err) => {
-				console.log(frontendURL);
+				// console.log(frontendURL);
 				// console.log(err);
 				errors = extractErrors(err);
 				foundError = true;

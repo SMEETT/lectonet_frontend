@@ -83,20 +83,20 @@
 				foundError = false;
 				postData(`${frontendURL}/send/bewerbungsformular`, fields)
 					.then((res) => {
-						console.log("post req res", res);
+						// console.log("post req res", res);
 						formSuccessfullySubmitted = true;
 					})
 					.catch((err) => {
-						console.log("post failed", err);
+						// console.log("post failed", err);
 					});
 			})
 			.catch((err) => {
-				console.log(frontendURL);
+				// console.log(frontendURL);
 				// console.log(err);
 				errors = extractErrors(err);
 				foundError = true;
 				formSuccessfullySubmitted = false;
-				console.log(errors);
+				// console.log(errors);
 			});
 	};
 
