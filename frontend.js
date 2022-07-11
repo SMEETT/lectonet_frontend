@@ -60,12 +60,7 @@ app.use(
 	expressCspHeader({
 		directives: {
 			"default-src": [SELF, strapiURL],
-			"script-src": [
-				[NONCE],
-				STRICT_DYNAMIC,
-				"https://consentcdn.cookiebot.com",
-				// STRICT_DYNAMIC,
-			],
+			"script-src": [[NONCE], STRICT_DYNAMIC],
 			"style-src": [SELF, INLINE, "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://tagmanager.google.com", "https://unpkg.com"],
 			"img-src": [
 				SELF,
